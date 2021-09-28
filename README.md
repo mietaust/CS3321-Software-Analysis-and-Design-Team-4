@@ -15,3 +15,5 @@ Contributing: Larger projects often have sections on contributing to their proje
 Include a section for credits in order to highlight and link to the authors of your project.
 
 License: Finally, include a section for the license of your project
+
+Your README should contain only the necessary information for developers to get started using and contributing to your project. Longer documentation is best suited for wikis, outlined below.
