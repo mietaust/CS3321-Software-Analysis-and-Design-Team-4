@@ -33,7 +33,7 @@ Basic Client and Server that are cabaple of communicating and playing a limited 
 * Minimum of 2 players.
 * Game Initialization and Completion.
     * Rules TBD, but including:
-    * Buying property, getting paid, moving on the gameboard, going to jail, passing go, etc. 
+    * Buying property, property types, getting paid, moving on the gameboard, going to jail, passing go, etc. 
 * Basic user interface.
 ## Health monitoring strategies and methods
 * Product backlog management for both Backend and Frontent.
