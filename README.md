@@ -18,13 +18,21 @@ Our team will be implementing a lite version of Monopoloy. This game will use a 
 ### Minimum Technologies Used
 * Frontend Language: Python
      * Testing Framework: Cucumber
+     * https://google.github.io/styleguide/pyguide.html
 * Backend Language: Java
      * Testing Framework: JUnit
+     * https://google.github.io/styleguide/javaguide.html
 * MS Framework: Javelin
 * UI Framework: PyGame
 * Server Hosting: AWS
 
 ## Description of our MVP
-TBD
+Basic Client and Server that are cabaple of communicating and playing a limited ruleset version of Monopoly, including:
+* Minimum of 2 players.
+* Game Initialization and Completion.
+    * Rules TBD.
+* Basic user interface.
 ## Health monitoring strategies and methods
-TBD
+* Product backlog management for both Backend and Frontent.
+* Playtesting.
+* Regular meetings to play Essence "serious" games.
