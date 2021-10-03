@@ -7,11 +7,11 @@
 * Timothy Lybek:
 * Austin Mietchen: Product Owner
 * Joshua Wheeler:
-
-## Planned Tools / Languages
-
 ## Documentation Methodology
-
+* In Code (comments, descriptions, etc)
+    * Will be dictated by the chosen style guides listed below.
+* Project Backlog, User Stories, etc
+    * Will be located in the "Projects" section of this repo using the "Use-Case" method of requirements setting. 
 ## Project Description
 ### Overview
 Our team will be implementing a lite version of Monopoloy. This game will use a desktop client to handle user input and a remote server to handle game logic and keep track of the game's current status, as well as updating game clients to reflect the state of the game. 
