@@ -3,12 +3,15 @@
  */
 package Backend;
 
+
+import io.javalin.Javalin;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Javalin javaServer = Javalin.create().start(7000);
+        javaServer.get("/", ctx -> ctx.result("Group project"));
+
     }
+
 }
