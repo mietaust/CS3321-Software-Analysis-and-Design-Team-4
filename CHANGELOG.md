@@ -37,10 +37,17 @@ versioning structure example
 ### Removed
 - Remove empty sections from... 
 
+##[0.0.3]-October 9 2021
 
-## [0.0.1] - date
-### Added
-- This CHANGELOG file is to hopefully...
+### Changed
+- Changed test client to use synchronous calls
+
+##[0.0.2]-October 5 2021
+### Added 
+- Gitflow initialixed
+- Gradle initialized
+
+
 
 [Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD EXAMPLE 
 [1.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...v1.0.0

@@ -11,10 +11,12 @@ import io.javalin.Javalin;
 import Backend.Server;
 import Backend.Client;
 
+import java.io.IOException;
+
 
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
         //Initialize the server
         Server server = new Server();
         server.newServer();
