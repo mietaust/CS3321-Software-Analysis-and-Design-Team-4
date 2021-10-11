@@ -1,2 +1,0 @@
-{As a player, I want to be able to connect to the game server so that I can play a game of monopoly.}
-{As a server host, I want more than one individual to be able to connect to my game server, so that a proper game can be played.}
