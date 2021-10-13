@@ -21,12 +21,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Gitflow initialixed
 - Gradle initialized
 
-## [0.0.1] - 10/9/2021
+## [0.0.1] - 10/12/2021
 ### Added
-Client and Server backend
+Implemented python client
+Python client connects to Server 
 
 ### Changed
 
 ### Removed
+
+
 
 
