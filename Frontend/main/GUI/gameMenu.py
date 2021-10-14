@@ -1,6 +1,7 @@
 import thorpy
 import pynopoly
 import pygame
+import requests
 from Frontend.main.Networking.Client import Client
 
 pygame.init()
@@ -40,12 +41,6 @@ thorpy.store(e_background, [e_play, e_quit])
 
 menu = thorpy.Menu([e_background, e_title])
 menu.play()
-
-ipaddress = "localhost"
-
-gameclient = Client(ipaddress)
-
-gameclient.connect(ipaddress)
 
 
 
