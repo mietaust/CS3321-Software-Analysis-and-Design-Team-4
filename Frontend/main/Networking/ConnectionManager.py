@@ -2,6 +2,7 @@ import requests
 
 
 class ConnectionManager:
+
     __instance = None
 
     @classmethod
@@ -21,12 +22,13 @@ class ConnectionManager:
     # asynchronous function to run HTTP GET request
     # input: URI of address to send GET request to (String)
     # return : asynchronous return from GET request to inputted URI
-
     def create_get_request(self, url):
         self.url = url
         user_request = requests.get(url)
         return user_request.text
 
+    # Function for HTTP POST REQUEST
+    # Input: url = location to send to, data = what to send
     def create_post_request(self, url, data):
         self.url = url
         user_post = requests.post(url, data)
