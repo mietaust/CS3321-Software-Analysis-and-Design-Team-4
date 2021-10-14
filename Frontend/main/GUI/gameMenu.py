@@ -3,6 +3,7 @@ import thorpy, pynopoly, pygame
 
 pygame.init()
 
+
 def launch_game():  # launch the game using parameters from varset
     global varset, e_background, e_title
     game = pynopoly.Pynopoly(player_name=varset.get_value("playername"),

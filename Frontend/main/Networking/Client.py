@@ -1,4 +1,4 @@
-from Frontend.main.Networking.ConnectionManager import ConnectionManager
+from ConnectionManager import ConnectionManager
 
 
 class Client:
