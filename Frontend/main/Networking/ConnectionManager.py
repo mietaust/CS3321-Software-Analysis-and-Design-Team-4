@@ -26,3 +26,9 @@ class ConnectionManager:
         self.url = url
         user_request = requests.get(url)
         return user_request.text
+
+    def create_post_request(self, url, data):
+        self.url = url
+        user_post = requests.post(url, data)
+        return user_post.text
+
