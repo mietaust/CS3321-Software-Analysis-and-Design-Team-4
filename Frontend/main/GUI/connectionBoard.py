@@ -1,6 +1,6 @@
 from tkinter import *
-
-from main.Networking.ConnectionManager import ConnectionManager
+from Frontend.main.Networking.ConnectionManager import ConnectionManager
+import debugPage
 
 
 class ConnectionBoard:
@@ -33,9 +33,11 @@ class ConnectionBoard:
 
     def connect(self):
         newUrl = self.url.get()   # store URL
-        connection = ConnectionManager.get_instance()  # create instance of connection manager
+        connection = ConnectionManager.get_instance(self.url)  # create instance of connection manager
         if connection.test(newUrl) == 200:
-            print(connection.create_get_request(newUrl).text)  # actually meant to pull the game menu
+            print(connection.create_get_request().text)  # actually meant to pull the game menu
+
+            debugPage.DebugPage(connection, newUrl)
         else:
             print("Unable to connect to server")
 
