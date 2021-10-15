@@ -1,10 +1,18 @@
-# Pynopoly game menu
-import thorpy, pynopoly, pygame
+import thorpy
+import pynopoly
+import pygame
+import requests
+from Frontend.main.Networking.Client import Client
 
 pygame.init()
 
 
+<<<<<<< HEAD
 def launch_game():  # launch the game using parameters from varset
+=======
+# launch the game using parameters from varset
+def launch_game():
+>>>>>>> 0ea37560107ae00a9c2baca2dc1d79c50af28faa
     global varset, e_background, e_title
     game = pynopoly.Pynopoly(player_name=varset.get_value("playername"),
                              ip_address=varset.get_value("ipaddress"),
@@ -38,4 +46,6 @@ thorpy.store(e_background, [e_play, e_quit])
 menu = thorpy.Menu([e_background, e_title])
 menu.play()
 
-application.quit()
+
+
+
