@@ -4,6 +4,9 @@ import requests
 class ConnectionManager:
     __instance = None
 
+    # Function used to instantiate Object
+    # input: None
+    # return: ConnectionManager
     @classmethod
     def get_instance(cls):
         if ConnectionManager.__instance is None:
@@ -28,6 +31,7 @@ class ConnectionManager:
 
     # Function for HTTP POST REQUEST
     # Input: url = location to send to, data = what to send
+    # return: String
     def create_post_request(self, url, data):
         self.url = url
         user_post = requests.post(url, data)
