@@ -4,45 +4,35 @@ import requests
 class ConnectionManager:
     __instance = None
 
-    # Function used to instantiate Object
-    # input: None
-    # return: ConnectionManager
     @classmethod
-    def get_instance(cls):
+    def get_instance(cls, url):
         if ConnectionManager.__instance is None:
-            ConnectionManager.__instance = ConnectionManager()
+            ConnectionManager.__instance = ConnectionManager(url)
             return ConnectionManager.__instance
 
-    def __init__(self):
+    def __init__(self, url):
         if ConnectionManager.__instance is not None:
             raise Exception("This is a singleton class ")
         else:
             print("Client attempting to connect")
-            self.url = None
+            self.url = url
             ConnectionManager.__instance = self
 
     # asynchronous function to run HTTP GET request
     # input: URI of address to send GET request to (String)
     # return : asynchronous return from GET request to inputted URI
-    def create_get_request(self, url):
-        self.url = url
-        user_request = requests.get(url)
+    def create_get_request(self):
+        user_request = requests.get(self.url)
         return user_request
 
     # Function for HTTP POST REQUEST
     # Input: url = location to send to, data = what to send
-    # return: String
-    def create_post_request(self, url, data):
-        self.url = url
-        user_post = requests.post(url, data)
-        return user_post.text
+    def create_post_request(self, data):
+        user_post = requests.post(self.url, data)
+        return user_post
 
     def test(self, url):
         self.url = url
-        response_code = self.create_get_request( url)
+        response_code = self.create_get_request()
         return response_code.status_code
-
-
-#conn = ConnectionManager.get_instance()
-#print(conn.test("http://localhost:7000/"))
 

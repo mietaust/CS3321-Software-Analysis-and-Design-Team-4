@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ##[0.0.2]-October 5 2021
 ### Added 
-- Gitflow initialixed
+- Gitflow initialized
 - Gradle initialized
 
 ## [0.0.1] - 10/12/2021
