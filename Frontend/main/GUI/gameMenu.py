@@ -7,12 +7,9 @@ from Frontend.main.Networking.Client import Client
 pygame.init()
 
 
-<<<<<<< HEAD
+
 def launch_game():  # launch the game using parameters from varset
-=======
-# launch the game using parameters from varset
-def launch_game():
->>>>>>> 0ea37560107ae00a9c2baca2dc1d79c50af28faa
+
     global varset, e_background, e_title
     game = pynopoly.Pynopoly(player_name=varset.get_value("playername"),
                              ip_address=varset.get_value("ipaddress"),
