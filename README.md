@@ -27,6 +27,10 @@ Our team will be implementing a lite version of Monopoloy. This game will use a 
 * MS Framework: Javelin
 * UI Framework: PyGame
 * Server Hosting: AWS
+## Game Rules
+* The player cannot pay taxes
+
+
 
 ## Description of our MVP
 Basic Client and Server that are cabaple of communicating and playing a limited ruleset version of Monopoly, including:
