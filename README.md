@@ -29,6 +29,14 @@ Our team will be implementing a lite version of Monopoloy. This game will use a 
 * Server Hosting: AWS
 ## Game Rules
 * The player cannot pay taxes
+* The player cannot sell his properties back to the bank or to the second player
+* The player must own all properties in a color group, before they can buy houses
+* The player cannot use a getout of jail free card to leave jail
+* Players cannot deal & trade with eachother
+* The Bank cannot run out of money 
+* The game is played until a player is bankrupt 
+* The Player can only have 1 hotel per street and can't have any more houses
+* The Player must build houses evenly
 
 
 
