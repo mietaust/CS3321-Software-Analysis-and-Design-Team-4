@@ -16,39 +16,30 @@
 ### Overview
 Our team will be implementing a lite version of Monopoloy. This game will use a desktop client to handle user input and a remote server to handle game logic and keep track of the game's current status, as well as updating game clients to reflect the state of the game. 
 ### Minimum Technologies Used
-* Frontend Language: Python
+* Frontend 
+     * Language: Python
      * Testing Framework: Cucumber (Tentatively JUnit 5 w/ cucumber)
      * https://google.github.io/styleguide/pyguide.html
-     * Pycharm - Python 3.9.5
-* Backend Language: Java SE 17 
+     * IDE: Python: 3.9.5
+     * UI Libraries/Frameworks: PyGame, ThorPy, tkinter
+* Backend
+     * Language: Java SE 17 
      * Testing Framework: JUnit 5.7.1
      * https://google.github.io/styleguide/javaguide.html
-     * Intelli-J Idea
-* MS Framework: Javelin
-* UI Framework: PyGame
-* Server Hosting: AWS
-## Game Rules
-* The player cannot pay taxes
-* The player cannot sell his properties back to the bank or to the second player
-* The player must own all properties in a color group, before they can buy houses
-* The player cannot use a getout of jail free card to leave jail
-* Players cannot deal & trade with eachother
-* The Bank cannot run out of money 
-* The game is played until a player is bankrupt 
-* The Player can only have 1 hotel per street and can't have any more houses
-* The Player must build houses evenly
-
-
+     * IDE: Intelli-J Idea
+     * MS Framework: Javelin
+     * Server Hosting: AWS
 
 ## Description of our MVP
 Basic Client and Server that are cabaple of communicating and playing a limited ruleset version of Monopoly, including:
 * Minimum of 2 players.
 * Game Initialization and Completion.
     * Rules TBD, but including:
-    * Buying property, property types, getting paid, moving on the gameboard, going to jail, passing go, etc. 
+    * Buying property, property types, receiving payment, moving on the gameboard, going to jail, passing go, etc. 
 * Basic user interface.
 ## Health monitoring strategies and methods
 * Product backlog management for both Backend and Frontent.
+* Utilize user stories.
 * Playtesting.
 * Regular meetings to play Essence "serious" games.
 
