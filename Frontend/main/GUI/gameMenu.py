@@ -32,7 +32,7 @@ e_title = thorpy.make_text("PYNOPOLY", font_size=20, font_color=(0, 0, 0))
 e_title.center()  # center the title on the screen
 e_title.set_center_pos((None, 120))  # set the y-coord at 10
 
-varset = thorpy.VarSet()  # here we will declare options that user can set
+varset = thorpy.VarSet() 
 varset.add("playername", value="Enter Your Name", text="Player name:")
 varset.add("ipaddress", value=0, text="Enter ip address:")
 varset.add("portnumber", value=0, text="Enter port number:")
