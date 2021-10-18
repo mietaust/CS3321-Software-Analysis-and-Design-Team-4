@@ -25,14 +25,8 @@ class Pynopoly(object):
             reacts_to=thorpy.constants.THORPY_EVENT,
             reac_func=self.reac_insert_func)
 
-    # Function to restart the game.
-    def restart(self):
-        self.e_background.unblit()
-        self.e_background.update()
-        self.__init__(self.player_name, self.ip_address, self.port_number)
-
     # Function to launch the game.
     def launch_game(self):
-        pygame.display.set_caption('Connection Window')  # CANT GET THIS TO WORK
+        pygame.display.set_caption('Connection Window')
         menu = thorpy.Menu(self.e_background)   # Create and launch the menu
         menu.play()
