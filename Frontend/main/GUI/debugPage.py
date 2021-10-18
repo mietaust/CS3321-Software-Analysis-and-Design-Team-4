@@ -1,5 +1,5 @@
 from tkinter import *
-from Frontend.main.Networking.ConnectionManager import ConnectionManager
+from main.Networking.ConnectionManager import ConnectionManager
 
 
 class DebugPage:
@@ -29,11 +29,7 @@ class DebugPage:
         result = self.cman.create_get_request()
         print(result)
 
-
     def pbutton(self):
         test = "hey"
         result = self.cman.create_post_request("hey")
         print(result)
-
-
-

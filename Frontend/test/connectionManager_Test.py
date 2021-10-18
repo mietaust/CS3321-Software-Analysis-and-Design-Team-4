@@ -1,18 +1,16 @@
 import unittest
-from Frontend.main.Networking.ConnectionManager import ConnectionManager
+from main.Networking.ConnectionManager import ConnectionManager
 
 
 class TestConnectionMethods(unittest.TestCase):
-
-    #global Connection Manger
+    # global Connection Manger
     connection = ConnectionManager.get_instance("https://httpbin.org/ip")
 
     # Test for the Connection Manager's GET method
     def test_get(self):
-
         l1 = self.connection.create_get_request()
-        responsecode = l1.status_code
-        self.assertEqual(responsecode, 200)  # add assertion here
+        response_code = l1.status_code
+        self.assertEqual(response_code, 200)  # add assertion here
 
     # Test for the Connection Manager's POST method
     def test_post(self):
