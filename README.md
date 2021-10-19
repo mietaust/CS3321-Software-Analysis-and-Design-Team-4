@@ -2,11 +2,11 @@
 
 ## Team 4 Info
 ### Members: Active Roles
-* Nicholas Garrett: Scrum Master
-* Daniel Igbokwe:
+* Nicholas Garrett: 
+* Daniel Igbokwe: Scrum Master
 * Timothy Lybek:
-* Austin Mietchen: Product Owner
-* Joshua Wheeler:
+* Austin Mietchen: 
+* Joshua Wheeler: Product Owner
 ## Documentation Methodology
 * In Code (comments, descriptions, etc)
     * Will be dictated by the chosen style guides listed below.
