@@ -26,7 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Implemented python client
 - Python client connects to Server 
 
-### Changed
+##[0.9] - 10/20/2021
+### Added
+ - Project Lombok dependecies 
+ - Built Player and Space class
 
 ### Removed
 
