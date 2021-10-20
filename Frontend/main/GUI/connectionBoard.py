@@ -36,7 +36,6 @@ class ConnectionBoard:
     # Should display game menu if connection is successful
 
     def connect(self):
-        print(len(self.url.get()))
         newUrl = ""  # store URL
         if len(self.url.get()) <= 0:
             print("NO Url")

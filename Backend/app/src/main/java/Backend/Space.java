@@ -13,6 +13,7 @@ public class Space {
 
     /**
      * Constructor
+     *
      * @param location The postion on the gameboard
      * @param name Name of the space
      */
@@ -21,4 +22,7 @@ public class Space {
         this.location = location;
     }
 
+    public static boolean isProperty(Space space){
+       return space instanceof Property;
+    }
 }

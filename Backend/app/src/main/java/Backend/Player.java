@@ -17,7 +17,8 @@ public class Player {
     @Setter
     @Getter
     private boolean inJail;
-    //private ArrayList<Property> propertyOwned;
+    @Getter
+    private ArrayList<Property> propertyOwned;
     //private ArrayList<Card> cardDrawn;
 
 
@@ -31,6 +32,7 @@ public class Player {
         this.inJail = false;
         this.netWorth = 0;
         this.position = 0;
+        this.propertyOwned = new ArrayList<>();
     }
     /**
      *
@@ -42,7 +44,7 @@ public class Player {
     }
 
     /**
-     *
+     * Player position ranges from 0 to 39
      * @param position updates the player position
      */
     public void setPosition(int position) {
@@ -51,7 +53,7 @@ public class Player {
     }
 
     /**
-     *
+     * Sum of the value of all property and account balance
      * @return the players net worth
      */
     public double getNetWorth(){
@@ -59,15 +61,17 @@ public class Player {
         return this.netWorth;
     }
 
-    public static void main(String[] args) {
-        Player play = new Player("Dave");
-        play.setPosition(50);
-        System.out.println(play.getPosition());
-        System.out.println(play.getAccountBalance());
-        play.setAccountBalance(200.00);
-        play.setAccountBalance(200.00);
-        play.setAccountBalance(-200.00);
-        System.out.println(play.getAccountBalance());
-
+    /**
+     * Checks if property already exits in list, else it adds the property
+     * @param property Add property to players list of properties
+     */
+    public void addProperty(Property property){
+        for(Property element : getPropertyOwned()){
+            if(element.equals(property)){
+                return;
+            }
+        }
+        propertyOwned.add(property);
     }
+
 }
