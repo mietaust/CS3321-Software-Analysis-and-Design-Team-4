@@ -30,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
  - Project Lombok dependecies 
  - Built Player and Space class
-##[0.9.1] - 10/21/2021
+## [0.9.1] - 10/21/2021
 ### Added
  - Built empty Bank class
  - Built prototype Property class for Player methods
