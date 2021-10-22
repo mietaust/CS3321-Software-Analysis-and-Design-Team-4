@@ -3,17 +3,18 @@ package Backend;
 import lombok.Getter;
 import lombok.Setter;
 
+
 import java.util.ArrayList;
 
-public class Player {
+public class Player extends Owner {
     @Setter
     @Getter
     private String name;
     @Getter
-    private double accountBalance;
+    private int accountBalance;
     @Getter
     private int position;
-    private double netWorth;
+    private int netWorth;
     @Setter
     @Getter
     private boolean inJail;
@@ -34,6 +35,8 @@ public class Player {
         this.position = 0;
         this.propertyOwned = new ArrayList<>();
     }
+
+
     /**
      *
      * @param accountBalance updates the player account balance
@@ -47,9 +50,10 @@ public class Player {
      * Player position ranges from 0 to 39
      * @param position updates the player position
      */
-    public void setPosition(int position) {
+    public void move(int position) {
         int temp = this.position;
         this.position =  (temp + position) % 39;
+        checkPosition(this.position);
     }
 
     /**
@@ -65,13 +69,103 @@ public class Player {
      * Checks if property already exits in list, else it adds the property
      * @param property Add property to players list of properties
      */
-    public void addProperty(Property property){
+    public void buy(Property property){
         for(Property element : getPropertyOwned()){
             if(element.equals(property)){
                 return;
             }
         }
+        this.accountBalance -= property.getValue();
         propertyOwned.add(property);
+    }
+
+    /**
+     * Checks if player owns street color group
+     * @param street Street player checks
+     * @return True
+     */
+    public boolean ownAllStreetGroup(Street street){
+        int count = 0;
+        for (Property property : getPropertyOwned()){
+            if(property instanceof Street){
+                if(((Street) property).getColorGroup().equals(street.getColorGroup())){
+                    count++;
+                }
+            }
+        }
+        if(count == street.getColorGroup().totalGroupNumber){
+            return true;
+        }
+        return false;
+    }
+
+    /*
+
+
+    public int uilityOwned(Utility utility){
+        int count = 0;
+        for (Property property : getPropertyOwned()){
+            if(property instanceof Utility){
+                    count++;
+            }
+        }
+        return count;
+    }
+
+     */
+
+    /**
+     *
+     * @param railRoad
+     * @return
+     */
+    public int railRoadsOwned(Railroad railRoad){
+        int count = 0;
+        for (Property property : getPropertyOwned()) {
+            if (property instanceof Railroad) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Checks player current position
+     * @param position Player position
+     */
+    private void checkPosition(int position){
+        if(position == Constants.GO_SPACE){
+            setAccountBalance(Constants.PASSING_GO);
+        }
+        else if (position == Constants.COMMUNITY_CHEST){
+
+        }
+        else if (position == Constants.CHANCE_RED){
+
+        }
+        else if (position == Constants.GOTO_JAIL){
+            if(!this.inJail) {
+                setInJail(true);
+            }
+            move(11);
+
+        }
+        else if (position == Constants.COMMUNITY_CHEST2){
+
+        }
+        else if (position == Constants.CHANCE_BLUE){
+
+        }
+        else if (position == Constants.CHANCE_ORANGE){
+
+        }
+        else if (position == Constants.COMMUNITY_CHEST3){
+
+        }
+        else{
+            return;
+
+        }
     }
 
 }
