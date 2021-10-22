@@ -22,6 +22,12 @@ public class Space {
         this.location = location;
     }
 
+    /**
+     * Checks if Space is an instance of Property
+     * @param space position on the game board
+     * @return returns true if space is an instance of property
+     */
+
     public static boolean isProperty(Space space){
        return space instanceof Property;
     }
