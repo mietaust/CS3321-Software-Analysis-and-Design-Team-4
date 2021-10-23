@@ -72,7 +72,6 @@ public class Chance extends Card {
             default:
                 break;
         }
-
     }
 
     private void crosswords() {
