@@ -48,4 +48,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+##[0.9.2] - 10/23/2021
+### Added
+- Card class.
+- Chance class.
+- Community Chest class.
+
+### Removed
+
 
