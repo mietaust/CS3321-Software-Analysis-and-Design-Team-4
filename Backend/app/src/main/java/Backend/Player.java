@@ -99,11 +99,15 @@ public class Player extends Owner {
         return false;
     }
 
-    /*
 
-
-    public int uilityOwned(Utility utility){
+    /**
+     *
+     * @param utility,
+     * @return number of utilities the player holds (maximum of 2)
+     */
+    public int utilitiesOwned(Utility utility){
         int count = 0;
+        // for all the properties owned, search for Utilities
         for (Property property : getPropertyOwned()){
             if(property instanceof Utility){
                     count++;
@@ -112,7 +116,7 @@ public class Player extends Owner {
         return count;
     }
 
-     */
+
 
     /**
      *
