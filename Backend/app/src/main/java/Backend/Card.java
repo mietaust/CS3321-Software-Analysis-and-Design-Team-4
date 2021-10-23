@@ -9,6 +9,7 @@ public class Card extends Space{
     /**
      * Constructor
      *
+     *
      * @param name     Name of the space
      * @param location The postion on the gameboard
      */
