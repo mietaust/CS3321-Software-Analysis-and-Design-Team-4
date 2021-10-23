@@ -72,7 +72,6 @@ public class CommunityChest extends Card {
             default:
                 break;
         }
-
     }
 
     private void inherit() {
