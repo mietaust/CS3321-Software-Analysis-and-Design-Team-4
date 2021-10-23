@@ -31,7 +31,7 @@ public class Utility extends Property{
      */
     @Override
     public int getRent(Property property) {
-        if(Owner.isPlayer(getOwner())){        // if the owner exists
+        if(Property.ownerIsPlayer(getOwner())){        // if the owner exists
 
 
             if ((getOwner()).utilitiesOwned((Utility) property) == 1){            // if the player owns one utility
