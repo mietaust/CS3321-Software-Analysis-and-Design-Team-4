@@ -2,7 +2,6 @@ package Backend;
 
 public class Railroad extends Property{
 
-
     /**
      *
      * @param name Name of the Railroad
@@ -21,7 +20,7 @@ public class Railroad extends Property{
      */
     @Override
     public int getRent(Property property) {
-        if(Owner.isPlayer(getOwner())){
+        if(Property.ownerIsPlayer(getOwner())){
             if (((Player)getOwner()).railRoadsOwned((Railroad) property) == 1){
                 return 25;
             }
@@ -35,6 +34,6 @@ public class Railroad extends Property{
                 return 200;
             }
         }
-        return super.getRent(property);
+        return super.getRent(property);  // Thinking of changing to 0.
     }
 }

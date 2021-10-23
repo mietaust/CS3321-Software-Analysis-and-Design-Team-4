@@ -10,7 +10,6 @@ public interface Constants {
     int CHANCE_BLUE = 22;
     int GOTO_JAIL = 30;
     int COMMUNITY_CHEST3 = 33;
-    int TOTAL_RAILROADS = 4;
-    int TOTAL_UTILITY = 2;
+
 
 }

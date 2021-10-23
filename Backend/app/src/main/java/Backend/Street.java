@@ -3,7 +3,7 @@ package Backend;
 import lombok.Getter;
 
 
-public class Street extends Property{
+public class Street extends Property {
 
     @Getter
     private int houseNumber;
@@ -13,18 +13,19 @@ public class Street extends Property{
     @Getter
     private final int buildPrice;
     @Getter
-    private final int [] rentList;
+    private final int[] rentList;
 
     /**
      * Constructor
-     * @param name The name of the street
-     * @param location Position on the board
+     *
+     * @param name       The name of the street
+     * @param location   Position on the board
      * @param colorGroup Color Group
-     * @param value The price to purchase the Street
-     * @param rent Cost for Landing on street
-     * @param rentList The rent price depending on houses, hotels and color set
+     * @param value      The price to purchase the Street
+     * @param rent       Cost for Landing on street
+     * @param rentList   The rent price depending on houses, hotels and color set
      */
-    public Street (String name, int location, Color colorGroup, int value, int rent, int buildPrice, int [] rentList){
+    public Street(String name, int location, Color colorGroup, int value, int rent, int buildPrice, int[] rentList) {
         super(name, location, value, rent);
         this.colorGroup = colorGroup;
         this.buildPrice = buildPrice;
@@ -33,10 +34,11 @@ public class Street extends Property{
 
     /**
      * Hotels range from 0 and 1
+     *
      * @return Number of hotels
      */
-    public int getHotelNumber(){
-        if(this.hotelNumber == 1){
+    public int getHotelNumber() {
+        if (this.hotelNumber == 1) {
             setHouseNumber(0);
         }
         return this.hotelNumber;
@@ -44,10 +46,11 @@ public class Street extends Property{
 
     /**
      * Hotel Number ranges from 0 to 1
+     *
      * @param hotelNumber updates the hotel number
      */
-    public void setNoOfHotel(int hotelNumber){
-        if(hotelNumber != 1){
+    public void setNoOfHotel(int hotelNumber) {
+        if (hotelNumber != 1) {
             return;
         }
         this.hotelNumber = hotelNumber;
@@ -56,27 +59,25 @@ public class Street extends Property{
 
     /**
      * House Number ranges from 0 to 4
+     *
      * @param houseNumber updates the number of houses
      */
-    public void setHouseNumber(int houseNumber){
-        if(houseNumber > 4 || houseNumber < 0){
+    public void setHouseNumber(int houseNumber) {
+        if (houseNumber > 4 || houseNumber < 0) {
             return;
         }
         this.houseNumber = houseNumber;
     }
 
     /**
-     *
      * @param street Checks the rent of the street
      * @return Returns rent depending on player ownership
      */
     @Override
     public int getRent(Property street) {
-        if (Owner.isPlayer(getOwner())) {
-            if (getHouseNumber() == 0) {
-                if (((Player) getOwner()).ownAllStreetGroup((Street) street)) {
-                    return rentList[0];
-                }
+        if (Property.ownerIsPlayer(getOwner())) {
+            if (getHouseNumber() == 0 && ((Player) getOwner()).ownAllStreetGroup((Street) street)) {
+                return rentList[0];
             } else if (getHouseNumber() == 1) {
                 return rentList[1];
             } else if (getHouseNumber() == 2) {
@@ -87,11 +88,17 @@ public class Street extends Property{
                 return rentList[4];
             } else if (getHouseNumber() == 0 && getHotelNumber() == 1) {
                 return rentList[5];
-            }else{
+            } else {
                 return super.getRent(street);
             }
 
         }
         return super.getRent(street);
     }
+/*
+    public static void main(String[] args) {
+        Property prop = new Street("Dan",3,Color.BROWN, 50, 100, 208, new int[]{9, 4, 5});
+    }
+
+ */
 }

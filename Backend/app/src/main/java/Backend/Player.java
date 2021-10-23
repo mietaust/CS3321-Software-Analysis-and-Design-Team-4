@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 
-public class Player extends Owner {
+public class Player{
     @Setter
     @Getter
     private String name;
@@ -18,6 +18,7 @@ public class Player extends Owner {
     @Setter
     @Getter
     private boolean inJail;
+    private boolean turn;
     @Getter
     private ArrayList<Property> propertyOwned;
     //private ArrayList<Card> cardDrawn;
@@ -39,7 +40,7 @@ public class Player extends Owner {
 
     /**
      *
-     * @param accountBalance updates the player account balance
+     * @param accountBalance Updates the player account balance
      */
 
     public void setAccountBalance(double accountBalance) {
@@ -67,16 +68,20 @@ public class Player extends Owner {
 
     /**
      * Checks if property already exits in list, else it adds the property
+     * Subtracts the value of the property from the players account balance
      * @param property Add property to players list of properties
      */
-    public void buy(Property property){
-        for(Property element : getPropertyOwned()){
-            if(element.equals(property)){
-                return;
+    //Thinking of changing property to space, since we cant be sure if the player is on a non-property or property
+    public void buy(Property property) {
+        if (property instanceof Space) {
+            for (Property element : getPropertyOwned()) {
+                if (element.equals(property)) {
+                    return;
+                }
             }
+            this.accountBalance -= property.getValue();
+            propertyOwned.add(property);
         }
-        this.accountBalance -= property.getValue();
-        propertyOwned.add(property);
     }
 
     /**
@@ -117,7 +122,7 @@ public class Player extends Owner {
     /**
      *
      * @param railRoad
-     * @return
+     * @return The number of railroads owned by a player
      */
     public int railRoadsOwned(Railroad railRoad){
         int count = 0;
@@ -164,7 +169,6 @@ public class Player extends Owner {
         }
         else{
             return;
-
         }
     }
 

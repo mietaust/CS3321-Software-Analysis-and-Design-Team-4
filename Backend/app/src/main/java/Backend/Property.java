@@ -5,10 +5,9 @@ import lombok.Setter;
 
 public class Property extends Space{
 
-
     @Setter
     @Getter
-    private Owner owner;
+    private Object owner;
     @Getter
     private final int value;
     private final  int rent;
@@ -23,7 +22,7 @@ public class Property extends Space{
      */
     public Property(String name, int location, int value, int rent ) {
         super(name, location);
-        this.owner = new Bank();
+        this.owner = new Object();
         this.rent = rent;
         this.value = value;
 
@@ -37,4 +36,15 @@ public class Property extends Space{
     public int getRent(Property property) {
         return rent;
     }
+
+    /**
+     *
+     * @param owner Property Owner
+     * @return Checks if owner is a player
+     */
+    public static boolean ownerIsPlayer(Object owner){
+        return owner instanceof Player;
+    }
+
+
 }
