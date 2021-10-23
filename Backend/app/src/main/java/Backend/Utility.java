@@ -16,25 +16,31 @@ public class Utility extends Property{
     }
 
     /**
+     * @param Owner, as an instance of some player
+     * @return Owner, as an instance of some player
+     */
+    @Getter
+    @Setter
+    public Player Owner;
+
+
+    /**
      *
      * @param property  Checks the rent value
      * @return Value of rent
      */
     @Override
     public int getRent(Property property) {
-        //TODO identify getOwner() for properties
-        Player owner = Owner.isPlayer(getOwner());
-        // if the owner exists
-        if(owner != null){ 
+        if(Owner.isPlayer(getOwner())){        // if the owner exists
 
-            // if the player owns one utility
-            if ((owner).utilitiesOwned((Utility) property) == 1){
-                // the rent is 4 times the dice roll
-                return 4*Dice.getInstance().getTotal();
+
+            if ((getOwner()).utilitiesOwned((Utility) property) == 1){            // if the player owns one utility
+                return 4*Dice.getInstance().getTotal();                // the rent is 4 times the dice roll
+
             }
 
             //if the player owns both utilities
-            if ((owner).utilitiesOwned((Utility) property) == 2){
+            if ((getOwner()).utilitiesOwned((Utility) property) == 2){
                 // the rent is 10 times the dice roll
                 return 10*Dice.getInstance().getTotal();
             }
