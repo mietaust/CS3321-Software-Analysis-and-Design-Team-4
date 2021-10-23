@@ -23,7 +23,32 @@ public class Card extends Space{
     @Getter@Setter private Card.CardType type;
     @Getter@Setter private CardAction action;
     @Getter@Setter private String cardDesc;
+    @Getter@Setter private int cardValue;
 
     public enum CardType {COMMUNITY,CHANCE}
     public enum CardAction{LOSEMONEY, ADDMONEY, JAIL, MOVE, JAILBREAK}
+
+    public void performAction(CardAction a){
+        a = this.action;
+        switch(a){
+            case LOSEMONEY:
+                //logic to remove money from player account
+                break;
+            case ADDMONEY:
+                //logic to add money to player account
+                break;
+            case JAIL:
+                //logic to put the player in jail
+                break;
+            case MOVE:
+                //logic to move player
+                break;
+            case JAILBREAK:
+                //logic to break player out of jail
+                break;
+            default:
+                //error in getting cardaction
+                break;
+        }
+    }
 }
