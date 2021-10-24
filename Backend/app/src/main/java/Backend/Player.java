@@ -14,7 +14,6 @@ public class Player{
     private int accountBalance;
     @Getter
     private int position;
-    private int netWorth;
     @Setter
     @Getter
     private boolean inJail;
@@ -32,7 +31,6 @@ public class Player{
         this.name = name;
         this.accountBalance = 0;
         this.inJail = false;
-        this.netWorth = 0;
         this.position = 0;
         this.propertyOwned = new ArrayList<>();
     }
@@ -57,14 +55,6 @@ public class Player{
         checkPosition(this.position);
     }
 
-    /**
-     * Sum of the value of all property and account balance
-     * @return the players net worth
-     */
-    public double getNetWorth(){
-        this.netWorth += this.accountBalance;
-        return this.netWorth;
-    }
 
     /**
      * Checks if property already exits in list, else it adds the property
@@ -137,6 +127,8 @@ public class Player{
         }
         return count;
     }
+
+    /// Moving checkposition method to game-logic
 
     /**
      * Checks player current position
