@@ -11,66 +11,37 @@ public class Chance extends Card {
      * @param name     Name of the space
      * @param location The postion on the gameboard
      */
-    public Chance(String name, int location) {
-        super(name, location);
+    public Chance(String name, int location, CardType cardType) {
+        super(name, location, cardType );
     }
 
     //variable and field declaration
 
-
-    private void chance(int a) {
+    /**
+     *
+     * @param cardNumber Takes in card value
+     */
+    private void chance(int cardNumber) {
         CardType type = CardType.CHANCE;
-        switch (a) {
-            case 0:
-                aBoard();
-                break;
-            case 1:
-                aGo();
-                break;
-            case 2:
-                aIll();
-                break;
-            case 3:
-                aCharl();
-                break;
-            case 4:
-                aRail();
-                break;
-            case 5:
-                aUtil();
-                break;
-            case 6:
-                dividend();
-                break;
-            case 7:
-                goBack();
-                break;
-            case 8:
-                speeding();
-                break;
-            case 9:
-                aReading();
-                break;
-            case 10:
-                elected();
-                break;
-            case 11:
-                loanMature();
-                break;
-            case 12:
-                jail();
-                break;
-            case 13:
-                jailOut();
-                break;
-            case 14:
-                repairs();
-                break;
-            case 15:
-                crosswords();
-                break;
-            default:
-                break;
+        switch (cardNumber) {
+            case 0 -> aBoard();
+            case 1 -> aGo();
+            case 2 -> aIll();
+            case 3 -> aCharl();
+            case 4 -> aRail();
+            case 5 -> aUtil();
+            case 6 -> dividend();
+            case 7 -> goBack();
+            case 8 -> speeding();
+            case 9 -> aReading();
+            case 10 -> elected();
+            case 11 -> loanMature();
+            case 12 -> jail();
+            case 13 -> jailOut();
+            case 14 -> repairs();
+            case 15 -> crosswords();
+            default -> {
+            }
         }
     }
 

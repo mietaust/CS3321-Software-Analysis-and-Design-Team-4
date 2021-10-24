@@ -9,68 +9,41 @@ public class CommunityChest extends Card {
      * Constructor
      *
      * @param name     Name of the space
-     * @param location The postion on the gameboard
+     * @param location The position on the gameboard
      */
-    public CommunityChest(String name, int location) {
-        super(name, location);
+    public CommunityChest(String name, int location, CardType cardType) {
+        super(name, location, cardType);
     }
 
     //variable and field declaration
 
     //generate community cards
-    private void community(int a) {
+
+    /**
+     *  Initializes a Community card
+     * @param cardNumber Takes in card value
+     */
+    private void community(int cardNumber) {
         CardType type = CardType.COMMUNITY;
-        switch (a) {
-            case 0:
-                advance();
-                break;
-            case 1:
-                bank();
-                break;
-            case 2:
-                doctor();
-                break;
-            case 3:
-                stock();
-                break;
-            case 4:
-                jailOut();
-                break;
-            case 5:
-                jail();
-                break;
-            case 6:
-                holiday();
-                break;
-            case 7:
-                taxRefund();
-                break;
-            case 8:
-                birthday();
-                break;
-            case 9:
-                lifeInsurance();
-                break;
-            case 10:
-                hospital();
-                break;
-            case 11:
-                school();
-                break;
-            case 12:
-                consultancy();
-                break;
-            case 13:
-                repairs();
-                break;
-            case 14:
-                contest();
-                break;
-            case 15:
-                inherit();
-                break;
-            default:
-                break;
+        switch (cardNumber) {
+            case 0 -> advance();
+            case 1 -> bank();
+            case 2 -> doctor();
+            case 3 -> stock();
+            case 4 -> jailOut();
+            case 5 -> jail();
+            case 6 -> holiday();
+            case 7 -> taxRefund();
+            case 8 -> birthday();
+            case 9 -> lifeInsurance();
+            case 10 -> hospital();
+            case 11 -> school();
+            case 12 -> consultancy();
+            case 13 -> repairs();
+            case 14 -> contest();
+            case 15 -> inherit();
+            default -> {
+            }
         }
     }
 

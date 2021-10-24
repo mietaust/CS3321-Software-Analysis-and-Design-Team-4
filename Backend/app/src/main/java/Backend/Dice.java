@@ -43,8 +43,5 @@ public class Dice {
     return diceInstance;
   }
 
-//  public static void main(String[] args) {
-//  }
-
 
 }
