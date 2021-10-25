@@ -32,7 +32,7 @@ public class Server {
 
     // GET request handler
     server.get("/", ctx -> ctx.result("Connection made"));
-
+    //todo: handlers for getState, roll, buy
     System.out.println("Server active on port: " + port);
 
     return 1;
