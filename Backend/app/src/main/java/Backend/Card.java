@@ -29,8 +29,8 @@ public class Card extends Space{
         this.type =cardType;
     }
 
-
-
+     /* @param action define which action is occuring
+     */
     public void performAction(CardAction action){
         //action = this.action;
         switch(action){
