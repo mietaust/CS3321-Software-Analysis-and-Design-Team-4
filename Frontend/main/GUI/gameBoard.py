@@ -12,6 +12,7 @@ class GameBoard:
         self.window.resizable(False, False)
         self.initialize_spaces()
         self.create_player_token()
+        self.window.config(bg="#BFDBAE")
         self.window.mainloop()
 
     # Initializes board spaces with images

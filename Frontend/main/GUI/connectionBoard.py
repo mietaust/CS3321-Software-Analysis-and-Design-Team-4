@@ -1,5 +1,5 @@
 from tkinter import *
-from main.Networking.ConnectionManager import ConnectionManager
+from Frontend.main.Networking.ConnectionManager import ConnectionManager
 import waitingRoom
 import gameBoard
 
@@ -16,7 +16,7 @@ class ConnectionBoard:
         self.connect_button = Button(self.window, text="Connect", command=self.connect, width=7,
                                      font=('Arial', 12, 'bold'))
         self.connect_button.place(x=465, y=110)
-
+        self.window.configure(bg="#BFDBAE")
         self.reset_button = Button(self.window, text="Reset",
                                    command=self.reset, width=7,
                                    font=('Arial', 12, 'bold'))
@@ -31,13 +31,13 @@ class ConnectionBoard:
         # URL label
         self.label = Label(self.window,
                            text="Server URL :",
-                           font=('Arial', 13, 'bold')
+                           font=('Arial', 13, 'bold'), bg="#BFDBAE"
                            )
         # Name Label
         self.label.place(x=10, y=30)
         self.label = Label(self.window,
                            text="Name:",
-                           font=('Arial', 13, 'bold')
+                           font=('Arial', 13, 'bold'), bg="#BFDBAE"
                            )
         self.label.place(x=10, y=60)
 
@@ -85,7 +85,8 @@ class ConnectionBoard:
     def reset(self):
         self.entry.delete(0,END)
         self.name_entry.delete(0, END)
-        
 
 
 connect = ConnectionBoard()
+
+

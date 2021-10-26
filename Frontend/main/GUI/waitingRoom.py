@@ -1,6 +1,8 @@
 import tkinter
 from tkinter import *
 import gameBoard
+import Frontend.main.GUI.newPlayer
+import json
 
 
 class WaitRoom:
@@ -20,9 +22,10 @@ class WaitRoom:
         # window contents
         self.label = Label(self.window,
                            text="Welcome, " + self.name + "! Please wait for the game to start.",
-                           font=('Arial', 13, 'bold')
+                           font=('Arial', 13, 'bold'), bg="#BFDBAE"
                            )
         self.label.place(x=10, y=60)
+        self.window.configure(bg="#BFDBAE")
 
         # button definitions
         self.quit_button = Button(self.window, text="QUIT", command=self.quitbutton, width=10,
@@ -32,6 +35,10 @@ class WaitRoom:
         self.test_button = Button(self.window, text="Play Game", command=self.open_game,
                                   width=10, font=('Arial', 13, 'bold'))
         self.test_button.place(x=365, y=435)
+
+        self.handshake_button = Button(self.window, text="introduce to server", command=self.introduce,
+                                  width=10, font=('Arial', 13, 'bold'))
+        self.handshake_button.place(x=200, y=435)
 
         # TODO |Overview for wait logic. At this point the game has introduced itself to the server,
         # TODO |exchanged unique identifiers, and is capable of passing information back and forth. When
@@ -49,3 +56,12 @@ class WaitRoom:
     def open_game(self):
         self.window.destroy()  # Closes waiting room
         gameBoard.GameBoard()  # Opens GameBoard
+
+    def introduce(self):
+        p = Frontend.main.GUI.newPlayer.NewPlayer(self.name)
+        transmit = json.dumps(p.__dict__)
+        l = self.cman.create_post_request(transmit, "/api/join")
+
+
+
+

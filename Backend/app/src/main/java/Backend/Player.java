@@ -11,7 +11,7 @@ public class Player{
     @Getter
     private String name;
     @Getter
-    private int accountBalance;
+    private double accountBalance;
     @Getter
     private int position;
     @Setter
