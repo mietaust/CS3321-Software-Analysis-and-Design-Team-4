@@ -31,7 +31,7 @@ class WaitRoom:
 
         self.test_button = Button(self.window, text="Play Game", command=self.open_game,
                                   width=10, font=('Arial', 13, 'bold'))
-        self.test_button.place(x=385, y=435)
+        self.test_button.place(x=365, y=435)
 
         # TODO |Overview for wait logic. At this point the game has introduced itself to the server,
         # TODO |exchanged unique identifiers, and is capable of passing information back and forth. When

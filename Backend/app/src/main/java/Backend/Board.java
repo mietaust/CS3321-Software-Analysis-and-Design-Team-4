@@ -27,7 +27,7 @@ public class Board {
             new Utility("Electric Company", 12, 150, 0),
             new Street("States Avenue", 13, Color.PURPLE, 140, 10, 100, new int[]{50, 150, 450, 625, 750}),
             new Street("Virginia Avenue", 14, Color.PURPLE, 160, 12, 100, new int[]{60, 180, 500, 700, 900}),
-            new Railroad("Pensylvania Railroad", 15, 200, 25),
+            new Railroad("Pennsylvania Railroad", 15, 200, 25),
             new Street("St. James Place", 16, Color.ORANGE, 180, 14, 100, new int[]{70, 200, 550, 750, 950}),
             new CommunityChest("Community Chest 2", 17, Card.CardType.COMMUNITY),
             new Street("Tennessee Avenue", 18, Color.ORANGE, 180, 14, 100, new int[]{70, 200, 550, 750, 950}),
@@ -55,21 +55,17 @@ public class Board {
 
 
     /**
-     * Constructor
+     * Private Constructor
      */
     private Board(){}
 
-
+    /**
+     * Returns the Game Board spaces
+     * @return Array of spaces
+     */
     private static Space[] getInstance(){
         return new Board().getSpaceNames();
     }
 
-    public static void main(String[] args) {
-        Space [] array = Board.getInstance();
-        System.out.println(array.length);
-        for(Space space : array){
-            System.out.println(space);
-        }
 
-    }
 }
