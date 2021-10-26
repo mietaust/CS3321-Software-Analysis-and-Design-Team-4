@@ -30,4 +30,12 @@ public class Space {
     public static boolean isProperty(Space space){
        return space instanceof Property;
     }
+
+    @Override
+    public String toString() {
+        return "Space{" +
+                "name='" + name + '\'' +
+                ", location=" + location +
+                '}';
+    }
 }
