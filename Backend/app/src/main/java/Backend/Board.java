@@ -12,17 +12,17 @@ public class Board {
      * List of spaces on the game board
      */
     final Object[] spaceNames = {
-                                "GO",
+                                new Space("GO", i),
                                 new Street("Mediterranean Avenue", i, Color.BROWN, 60, 2, 50, new int[]{10, 30, 90, 160, 250}),
                                 new CommunityChest("Community Chest 1", i, Card.CardType.COMMUNITY),
                                 new Street("Baltic Avenue", i, Color.BROWN, 60, 4, 50, new int[]{20, 60, 180, 320, 450}),
-                                "INCOME TAX",
+                                new Space("Income Tax", i),
                                 new Railroad("Reading Railroad", i, 200, 25),
                                 new Street("Oriental Avenue", i, Color.LIGHTBLUE, 100, 6, 50, new int[]{30, 90, 270, 400, 550}),
                                 new Chance("Chance Pink", i, Card.CardType.CHANCE),
                                 new Street("Vermont Avenue", i, Color.LIGHTBLUE, 100, 6, 50, new int[]{30, 90, 270, 400, 550}),
                                 new Street("Connecticut Avenue", i, Color.LIGHTBLUE, 120, 8, 50, new int[]{40, 100, 300, 450, 600}),
-                                "JAIL",
+                                new Space("Jail", i),
                                 new Street("St. Charles Place", i, Color.PURPLE, 140, 10, 100, new int[]{50, 150, 450, 625, 750}),
                                 new Utility("Electric Company", i, 150, 0),
                                 new Street("States Avenue", i, Color.PURPLE, 140, 10, 100, new int[]{50, 150, 450, 625, 750}),
@@ -32,7 +32,7 @@ public class Board {
                                 new CommunityChest("Community Chest 2", i, Card.CardType.COMMUNITY),
                                 new Street("Tennessee Avenue", i, Color.ORANGE, 180, 14, 100, new int[]{70, 200, 550, 750, 950}),
                                 new Street("New York Avenue", i, Color.ORANGE, 200, 16, 100, new int[]{80, 220, 600, 800, 1000}),
-                                "FREE PARKING",
+                                new Space("Free Parking", i),
                                 new Street("Kentucky Avenue", i, Color.RED, 220, 18, 150, new int[]{90, 250, 700, 875, 1050}),
                                 new Chance("Chance Blue", i, Card.CardType.CHANCE),
                                 new Street("Indiana Avenue", i, Color.RED, 220, 18, 150, new int[]{90, 225, 700, 875, 1050}),
@@ -42,7 +42,7 @@ public class Board {
                                 new Street("Ventnor Avenue", i, Color.YELLOW, 260, 22, 150, new int[]{110, 330, 800, 975, 1150}),
                                 new Utility("Water Works", i, 150, 0 ),
                                 new Street("Marvin Gardens", i, Color.YELLOW, 280, 24, 150, new int[]{120, 360, 850, 1025, 1150}),
-                                "GO TO JAIL",
+                                new Space("Go To Jail", i),
                                 new Street("Pacific Avenue", i, Color.GREEN, 300, 26, 200, new int[]{130, 390, 850, 1025, 1200}),
                                 new Street("North Carolina Avenue", i, Color.GREEN, 300, 26, 200, new int[]{130, 390, 900, 1100, 1275}),
                                 new CommunityChest("Community Chest 3", i, Card.CardType.COMMUNITY),
@@ -50,7 +50,7 @@ public class Board {
                                 new Railroad("Short Line", i, 200, 25),
                                 new Chance("Chance", i, Card.CardType.CHANCE),
                                 new Street("Park Place", i, Color.DARKBLUE, 350, 35, 200, new int[]{175, 500, 1100, 1300, 1500}),
-                                "LUXURY TAX",
+                                new Space("Luxury Tax", i),
                                 new Street("Boardwalk", i, Color.LIGHTBLUE, 400, 50, 200, new int[]{200, 600, 1400, 1700, 2000})};
 
     /**
@@ -69,5 +69,6 @@ public class Board {
     public static void main(String[] args) {
         Board board = new Board();
         System.out.println(board.spaceNames.length);
+
     }
 }
