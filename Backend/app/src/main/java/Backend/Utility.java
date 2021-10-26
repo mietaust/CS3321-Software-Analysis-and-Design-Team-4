@@ -29,10 +29,15 @@ public class Utility extends Property {
      */
     @Override
     public int getRent(Property property) {
-        if (Property.ownerIsPlayer(getOwner())) {        // if the owner exists
-            if ((getOwner()).utilitiesOwned((Utility) property) == 1) {            // if the player owns one utility
-                return 4 * Dice.getInstance().getTotal();                // the rent is 4 times the dice roll
+        // if the owner exists
+        if (Property.ownerIsPlayer(getOwner())) {
+
+            // if the player owns one utility
+            if ((getOwner()).utilitiesOwned((Utility) property) == 1) {
+                // the rent is 4 times the dice roll
+                return 4 * Dice.getInstance().getTotal();
             }
+
             //if the player owns both utilities
             if ((getOwner()).utilitiesOwned((Utility) property) == 2) {
                 // the rent is 10 times the dice roll
