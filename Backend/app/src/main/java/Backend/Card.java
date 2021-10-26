@@ -22,6 +22,7 @@ public class Card extends Space{
      *
      * @param name     Name of the space
      * @param location The postion on the gameboard
+     * @param cardType  define which type of card
      */
     public Card(String name, int location, CardType cardType) {
         super(name, location);
