@@ -21,14 +21,14 @@ class ConnectionManager:
     # asynchronous function to run HTTP GET request
     # input: URI of address to send GET request to (String)
     # return : asynchronous return from GET request to inputted URI
-    def create_get_request(self):
-        user_request = requests.get(self.url)
+    def create_get_request(self, extension=""):
+        user_request = requests.get(self.url + extension)
         return user_request
 
     # Function for HTTP POST REQUEST
     # Input: url = location to send to, data = what to send
-    def create_post_request(self, data):
-        user_post = requests.post(self.url, data)
+    def create_post_request(self, data, extension=""):
+        user_post = requests.post((self.url + extension), data)
         return user_post
 
     def test(self, url):

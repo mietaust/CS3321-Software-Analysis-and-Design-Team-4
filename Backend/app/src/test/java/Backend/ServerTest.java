@@ -31,7 +31,7 @@ public class ServerTest {
     HttpRequest req = HttpRequest.newBuilder().uri(URI.create("http://localhost:7000/")).build();
     HttpResponse<String> responce = client.send(req, HttpResponse.BodyHandlers.ofString());
     System.out.println(responce.body());
-    assertTrue(responce.body().equals("Connection made"), "Server failed to start");
+    assertEquals("Connection made", responce.body(), "Server failed to start");
   }
 
 
