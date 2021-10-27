@@ -2,6 +2,9 @@ import tkinter
 from tkinter import *
 import random
 
+position = 0  # temp variable for moving the token 1
+player2_position = 0  # temp variable for moving the token 2
+
 
 class GameBoard:
 
@@ -13,6 +16,7 @@ class GameBoard:
         self.initialize_spaces()
         self.create_player_token()
         self.window.config(bg="#BFDBAE")
+
         self.window.mainloop()
 
     # Initializes board spaces with images
@@ -261,99 +265,196 @@ class GameBoard:
 
         # Buttons
 
-        self.move_button = Button(self.window, text="move", command=self.move_token_1,
+        self.move_button = Button(self.window, text="move", command=self.player_one_position,
                                   font=('Arial', 12, 'bold'), width=7)
         self.move_button.place(x=1000, y=700)
 
+        self.new_button = Button(self.window, text="Player 2", command=self.player_two_position,
+                                 font=('Arial', 12, 'bold'), width=7)
+        self.new_button.place(x=1100, y=700)
+
     # Initializes player tokens
     def create_player_token(self):
+        ## Player 1 token
+        self.player_one_img = PhotoImage(file='Resources/one.png')
+        self.player_one_label = Label(self.window, image=self.player_one_img, bg="#33CCFF")
+        self.player_one_label.place(x=7, y=725)
 
-        ## Player horse token
-        self.horse = PhotoImage(file='Resources/horse.png')
-        self.horse_label = Label(self.window, image=self.horse, bg="#BFDBAE")
-        self.horse_label.place(x=7, y=725)
+        ## Player 2 token
+        self.player_two_img = PhotoImage(file='Resources/two.png')
+        self.player_two_label = Label(self.window, image=self.player_two_img, bg="#FF0000")
+        self.player_two_label.place(x=35, y=725)
 
-    # Moves player position
-    # param Player index
-    def move_token_1(self):
-        position = random.randint(0, 39)
+    # Moves player one position
+    # param Player one index
+    def player_one_position(self):
+        global position
+        position = (position + 1) % 40
+
         if position == 0:
-            self.horse_label.place(x=7, y=725)
+            self.player_one_label.place(x=5, y=725)
         elif position == 1:
-            self.horse_label.place(x=7, y=639)
+            self.player_one_label.place(x=5, y=639)
         elif position == 2:
-            self.horse_label.place(x=7, y=570)
+            self.player_one_label.place(x=5, y=570)
         elif position == 3:
-            self.horse_label.place(x=7, y=505)
+            self.player_one_label.place(x=5, y=505)
         elif position == 4:
-            self.horse_label.place(x=7, y=449)
+            self.player_one_label.place(x=5, y=449)
         elif position == 5:
-            self.horse_label.place(x=7, y=385)
+            self.player_one_label.place(x=5, y=385)
         elif position == 6:
-            self.horse_label.place(x=7, y=320)
+            self.player_one_label.place(x=5, y=320)
         elif position == 7:
-            self.horse_label.place(x=7, y=257)
+            self.player_one_label.place(x=5, y=257)
         elif position == 8:
-            self.horse_label.place(x=7, y=190)
+            self.player_one_label.place(x=5, y=190)
         elif position == 9:
-            self.horse_label.place(x=7, y=130)
+            self.player_one_label.place(x=5, y=130)
         elif position == 10:
-            self.horse_label.place(x=7, y=65)
+            self.player_one_label.place(x=7, y=65)
         elif position == 11:
-            self.horse_label.place(x=108, y=7)
+            self.player_one_label.place(x=108, y=7)
         elif position == 12:
-            self.horse_label.place(x=175, y=7)
+            self.player_one_label.place(x=175, y=7)
         elif position == 13:
-            self.horse_label.place(x=240, y=7)
+            self.player_one_label.place(x=240, y=7)
         elif position == 14:
-            self.horse_label.place(x=300, y=7)
+            self.player_one_label.place(x=300, y=7)
         elif position == 15:
-            self.horse_label.place(x=370, y=7)
+            self.player_one_label.place(x=370, y=7)
         elif position == 16:
-            self.horse_label.place(x=430, y=7)
+            self.player_one_label.place(x=430, y=7)
         elif position == 17:
-            self.horse_label.place(x=490, y=7)
+            self.player_one_label.place(x=490, y=7)
         elif position == 18:
-            self.horse_label.place(x=562, y=7)
+            self.player_one_label.place(x=562, y=7)
         elif position == 19:
-            self.horse_label.place(x=626, y=7)
+            self.player_one_label.place(x=626, y=7)
         elif position == 20:
-            self.horse_label.place(x=745, y=7)
+            self.player_one_label.place(x=740, y=7)
         elif position == 21:
-            self.horse_label.place(x=745, y=115)
+            self.player_one_label.place(x=740, y=115)
         elif position == 22:
-            self.horse_label.place(x=745, y=184)
+            self.player_one_label.place(x=740, y=184)
         elif position == 23:
-            self.horse_label.place(x=745, y=244)
+            self.player_one_label.place(x=740, y=244)
         elif position == 24:
-            self.horse_label.place(x=745, y=310)
+            self.player_one_label.place(x=740, y=310)
         elif position == 25:
-            self.horse_label.place(x=745, y=374)
+            self.player_one_label.place(x=740, y=374)
         elif position == 26:
-            self.horse_label.place(x=745, y=438)
+            self.player_one_label.place(x=740, y=438)
         elif position == 27:
-            self.horse_label.place(x=745, y=504)
+            self.player_one_label.place(x=740, y=504)
         elif position == 28:
-            self.horse_label.place(x=745, y=567)
+            self.player_one_label.place(x=740, y=567)
         elif position == 29:
-            self.horse_label.place(x=745, y=632)
+            self.player_one_label.place(x=740, y=632)
         elif position == 30:
-            self.horse_label.place(x=745, y=732)
+            self.player_one_label.place(x=740, y=732)
         elif position == 31:
-            self.horse_label.place(x=635, y=732)
+            self.player_one_label.place(x=635, y=738)
         elif position == 32:
-            self.horse_label.place(x=571, y=732)
+            self.player_one_label.place(x=571, y=738)
         elif position == 33:
-            self.horse_label.place(x=507, y=732)
+            self.player_one_label.place(x=507, y=738)
         elif position == 34:
-            self.horse_label.place(x=434, y=732)
+            self.player_one_label.place(x=434, y=738)
         elif position == 35:
-            self.horse_label.place(x=369, y=732)
+            self.player_one_label.place(x=369, y=738)
         elif position == 36:
-            self.horse_label.place(x=305, y=732)
+            self.player_one_label.place(x=305, y=738)
         elif position == 37:
-            self.horse_label.place(x=241, y=732)
+            self.player_one_label.place(x=241, y=738)
         elif position == 38:
-            self.horse_label.place(x=177, y=732)
+            self.player_one_label.place(x=177, y=738)
         elif position == 39:
-            self.horse_label.place(x=113, y=732)
+            self.player_one_label.place(x=113, y=738)
+
+    # Moves Player two token
+    # param Player two index
+    def player_two_position(self):
+        global player2_position
+        player2_position = (player2_position + 1) % 40
+
+        if player2_position == 0:
+            self.player_two_label.place(x=35, y=725)
+        elif player2_position == 1:
+            self.player_two_label.place(x=35, y=639)
+        elif player2_position == 2:
+            self.player_two_label.place(x=35, y=570)
+        elif player2_position == 3:
+            self.player_two_label.place(x=35, y=505)
+        elif player2_position == 4:
+            self.player_two_label.place(x=35, y=449)
+        elif player2_position == 5:
+            self.player_two_label.place(x=35, y=385)
+        elif player2_position == 6:
+            self.player_two_label.place(x=35, y=320)
+        elif player2_position == 7:
+            self.player_two_label.place(x=35, y=257)
+        elif player2_position == 8:
+            self.player_two_label.place(x=35, y=190)
+        elif player2_position == 9:
+            self.player_two_label.place(x=35, y=130)
+        elif player2_position == 10:
+            self.player_two_label.place(x=37, y=65)
+        elif player2_position == 11:
+            self.player_two_label.place(x=108, y=37)
+        elif player2_position == 12:
+            self.player_two_label.place(x=175, y=37)
+        elif player2_position == 13:
+            self.player_two_label.place(x=240, y=37)
+        elif player2_position == 14:
+            self.player_two_label.place(x=300, y=37)
+        elif player2_position == 15:
+            self.player_two_label.place(x=370, y=37)
+        elif player2_position == 16:
+            self.player_two_label.place(x=430, y=37)
+        elif player2_position == 17:
+            self.player_two_label.place(x=490, y=37)
+        elif player2_position == 18:
+            self.player_two_label.place(x=562, y=37)
+        elif player2_position == 19:
+            self.player_two_label.place(x=626, y=37)
+        elif player2_position == 20:
+            self.player_two_label.place(x=740, y=37)
+        elif player2_position == 21:
+            self.player_two_label.place(x=710, y=115)
+        elif player2_position == 22:
+            self.player_two_label.place(x=710, y=184)
+        elif player2_position == 23:
+            self.player_two_label.place(x=710, y=244)
+        elif player2_position == 24:
+            self.player_two_label.place(x=710, y=310)
+        elif player2_position == 25:
+            self.player_two_label.place(x=710, y=374)
+        elif player2_position == 26:
+            self.player_two_label.place(x=710, y=438)
+        elif player2_position == 27:
+            self.player_two_label.place(x=710, y=504)
+        elif player2_position == 28:
+            self.player_two_label.place(x=710, y=567)
+        elif player2_position == 29:
+            self.player_two_label.place(x=710, y=632)
+        elif player2_position == 30:
+            self.player_two_label.place(x=710, y=732)
+        elif player2_position == 31:
+            self.player_two_label.place(x=635, y=708)
+        elif player2_position == 32:
+            self.player_two_label.place(x=571, y=708)
+        elif player2_position == 33:
+            self.player_two_label.place(x=507, y=708)
+        elif player2_position == 34:
+            self.player_two_label.place(x=434, y=708)
+        elif player2_position == 35:
+            self.player_two_label.place(x=369, y=708)
+        elif player2_position == 36:
+            self.player_two_label.place(x=305, y=708)
+        elif player2_position == 37:
+            self.player_two_label.place(x=241, y=708)
+        elif player2_position == 38:
+            self.player_two_label.place(x=177, y=708)
+        elif player2_position == 39:
+            self.player_two_label.place(x=113, y=708)

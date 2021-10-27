@@ -1,7 +1,7 @@
 import tkinter
 from tkinter import *
 import gameBoard
-import Frontend.main.GUI.newPlayer
+import main.GUI.newPlayer
 import json
 
 
@@ -58,7 +58,7 @@ class WaitRoom:
         gameBoard.GameBoard()  # Opens GameBoard
 
     def introduce(self):
-        p = Frontend.main.GUI.newPlayer.NewPlayer(self.name)
+        p = main.GUI.newPlayer.NewPlayer(self.name)
         transmit = json.dumps(p.__dict__)
         l = self.cman.create_post_request(transmit, "/api/join")
 
