@@ -62,4 +62,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+##[0.9.3] - 10/27/2021
+### Added
+- Added unit tests for the card classes.
+
+### Removed
+
 

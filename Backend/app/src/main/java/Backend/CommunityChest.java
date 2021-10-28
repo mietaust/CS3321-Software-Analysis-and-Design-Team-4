@@ -23,7 +23,7 @@ public class CommunityChest extends Card {
      *  Initializes a Community card
      * @param cardNumber Takes in card value
      */
-    private void community(int cardNumber) {
+    void community(int cardNumber) {
         CardType type = CardType.COMMUNITY;
         switch (cardNumber) {
             case 0 -> advance();
@@ -66,7 +66,7 @@ public class CommunityChest extends Card {
     }
 
     private void consultancy() {
-        super.setAction(CardAction.LOSEMONEY);
+        super.setAction(CardAction.ADDMONEY);
         super.setCardDesc("You receive a private consultation fee of $25.");
         super.setCardValue(25);
     }
@@ -96,13 +96,13 @@ public class CommunityChest extends Card {
     }
 
     private void taxRefund() {
-        super.setAction(CardAction.LOSEMONEY);
+        super.setAction(CardAction.ADDMONEY);
         super.setCardDesc("You gave the government an interest free loan of $20.");
         super.setCardValue(20);
     }
 
     private void holiday() {
-        super.setAction(CardAction.LOSEMONEY);
+        super.setAction(CardAction.ADDMONEY);
         super.setCardDesc("Holiday fund matured. Collect $100.");
         super.setCardValue(100);
     }

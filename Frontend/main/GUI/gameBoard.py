@@ -273,6 +273,20 @@ class GameBoard:
                                  font=('Arial', 12, 'bold'), width=7)
         self.new_button.place(x=1100, y=700)
 
+        self.purchase_button = Button(self.window, text="Buy Property", command=self.button_purchase(),
+                                      font=("arial", 12, 'bold'), width=15)
+        self.purchase_button.place(x=140, y=120)
+        self.build_house_button = Button(self.window, text="Build House", command=self.button_house(),
+                                      font=("arial", 12, 'bold'), width=15)
+        self.build_house_button.place(x=310, y=120)
+        self.build_hotel_button = Button(self.window, text="Build Hotel", command=self.button_hotel(),
+                                         font=("arial", 12, 'bold'), width=15)
+        self.build_hotel_button.place(x=480, y=120)
+
+        self.roll_button = Button(self.window, text="Roll Dice", command=self.button_roll(),
+                                         font=("arial", 12, 'bold'), width=15)
+        self.roll_button.place(x=310, y=600)
+
     # Initializes player tokens
     def create_player_token(self):
         ## Player 1 token
@@ -458,3 +472,23 @@ class GameBoard:
             self.player_two_label.place(x=177, y=708)
         elif player2_position == 39:
             self.player_two_label.place(x=113, y=708)
+
+    # get request to /api/roll
+    def button_roll(self):
+        test = "test"
+
+    # get request to /api/purchase
+    def button_purchase(self):
+        test = "test"
+
+    # get request to /api/build/house
+    def button_house(self):
+        test = "test"
+
+    # get request to /api/build/house
+    def button_hotel(self):
+        test = "test"
+
+    # submit a get request to /api/update, receive the board update object through json, apply to the current gameboard.
+    def get_board_update(self):
+        test="test"
