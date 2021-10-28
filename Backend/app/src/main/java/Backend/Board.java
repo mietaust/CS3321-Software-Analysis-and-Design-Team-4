@@ -12,7 +12,7 @@ public class Board {
      * List of spaces on the game board
      */
     @Getter
-    final Space[] spaceNames  =  {  new Space("GO", 0),
+     Space[] spaceNames  =  {  new Space("GO", 0),
             new Street("Mediterranean Avenue", 1, Color.BROWN, 60, 2, 50, new int[]{10, 30, 90, 160, 250}),
             new CommunityChest("Community Chest 1", 2, Card.CardType.COMMUNITY),
             new Street("Baltic Avenue", 3, Color.BROWN, 60, 4, 50, new int[]{20, 60, 180, 320, 450}),
@@ -57,7 +57,9 @@ public class Board {
     /**
      * Private Constructor
      */
-    private Board(){}
+    private Board(){
+
+    }
 
     /**
      * Returns the Game Board spaces
@@ -67,5 +69,11 @@ public class Board {
         return new Board().getSpaceNames();
     }
 
+    public static void main(String[] args) {
+        Board board = new Board();
+        Space space = Board.getInstance()[1];
+        Property st = (Property) space;
+        System.out.println(st.getRent(st));
+    }
 
 }
