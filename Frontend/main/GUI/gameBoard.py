@@ -264,8 +264,7 @@ class GameBoard:
         self.pacific_button.place(x=608, y=670)
 
         # Buttons
-
-        self.move_button = Button(self.window, text="move", command=self.player_one_position,
+        self.move_button = Button(self.window, text="Player 1", command=self.player_one_position,
                                   font=('Arial', 12, 'bold'), width=7)
         self.move_button.place(x=1000, y=700)
 
@@ -492,3 +491,5 @@ class GameBoard:
     # submit a get request to /api/update, receive the board update object through json, apply to the current gameboard.
     def get_board_update(self):
         test="test"
+
+board = GameBoard()
