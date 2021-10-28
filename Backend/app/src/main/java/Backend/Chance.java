@@ -21,7 +21,7 @@ public class Chance extends Card {
      *
      * @param cardNumber Takes in card value
      */
-    private void chance(int cardNumber) {
+    public void chance(int cardNumber) {
         CardType type = CardType.CHANCE;
         switch (cardNumber) {
             case 0 -> aBoard();
