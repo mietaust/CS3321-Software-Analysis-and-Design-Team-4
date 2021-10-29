@@ -25,11 +25,7 @@ public class Dice {
 
 
   public boolean isDouble() {
-    if (die[0] == die[1]) {
-      return true;
-    } else {
-      return false;
-    }
+    return die[0] == die[1];
   }
 
   private Dice() {

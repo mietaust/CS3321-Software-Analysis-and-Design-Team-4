@@ -37,8 +37,8 @@ class WaitRoom:
         self.test_button.place(x=365, y=435)
 
         self.handshake_button = Button(self.window, text="introduce to server", command=self.introduce,
-                                  width=10, font=('Arial', 13, 'bold'))
-        self.handshake_button.place(x=200, y=435)
+                                  width=16, font=('Arial', 13, 'bold'))
+        self.handshake_button.place(x=185, y=435)
 
         # TODO |Overview for wait logic. At this point the game has introduced itself to the server,
         # TODO |exchanged unique identifiers, and is capable of passing information back and forth. When

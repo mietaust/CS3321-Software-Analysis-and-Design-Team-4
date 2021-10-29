@@ -307,136 +307,136 @@ class GameBoard:
         self.house_img = PhotoImage(file='Resources/house.png')
         ##Houses
         #  Mediterranean house label
-        self.brown_mediterranean_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.brown_mediterranean_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.brown_mediterranean_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.brown_mediterranean_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.brown_mediterranean_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.brown_mediterranean_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.brown_mediterranean_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.brown_mediterranean_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Baltic avenue house label
-        self.baltic_avenue_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.baltic_avenue_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.baltic_avenue_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.baltic_avenue_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.baltic_avenue_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.baltic_avenue_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.baltic_avenue_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.baltic_avenue_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Oriental avenue house label
-        self.oriental_Avenue_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.oriental_Avenue_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.oriental_Avenue_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.oriental_Avenue_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.oriental_Avenue_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.oriental_Avenue_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.oriental_Avenue_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.oriental_Avenue_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Vermont house  label
-        self.vermont_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.vermont_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.vermont_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.vermont_Avenue_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.vermont_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.vermont_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.vermont_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.vermont_Avenue_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Connecticut house label
-        self.connecticut_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.connecticut_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.connecticut_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.connecticut_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.connecticut_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.connecticut_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.connecticut_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.connecticut_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # ST Charles house label
-        self.st_charles_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.st_charles_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.st_charles_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.st_charles_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.st_charles_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.st_charles_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.st_charles_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.st_charles_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # States house label
-        self.states_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.states_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.states_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.states_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.states_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.states_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.states_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.states_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Virginia house label
-        self.virginia_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.virginia_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.virginia_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.virginia_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.virginia_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.virginia_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.virginia_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.virginia_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # ST James house label
-        self.st_james_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.st_james_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.st_james_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.st_james_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.st_james_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.st_james_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.st_james_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.st_james_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Tennessee house label
-        self.tennessee_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.tennessee_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.tennessee_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.tennessee_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.tennessee_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.tennessee_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.tennessee_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.tennessee_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # New York house label
-        self.new_york_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.new_york_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.new_york_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.new_york_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.new_york_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.new_york_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.new_york_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.new_york_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # kentucky house label
-        self.kentucky_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.kentucky_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.kentucky_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.kentucky_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.kentucky_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.kentucky_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.kentucky_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.kentucky_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Indiana house label
-        self.indiana_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.indiana_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.indiana_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.indiana_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.indiana_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.indiana_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.indiana_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.indiana_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Illnois house label
-        self.illnois_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.illnois_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.illnois_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.illnois_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.illnois_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.illnois_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.illnois_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.illnois_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Atlantic house label
-        self.atlantic_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.atlantic_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.atlantic_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.atlantic_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.atlantic_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.atlantic_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.atlantic_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.atlantic_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Ventor house label
-        self.ventnor_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.ventnor_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.ventnor_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.ventnor_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.ventnor_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.ventnor_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.ventnor_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.ventnor_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Marvin house label
-        self.marvin_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.marvin_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.marvin_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.marvin_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.marvin_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.marvin_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.marvin_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.marvin_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Pacific house label
-        self.pacific_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.pacific_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.pacific_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.pacific_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.pacific_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.pacific_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.pacific_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.pacific_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # North Carolina house label
-        self.north_carolina_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.north_carolina_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.north_carolina_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.north_carolina_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.north_carolina_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.north_carolina_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.north_carolina_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.north_carolina_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Pennsylvania house label
-        self.pennsylvania_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.pennsylvania_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.pennsylvania_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.pennsylvania_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.pennsylvania_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.pennsylvania_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.pennsylvania_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.pennsylvania_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Park house label
-        self.park_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.park_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.park_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.park_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.park_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.park_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.park_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.park_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Broadwalk house label
-        self.broadwalk_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.broadwalk_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.broadwalk_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
-        self.broadwalk_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.broadwalk_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.broadwalk_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.broadwalk_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.broadwalk_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
     # Moves player one position
     # param Player one index
@@ -881,5 +881,5 @@ class GameBoard:
     def get_board_update(self):
         test = "test"
 
-
 board = GameBoard()
+
