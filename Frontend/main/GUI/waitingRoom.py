@@ -1,7 +1,7 @@
 import tkinter
 from tkinter import *
 import gameBoard
-import Frontend.main.GUI.newPlayer
+import main.GUI.newPlayer
 import json
 
 
@@ -34,11 +34,11 @@ class WaitRoom:
 
         self.test_button = Button(self.window, text="Play Game", command=self.open_game,
                                   width=10, font=('Arial', 13, 'bold'))
-        self.test_button.place(x=385, y=435)
+        self.test_button.place(x=365, y=435)
 
         self.handshake_button = Button(self.window, text="introduce to server", command=self.introduce,
-                                  width=10, font=('Arial', 13, 'bold'))
-        self.handshake_button.place(x=200, y=435)
+                                  width=16, font=('Arial', 13, 'bold'))
+        self.handshake_button.place(x=185, y=435)
 
         # TODO |Overview for wait logic. At this point the game has introduced itself to the server,
         # TODO |exchanged unique identifiers, and is capable of passing information back and forth. When
@@ -58,7 +58,7 @@ class WaitRoom:
         gameBoard.GameBoard()  # Opens GameBoard
 
     def introduce(self):
-        p = Frontend.main.GUI.newPlayer.NewPlayer(self.name)
+        p = main.GUI.newPlayer.NewPlayer(self.name)
         transmit = json.dumps(p.__dict__)
         l = self.cman.create_post_request(transmit, "/api/join")
 

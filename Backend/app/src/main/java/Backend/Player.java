@@ -51,7 +51,8 @@ public class Player{
      */
     public void move(int position) {
         int temp = this.position;
-        this.position =  (temp + position) % 39;
+
+        this.position =  (temp + position) % 40;
         //checkPosition(this.position);
     }
     public void goToJail(){
