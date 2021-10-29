@@ -11,6 +11,8 @@ public class Board {
     /**
      * List of spaces on the game board
      */
+
+
     @Getter
     final Space[] spaceNames  =  {  new Space("GO", 0),
             new Street("Mediterranean Avenue", 1, Color.BROWN, 60, 2, 50, new int[]{10, 30, 90, 160, 250}),
@@ -60,7 +62,7 @@ public class Board {
     private Board(){}
 
 
-    private static Space[] getInstance(){
+    public static Space[] getInstance(){
         return new Board().getSpaceNames();
     }
 
