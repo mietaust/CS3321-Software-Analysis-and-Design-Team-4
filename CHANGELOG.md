@@ -68,4 +68,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+##[0.9.4] - 10/28/2021
+### Added
+- Added unit tests for the player class.
+- Added unit test for the space class.
+- Built player token GUI 
+- Built moving and buying house functionality GUI.
 
+### Removed
