@@ -12,7 +12,7 @@ public class Board {
      * List of spaces on the game board
      */
     @Getter
-     Space[] spaceNames  =  {  new Space("GO", 0),
+     final Space[] spaceNames  =  {  new Space("GO", 0),
             new Street("Mediterranean Avenue", 1, Color.BROWN, 60, 2, 50, new int[]{10, 30, 90, 160, 250}),
             new CommunityChest("Community Chest 1", 2, Card.CardType.COMMUNITY),
             new Street("Baltic Avenue", 3, Color.BROWN, 60, 4, 50, new int[]{20, 60, 180, 320, 450}),

@@ -4,6 +4,7 @@ import random
 
 position = 0  # temp variable for moving the token 1
 player2_position = 0  # temp variable for moving the token 2
+house_num = 0
 
 
 class GameBoard:
@@ -13,8 +14,10 @@ class GameBoard:
         self.window.title("MonopolyLite")
         self.window.geometry("1300x770")
         self.window.resizable(False, False)
-        self.initialize_spaces()
-        self.create_player_token()
+        self.initialize_spaces()   # Creates board spaces
+        self.deactivate_space_button()  # Deactivates spaces, so they can't be clicked
+        self.create_player_token()   # Creates all player token
+        self.initialize_houses()    # Initializes house labels
         self.window.config(bg="#BFDBAE")
 
         self.window.mainloop()
@@ -272,18 +275,18 @@ class GameBoard:
                                  font=('Arial', 12, 'bold'), width=7)
         self.new_button.place(x=1100, y=700)
 
-        self.purchase_button = Button(self.window, text="Buy Property", command=self.button_purchase(),
+        self.purchase_button = Button(self.window, text="Buy Property", command=self.button_purchase,
                                       font=("arial", 12, 'bold'), width=15)
         self.purchase_button.place(x=140, y=120)
-        self.build_house_button = Button(self.window, text="Build House", command=self.button_house(),
-                                      font=("arial", 12, 'bold'), width=15)
+        self.build_house_button = Button(self.window, text="Build House", command=self.button_house,
+                                         font=("arial", 12, 'bold'), width=15)
         self.build_house_button.place(x=310, y=120)
-        self.build_hotel_button = Button(self.window, text="Build Hotel", command=self.button_hotel(),
+        self.build_hotel_button = Button(self.window, text="Build Hotel", command=self.button_hotel,
                                          font=("arial", 12, 'bold'), width=15)
         self.build_hotel_button.place(x=480, y=120)
 
-        self.roll_button = Button(self.window, text="Roll Dice", command=self.button_roll(),
-                                         font=("arial", 12, 'bold'), width=15)
+        self.roll_button = Button(self.window, text="Roll Dice", command=self.button_roll,
+                                  font=("arial", 12, 'bold'), width=15)
         self.roll_button.place(x=310, y=600)
 
     # Initializes player tokens
@@ -297,6 +300,143 @@ class GameBoard:
         self.player_two_img = PhotoImage(file='Resources/two.png')
         self.player_two_label = Label(self.window, image=self.player_two_img, bg="#FF0000")
         self.player_two_label.place(x=35, y=725)
+
+    def initialize_houses(self):
+
+        # house image
+        self.house_img = PhotoImage(file='Resources/house.png')
+        ##Houses
+        #  Mediterranean house label
+        self.brown_mediterranean_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.brown_mediterranean_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.brown_mediterranean_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.brown_mediterranean_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Baltic avenue house label
+        self.baltic_avenue_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.baltic_avenue_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.baltic_avenue_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.baltic_avenue_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Oriental avenue house label
+        self.oriental_Avenue_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.oriental_Avenue_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.oriental_Avenue_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.oriental_Avenue_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Vermont house  label
+        self.vermont_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.vermont_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.vermont_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.vermont_Avenue_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Connecticut house label
+        self.connecticut_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.connecticut_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.connecticut_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.connecticut_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # ST Charles house label
+        self.st_charles_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.st_charles_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.st_charles_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.st_charles_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # States house label
+        self.states_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.states_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.states_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.states_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Virginia house label
+        self.virginia_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.virginia_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.virginia_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.virginia_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # ST James house label
+        self.st_james_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.st_james_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.st_james_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.st_james_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Tennessee house label
+        self.tennessee_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.tennessee_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.tennessee_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.tennessee_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # New York house label
+        self.new_york_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.new_york_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.new_york_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.new_york_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # kentucky house label
+        self.kentucky_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.kentucky_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.kentucky_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.kentucky_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Indiana house label
+        self.indiana_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.indiana_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.indiana_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.indiana_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Illnois house label
+        self.illnois_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.illnois_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.illnois_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.illnois_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Atlantic house label
+        self.atlantic_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.atlantic_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.atlantic_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.atlantic_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Ventor house label
+        self.ventnor_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.ventnor_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.ventnor_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.ventnor_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Marvin house label
+        self.marvin_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.marvin_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.marvin_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.marvin_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Pacific house label
+        self.pacific_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.pacific_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.pacific_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.pacific_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # North Carolina house label
+        self.north_carolina_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.north_carolina_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.north_carolina_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.north_carolina_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Pennsylvania house label
+        self.pennsylvania_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.pennsylvania_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.pennsylvania_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.pennsylvania_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Park house label
+        self.park_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.park_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.park_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.park_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+
+        # Broadwalk house label
+        self.broadwalk_house_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.broadwalk_house2_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.broadwalk_house3_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
+        self.broadwalk_house4_label = Label(self.window, image=self.house_img, bg="#FF7F7F")
 
     # Moves player one position
     # param Player one index
@@ -472,6 +612,250 @@ class GameBoard:
         elif player2_position == 39:
             self.player_two_label.place(x=113, y=708)
 
+    # Builds the player house
+    # Player position && Number of Houses
+    def create_house(self, player_position, house_no):
+
+        if player_position == 1:
+            if house_no == 1:
+                self.brown_mediterranean_house_label.place(x=85, y=658)
+            elif house_no == 2:
+                self.brown_mediterranean_house2_label.place(x=85, y=643)
+            elif house_no == 3:
+                self.brown_mediterranean_house3_label.place(x=85, y=628)
+            elif house_no == 4:
+                self.brown_mediterranean_house4_label.place(x=85, y=613)
+
+        elif player_position == 3:
+            if house_no == 1:
+                self.baltic_avenue_house_label.place(x=85, y=530)
+            elif house_no == 2:
+                self.baltic_avenue_house2_label.place(x=85, y=515)
+            elif house_no == 3:
+                self.baltic_avenue_house3_label.place(x=85, y=500)
+            elif house_no == 4:
+                self.baltic_avenue_house4_label.place(x=85, y=485)
+
+        elif player_position == 6:
+            if house_no == 1:
+                self.oriental_Avenue_house_label.place(x=85, y=338)
+            elif house_no == 2:
+                self.oriental_Avenue_house2_label.place(x=85, y=323)
+            elif house_no == 3:
+                self.oriental_Avenue_house3_label.place(x=85, y=308)
+            elif house_no == 4:
+                self.oriental_Avenue_house4_label.place(x=85, y=293)
+
+        elif player_position == 8:
+            if house_no == 1:
+                self.vermont_house_label.place(x=85, y=210)
+            elif house_no == 2:
+                self.vermont_house2_label.place(x=85, y=195)
+            elif house_no == 3:
+                self.vermont_house3_label.place(x=85, y=180)
+            elif house_no == 4:
+                self.vermont_Avenue_house4_label.place(x=85, y=165)
+
+        elif player_position == 9:
+            if house_no == 1:
+                self.connecticut_house_label.place(x=85, y=146)
+            elif house_no == 2:
+                self.connecticut_house2_label.place(x=85, y=131)
+            elif house_no == 3:
+                self.connecticut_house3_label.place(x=85, y=116)
+            elif house_no == 4:
+                self.connecticut_house4_label.place(x=85, y=101)
+
+        elif player_position == 11:
+            if house_no == 1:
+                self.st_charles_house_label.place(x=101, y=80)
+            elif house_no == 2:
+                self.st_charles_house2_label.place(x=116, y=80)
+            elif house_no == 3:
+                self.st_charles_house3_label.place(x=131, y=80)
+            elif house_no == 4:
+                self.st_charles_house4_label.place(x=146, y=80)
+
+        elif player_position == 13:
+            if house_no == 1:
+                self.states_house_label.place(x=227, y=80)
+            elif house_no == 2:
+                self.states_house2_label.place(x=242, y=80)
+            elif house_no == 3:
+                self.states_house3_label.place(x=257, y=80)
+            elif house_no == 4:
+                self.states_house4_label.place(x=273, y=80)
+
+        elif player_position == 14:
+            if house_no == 1:
+                self.virginia_house_label.place(x=291, y=80)
+            elif house_no == 2:
+                self.virginia_house2_label.place(x=307, y=80)
+            elif house_no == 3:
+                self.virginia_house3_label.place(x=322, y=80)
+            elif house_no == 4:
+                self.virginia_house4_label.place(x=337, y=80)
+
+        elif player_position == 16:
+            if house_no == 1:
+                self.st_james_house_label.place(x=420, y=80)
+            elif house_no == 2:
+                self.st_james_house2_label.place(x=435, y=80)
+            elif house_no == 3:
+                self.st_james_house3_label.place(x=450, y=80)
+            elif house_no == 4:
+                self.st_james_house4_label.place(x=465, y=80)
+
+        elif player_position == 18:
+            if house_no == 1:
+                self.tennessee_house_label.place(x=548, y=80)
+            elif house_no == 2:
+                self.tennessee_house2_label.place(x=563, y=80)
+            elif house_no == 3:
+                self.tennessee_house3_label.place(x=578, y=80)
+            elif house_no == 4:
+                self.tennessee_house4_label.place(x=593, y=80)
+
+        elif player_position == 19:
+            if house_no == 1:
+                self.new_york_house_label.place(x=612, y=80)
+            elif house_no == 2:
+                self.new_york_house2_label.place(x=627, y=80)
+            elif house_no == 3:
+                self.new_york_house3_label.place(x=642, y=80)
+            elif house_no == 4:
+                self.new_york_house4_label.place(x=657, y=80)
+
+        elif player_position == 21:
+            if house_no == 1:
+                self.kentucky_house_label.place(x=677, y=102)
+            elif house_no == 2:
+                self.kentucky_house2_label.place(x=677, y=117)
+            elif house_no == 3:
+                self.kentucky_house3_label.place(x=677, y=132)
+            elif house_no == 4:
+                self.kentucky_house4_label.place(x=677, y=147)
+
+        elif player_position == 23:
+            if house_no == 1:
+                self.indiana_house_label.place(x=677, y=225)
+            elif house_no == 2:
+                self.indiana_house2_label.place(x=677, y=238)
+            elif house_no == 3:
+                self.indiana_house3_label.place(x=677, y=253)
+            elif house_no == 4:
+                self.indiana_house4_label.place(x=677, y=268)
+
+        elif player_position == 24:
+            if house_no == 1:
+                self.illnois_house_label.place(x=677, y=290)
+            elif house_no == 2:
+                self.illnois_house2_label.place(x=677, y=305)
+            elif house_no == 3:
+                self.illnois_house3_label.place(x=677, y=320)
+            elif house_no == 4:
+                self.illnois_house4_label.place(x=677, y=335)
+
+        elif player_position == 26:
+            if house_no == 1:
+                self.atlantic_house_label.place(x=677, y=418)
+            elif house_no == 2:
+                self.atlantic_house2_label.place(x=677, y=433)
+            elif house_no == 3:
+                self.atlantic_house_label.place(x=677, y=448)
+            elif house_no == 4:
+                self.atlantic_house_label.place(x=677, y=463)
+
+        elif player_position == 27:
+            if house_no == 1:
+                self.ventnor_house_label.place(x=677, y=482)
+            elif house_no == 2:
+                self.ventnor_house2_label.place(x=677, y=497)
+            elif house_no == 3:
+                self.ventnor_house3_label.place(x=677, y=512)
+            elif house_no == 4:
+                self.ventnor_house4_label.place(x=677, y=527)
+
+        elif player_position == 29:
+            if house_no == 1:
+                self.marvin_house_label.place(x=677, y=610)
+            elif house_no == 2:
+                self.marvin_house2_label.place(x=677, y=625)
+            elif house_no == 3:
+                self.marvin_house3_label.place(x=677, y=640)
+            elif house_no == 4:
+                self.marvin_house4_label.place(x=677, y=655)
+
+        elif player_position == 31:
+            if house_no == 1:
+                self.pacific_house_label.place(x=614, y=677)
+            elif house_no == 2:
+                self.pacific_house2_label.place(x=629, y=677)
+            elif house_no == 3:
+                self.pacific_house3_label.place(x=644, y=677)
+            elif house_no == 4:
+                self.pacific_house4_label.place(x=659, y=677)
+
+        elif player_position == 32:
+            if house_no == 1:
+                self.north_carolina_house_label.place(x=550, y=677)
+            elif house_no == 2:
+                self.north_carolina_house2_label.place(x=565, y=677)
+            elif house_no == 3:
+                self.north_carolina_house3_label.place(x=580, y=677)
+            elif house_no == 4:
+                self.north_carolina_house4_label.place(x=595, y=677)
+
+        elif player_position == 34:
+            if house_no == 1:
+                self.pennsylvania_house_label.place(x=420, y=677)
+            elif house_no == 2:
+                self.pennsylvania_house2_label.place(x=435, y=677)
+            elif house_no == 3:
+                self.pennsylvania_house3_label.place(x=450, y=677)
+            elif house_no == 4:
+                self.pennsylvania_house4_label.place(x=465, y=677)
+
+        elif player_position == 37:
+            if house_no == 1:
+                self.park_house_label.place(x=228, y=677)
+            elif house_no == 2:
+                self.park_house2_label.place(x=243, y=677)
+            elif house_no == 3:
+                self.park_house3_label.place(x=258, y=677)
+            elif house_no == 4:
+                self.park_house4_label.place(x=273, y=677)
+
+        elif player_position == 39:
+            if house_no == 1:
+                self.broadwalk_house_label.place(x=103, y=677)
+            elif house_no == 2:
+                self.broadwalk_house2_label.place(x=118, y=677)
+            elif house_no == 3:
+                self.broadwalk_house3_label.place(x=133, y=677)
+            elif house_no == 4:
+                self.broadwalk_house4_label.place(x=148, y=677)
+
+    def deactivate_space_button(self):
+        self.space_button_list = [self.go_button, self.brown_mediterranean_button, self.community_chest_button,
+                                  self.baltic_avenue_button, self.income_tax_button
+            , self.reading_railroad_button, self.oriental_Avenue__button, self.pink_chance_button, self.vermont_button,
+                                  self.connecticut_button
+            , self.jail_button, self.charles_button, self.electric_button, self.states_button, self.virginia_button,
+                                  self.penn_railroad_button, self.james_button
+            , self.community_chest_2_button, self.tennessee_button, self.new_york_button, self.parking_button,
+                                  self.kentucky_button, self.chance_button
+            , self.indiana_button, self.illnois_button, self.b_o_railroad_button, self.atlantic_button,
+                                  self.ventnor_button, self.water_works_button,
+                                  self.marvin_button
+            , self.go_to_jail_button, self.broadwalk_button, self.luxury_tax_button, self.park_place_button,
+                                  self.orange_chance_button, self.short_line_button
+            , self.pennsylvania_button, self.community_chest_3_button, self.north_carolina_button, self.pacific_button]
+
+        for i in range(len(self.space_button_list)):
+            self.space_button_list[i]['command'] = 1
+            self.space_button_list[i]['relief'] = 'sunken'
+
     # get request to /api/roll
     def button_roll(self):
         test = "test"
@@ -482,6 +866,11 @@ class GameBoard:
 
     # get request to /api/build/house
     def button_house(self):
+        # Temp method to make player buy house
+        global position, house_num
+
+        self.create_house(position, house_num + 1)
+        house_num = (house_num + 1) % 5
         test = "test"
 
     # get request to /api/build/house
@@ -490,6 +879,7 @@ class GameBoard:
 
     # submit a get request to /api/update, receive the board update object through json, apply to the current gameboard.
     def get_board_update(self):
-        test="test"
+        test = "test"
+
 
 board = GameBoard()
