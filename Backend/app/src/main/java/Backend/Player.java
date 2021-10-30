@@ -12,9 +12,9 @@ public class Player{
     private String name;
     @Getter
     private double accountBalance;
+    @Setter
     @Getter
     private int position;
-    @Setter
     @Getter
     private boolean inJail;
     private boolean turn;
@@ -69,8 +69,10 @@ public class Player{
                     return;
                 }
             }
-            this.accountBalance -= property.getValue();
-            propertyOwned.add(property);
+            if(getAccountBalance() >= property.getValue()) {
+                this.accountBalance -= property.getValue();
+                propertyOwned.add(property);
+            }
         }
     }
 
@@ -92,6 +94,17 @@ public class Player{
             return true;
         }
         return false;
+    }
+
+    /**
+     * Changes player position to jail positon
+     * @param inJail Takes in true and false
+     *
+     */
+
+    public void setInJail(boolean inJail){
+        this.inJail = inJail;
+        setPosition(Constants.JAIL);
     }
 
 

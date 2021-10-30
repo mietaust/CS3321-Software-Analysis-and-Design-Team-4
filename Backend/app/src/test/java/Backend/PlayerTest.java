@@ -34,7 +34,10 @@ class PlayerTest {
         playerTest.setAccountBalance(200);
         playerTest.buy(testProperty);
         assertEquals(170, playerTest.getAccountBalance());
-        assertEquals(1, playerTest.getPropertyOwned().size() );
+        assertEquals(1, playerTest.getPropertyOwned().size());
+
+        playerTest.buy(new Property("TestProp", 1, 30,2));
+
     }
 
     @Test
@@ -109,5 +112,6 @@ class PlayerTest {
         Player playerTest = new Player("Testing");
         playerTest.setInJail(true);
         assertTrue(playerTest.isInJail());
+        assertEquals(Constants.JAIL, playerTest.getPosition());
     }
 }
