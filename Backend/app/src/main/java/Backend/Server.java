@@ -48,6 +48,7 @@ public class Server {
     //new player handler
     server.routes(() ->{
       post("/api/join", ctx -> {
+        System.out.println("received");
         //TODO change logic later on when the rest of the game is more defined - Eventually NewPlayer won't exist
         try {
           NewPlayer np = g.fromJson(ctx.body(), NewPlayer.class);

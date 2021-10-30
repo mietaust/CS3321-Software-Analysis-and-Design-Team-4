@@ -11,7 +11,7 @@ public class GameState {
   private static Space[] board;
   @Getter
   @Setter
-  private String dispString;
+  private static boolean error = false;
   static Player player1;
   static Player player2;
   CommunityChest communityChest;

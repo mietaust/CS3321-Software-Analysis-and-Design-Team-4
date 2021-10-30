@@ -89,7 +89,6 @@ public class Board {
      * Returns the Game Board spaces
      * @return Array of spaces
      */
-
     return new Board().getSpaceNames();
   }
 

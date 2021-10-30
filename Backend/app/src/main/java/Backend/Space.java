@@ -40,4 +40,5 @@ public class Space {
                 ", location=" + location +
                 '}';
     }
+
 }
