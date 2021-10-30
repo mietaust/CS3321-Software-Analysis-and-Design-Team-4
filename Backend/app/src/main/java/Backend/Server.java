@@ -38,6 +38,7 @@ public class Server {
     // GET request handler
     server.get("/", ctx -> ctx.result("Connection made"));
 
+
     //temporary variable for active players
     List<NewPlayer> players = new LinkedList<>();
     Gson g = new Gson();
@@ -90,6 +91,7 @@ public class Server {
         //package the gamestate into json and send it as the response to this get request.
       });
     });
+
     System.out.println("Server active on port: " + port);
 
     return 1;

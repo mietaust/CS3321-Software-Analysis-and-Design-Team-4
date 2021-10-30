@@ -7,7 +7,7 @@ public class Property extends Space{
 
     @Setter
     @Getter
-    private Object owner;
+    private Player owner;
     @Getter
     private final int value;
     private final  int rent;
@@ -22,7 +22,7 @@ public class Property extends Space{
      */
     public Property(String name, int location, int value, int rent ) {
         super(name, location);
-        this.owner = new Object();
+        this.owner = null;
         this.rent = rent;
         this.value = value;
 

@@ -12,9 +12,9 @@ public class Player{
     private String name;
     @Getter
     private double accountBalance;
-    @Setter
     @Getter
     private int position;
+    @Setter
     @Getter
     private boolean inJail;
     private boolean turn;
@@ -41,7 +41,7 @@ public class Player{
      * @param accountBalance Updates the player account balance
      */
 
-    public void setAccountBalance(double accountBalance) {
+    public void addToAccount(double accountBalance) {
         this.accountBalance += accountBalance;
     }
 
@@ -51,8 +51,13 @@ public class Player{
      */
     public void move(int position) {
         int temp = this.position;
+
         this.position =  (temp + position) % 40;
-        checkPosition(this.position);
+        //checkPosition(this.position);
+    }
+    public void goToJail(){
+        this.position = 10;
+        inJail = true;
     }
 
 
@@ -69,10 +74,9 @@ public class Player{
                     return;
                 }
             }
-            if(getAccountBalance() >= property.getValue()) {
-                this.accountBalance -= property.getValue();
-                propertyOwned.add(property);
-            }
+            this.accountBalance -= property.getValue();
+            propertyOwned.add(property);
+            property.setOwner(this);
         }
     }
 
@@ -94,17 +98,6 @@ public class Player{
             return true;
         }
         return false;
-    }
-
-    /**
-     * Changes player position to jail positon
-     * @param inJail Takes in true and false
-     *
-     */
-
-    public void setInJail(boolean inJail){
-        this.inJail = inJail;
-        setPosition(Constants.JAIL);
     }
 
 
@@ -143,42 +136,6 @@ public class Player{
 
     /// Moving checkposition method to game-logic
 
-    /**
-     * Checks player current position
-     * @param position Player position
-     */
-    private void checkPosition(int position){
-        if(position == Constants.GO_SPACE){
-            setAccountBalance(Constants.PASSING_GO);
-        }
-        else if (position == Constants.COMMUNITY_CHEST){
 
-        }
-        else if (position == Constants.CHANCE_RED){
-
-        }
-        else if (position == Constants.GOTO_JAIL){
-            if(!this.inJail) {
-                setInJail(true);
-            }
-            move(11);
-
-        }
-        else if (position == Constants.COMMUNITY_CHEST2){
-
-        }
-        else if (position == Constants.CHANCE_BLUE){
-
-        }
-        else if (position == Constants.CHANCE_ORANGE){
-
-        }
-        else if (position == Constants.COMMUNITY_CHEST3){
-
-        }
-        else{
-            return;
-        }
-    }
 
 }

@@ -31,7 +31,9 @@ public class Space {
     public boolean isProperty(Property space){
         return false;
     }
-
+    public static boolean isStreet(Space space){
+        return space instanceof Street;
+    }
     @Override
     public String toString() {
         return "Space{" +

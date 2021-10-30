@@ -18,7 +18,7 @@ Our team will be implementing a lite version of Monopoloy. This game will use a 
 ### Minimum Technologies Used
 * Frontend 
      * Language: Python
-     * Testing Framework: Cucumber (Tentatively JUnit 5 w/ cucumber)
+     * Testing Framework: unittest
      * https://google.github.io/styleguide/pyguide.html
      * IDE: Python: 3.9.5
      * UI Libraries/Frameworks: PyGame, ThorPy, tkinter
