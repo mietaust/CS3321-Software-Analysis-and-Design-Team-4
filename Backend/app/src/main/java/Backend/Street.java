@@ -95,6 +95,8 @@ public class Street extends Property {
         }
         return super.getRent(street);
     }
+
+
 /*
     public static void main(String[] args) {
         Property prop = new Street("Dan",3,Color.BROWN, 50, 100, 208, new int[]{9, 4, 5});

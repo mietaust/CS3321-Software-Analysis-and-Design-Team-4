@@ -39,10 +39,7 @@ public class GameState {
     board = Board.getInstance();
     for (int x = 0; x < board.length; x++) {
       System.out.println(board[x]);
-      System.out.println(Space.isProperty(board[x]));
-      if(Space.isProperty(board[x])){
-        System.out.println(((Property)board[x]));
-      }
+
     }
 
   }

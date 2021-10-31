@@ -1,5 +1,6 @@
 package Backend;
 
+import Backend.Card.CardType;
 import org.jetbrains.annotations.NotNull;
 
 //shell class for now
@@ -7,7 +8,7 @@ public class Gameplay {
 
   static GameState state = GameState.getInstance();
   static Dice dice = Dice.getInstance();
-
+  static CommunityChest chest = new CommunityChest("Chest",0, CardType.COMMUNITY);
 
   public static void reset() { // resets GameState to default
     GameState.resetState();
@@ -33,7 +34,12 @@ public class Gameplay {
         player.goToJail();
       }
     } while (dice.isDouble());
+    if (player.getPosition() + movement > 39) {
+      //this should give player 200 for passing go
+      player.addToAccount(200);
+    }
     player.move(movement);
+
     checkPosition(player);
 
   }
@@ -43,7 +49,22 @@ public class Gameplay {
    *
    * @param player Player to check position of.
    */
-  private static void checkPosition(Player player) {//deals with reactive spaces, passing go, etc.
+  private static void checkPosition(
+      Player player) {//deals with reactive spaces, passing go, etc. This cannot be the best way to do this, I'll have to look at it later
+    if ((GameState.getBoard()[player.getPosition()]) instanceof Street
+        && ((Street) GameState.getBoard()[player.getPosition()]).getOwner() != null
+        && ((Street) GameState.getBoard()[player.getPosition()]).getOwner() != player) {
+      ((Street) GameState.getBoard()[player.getPosition()]).getOwner()
+          .addToAccount(((Street) GameState.getBoard()[player.getPosition()]).getRent());
+      player.addToAccount(-1 * ((Street) GameState.getBoard()[player.getPosition()]).getRent());
+    } else if ((GameState.getBoard()[player.getPosition()]) instanceof Property
+        && ((Property) GameState.getBoard()[player.getPosition()]).getOwner() != null
+        && ((Property) GameState.getBoard()[player.getPosition()]).getOwner() != player) {
+      ((Property) GameState.getBoard()[player.getPosition()]).getOwner()
+          .addToAccount(((Property) GameState.getBoard()[player.getPosition()]).getRent());
+      player.addToAccount(-1 * ((Property) GameState.getBoard()[player.getPosition()]).getRent());
+    }
+
     if (player.getPosition() == Constants.GO_SPACE) {
       player.addToAccount(Constants.PASSING_GO);
     } else if (player.getPosition() == Constants.COMMUNITY_CHEST
