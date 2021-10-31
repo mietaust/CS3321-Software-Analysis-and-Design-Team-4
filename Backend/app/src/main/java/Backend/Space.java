@@ -28,7 +28,7 @@ public class Space {
      * @param space position on the game board
      * @return returns true if space is an instance of property
      */
-    public boolean isProperty(Property space){
+    public static boolean isProperty(Space space){
         return false;
     }
     public static boolean isStreet(Space space){

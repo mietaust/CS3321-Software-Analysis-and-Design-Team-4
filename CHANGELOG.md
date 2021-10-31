@@ -76,3 +76,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Built moving and buying house functionality GUI.
 
 ### Removed
+##[0.9.5] - 10/31/2021
+### Added
+- Built removing houses functionality for GUI 
+- Built moving and buying hotel functionality for GUI.
+
+### Removed

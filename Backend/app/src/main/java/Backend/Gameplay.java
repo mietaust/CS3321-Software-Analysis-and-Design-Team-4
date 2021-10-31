@@ -20,6 +20,7 @@ public class Gameplay {
     int movement = 0;
 
     do {
+      // we have to check if the player is already in jail
       dice.roll();
       movement += dice.getTotal();
       if (dice.isDouble()) {
