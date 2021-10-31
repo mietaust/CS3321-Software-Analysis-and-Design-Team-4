@@ -32,23 +32,31 @@ public class Card extends Space{
      /**
      @param action define which action is occuring
     */
-    public void performAction(CardAction action){
+    public void performAction(CardAction action, Player player){
         //action = this.action;
         switch(action){
             case LOSEMONEY:
                 //logic to remove money from player account
+                player.addToAccount(-cardValue);
                 break;
             case ADDMONEY:
                 //logic to add money to player account
+                player.addToAccount(cardValue);
                 break;
             case JAIL:
                 //logic to put the player in jail
+                player.goToJail();
                 break;
             case MOVE:
                 //logic to move player
+                player.setPosition(cardValue);
+                if(cardValue < player.getPosition()){
+                    player.addToAccount(200);
+                }
                 break;
             case JAILBREAK:
                 //logic to break player out of jail
+                player.setOOJCards(player.getOOJCards()+1);
                 break;
             default:
                 //error in getting cardaction

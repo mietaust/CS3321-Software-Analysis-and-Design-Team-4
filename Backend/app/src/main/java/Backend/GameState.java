@@ -19,7 +19,7 @@ public class GameState {
   private GameState() {
 
     board = Board.getInstance();
-    //todo remove the player instantiations and make an actual class for that.
+    //todo remove the player instantiations and make an actual method for that.
     player1 = new Player("p1");
     player1.addToAccount(1500);
   }

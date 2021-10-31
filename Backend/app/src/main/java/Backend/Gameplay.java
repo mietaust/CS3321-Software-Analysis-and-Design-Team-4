@@ -3,13 +3,13 @@ package Backend;
 import Backend.Card.CardType;
 import org.jetbrains.annotations.NotNull;
 
-//shell class for now
+
 public class Gameplay {
 
   static GameState state = GameState.getInstance();
   static Dice dice = Dice.getInstance();
-  static CommunityChest chest = new CommunityChest("Chest",0, CardType.COMMUNITY);
-
+  private static CommunityChest chest = new CommunityChest("Chest", 0, CardType.COMMUNITY);
+  private static Chance chance = new Chance("Chance",0,CardType.CHANCE);
   public static void reset() { // resets GameState to default
     GameState.resetState();
     state = GameState.getInstance();
@@ -17,10 +17,30 @@ public class Gameplay {
 
 
   public static void roll(Player player) {//rolls and handles movement
-    state.setError(false);
     int doubles = 0;
     int movement = 0;
+    //checks jail, roll used to check for escape if they don't have a get out of jail free card.
+    //after 3 turns, if the haven't gotten out, they pay $50 and get out automatically.
+    if (player.isInJail()) {
+      if (player.getOOJCards() > 0) {
+        player.setInJail(false);
+        player.setOOJCards(player.getOOJCards() - 1);
+      } else {
+        dice.roll();
+        if (dice.isDouble()) {
+          player.setInJail(false);
+          player.setNumJailEscAttempts(0);
+        } else {
+          player.setNumJailEscAttempts(player.getNumJailEscAttempts() + 1);
+          if (player.getNumJailEscAttempts() == 3) {
+            player.addToAccount(-50);
+            player.setInJail(false);
+          }
+        }
 
+      }
+    }
+    //standard movement logic,player is yote to jail if they get 3 doubles
     do {
       dice.roll();
       movement += dice.getTotal();
@@ -50,7 +70,8 @@ public class Gameplay {
    * @param player Player to check position of.
    */
   private static void checkPosition(
-      Player player) {//deals with reactive spaces, passing go, etc. This cannot be the best way to do this, I'll have to look at it later
+      Player player) {//deals with reactive spaces, passing go, etc. todo should exchange all the nasty casting with proper method override stuff
+    //this chunk handles rent payment
     if ((GameState.getBoard()[player.getPosition()]) instanceof Street
         && ((Street) GameState.getBoard()[player.getPosition()]).getOwner() != null
         && ((Street) GameState.getBoard()[player.getPosition()]).getOwner() != player) {
@@ -64,17 +85,19 @@ public class Gameplay {
           .addToAccount(((Property) GameState.getBoard()[player.getPosition()]).getRent());
       player.addToAccount(-1 * ((Property) GameState.getBoard()[player.getPosition()]).getRent());
     }
-
+    //this chunk handles all the other possible reactive spaces
     if (player.getPosition() == Constants.GO_SPACE) {
       player.addToAccount(Constants.PASSING_GO);
     } else if (player.getPosition() == Constants.COMMUNITY_CHEST
         || player.getPosition() == Constants.COMMUNITY_CHEST2
         || player.getPosition() == Constants.COMMUNITY_CHEST3) {
-
+      chest.community((int) Math.floor(Math.random() * 16));
+      chest.performAction(chest.getAction(), player);
     } else if (player.getPosition() == Constants.CHANCE_RED
         || player.getPosition() == Constants.CHANCE_ORANGE
         || player.getPosition() == Constants.CHANCE_BLUE) {
-
+      chance.chance((int) Math.floor(Math.random() * 12));
+      chance.performAction(chance.getAction(),player);
     } else if (player.getPosition() == Constants.GOTO_JAIL) {
       if (!player.isInJail()) {
         player.goToJail();
@@ -85,7 +108,10 @@ public class Gameplay {
     }
   }
 
-
+  /**
+   * attempts to buy spot the player is on
+   * @param player
+   */
   public static void buy(Player player) {
     System.out.println((GameState.getBoard()[player.getPosition()]) instanceof Property);
     if ((GameState.getBoard()[player.getPosition()]) instanceof Property) {
@@ -108,6 +134,10 @@ public class Gameplay {
     }
   }
 
+  /**
+   * attempts to build house on the player's location
+   * @param player
+   */
   public static void buildHouse(@NotNull Player player) {
     int location = player.getPosition();
     //check to see if the space allows building
@@ -130,6 +160,10 @@ public class Gameplay {
     }
   }
 
+  /**
+   * attempts to build hotel on the players location
+   * @param player
+   */
   public static void buildHotel(Player player) {
     int location = player.getPosition();
     //check to see if the space allows building

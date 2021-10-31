@@ -14,6 +14,7 @@ public class Player{
     @Setter
     private double accountBalance;
     @Getter
+    @Setter
     private int position;
     @Setter
     @Getter
@@ -21,6 +22,12 @@ public class Player{
     private boolean turn;
     @Getter
     private ArrayList<Property> propertyOwned;
+    @Getter
+    @Setter
+    private int OOJCards = 0;
+    @Getter
+    @Setter
+    private int numJailEscAttempts = 0;
     //private ArrayList<Card> cardDrawn;
 
 
