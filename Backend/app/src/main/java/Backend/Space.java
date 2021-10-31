@@ -3,13 +3,14 @@ package Backend;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Objects;
+
 public class Space {
 
     @Getter
     private final String name;
     @Getter
     private final int location;
-
 
     /**
      * Constructor
@@ -28,7 +29,7 @@ public class Space {
      * @return returns true if space is an instance of property
      */
     public static boolean isProperty(Space space){
-       return space instanceof Property;
+        return false;
     }
     public static boolean isStreet(Space space){
         return space instanceof Street;
@@ -39,6 +40,15 @@ public class Space {
                 "name='" + name + '\'' +
                 ", location=" + location +
                 '}';
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Space)) return false;
+        Space space = (Space) o;
+        return getLocation() == space.getLocation() && Objects.equals(getName(), space.getName());
     }
 
 }

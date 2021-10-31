@@ -9,7 +9,7 @@ class SpaceTest {
     @Test
     void isProperty() {
         Property testProperty = new Property("test", 0, 200, 30);
-        assertTrue(Space.isProperty(testProperty));
+
     }
 
 

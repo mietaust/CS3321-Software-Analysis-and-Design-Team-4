@@ -42,6 +42,7 @@ public class Gameplay {
     }
     //standard movement logic,player is yote to jail if they get 3 doubles
     do {
+      // we have to check if the player is already in jail
       dice.roll();
       movement += dice.getTotal();
       if (dice.isDouble()) {

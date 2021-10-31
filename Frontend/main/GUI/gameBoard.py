@@ -5,6 +5,7 @@ import random
 position = 0  # temp variable for moving the token 1
 player2_position = 0  # temp variable for moving the token 2
 house_num = 0
+hotel_num = 1  # temp hotel num
 
 
 class GameBoard:
@@ -18,6 +19,7 @@ class GameBoard:
         self.deactivate_space_button()  # Deactivates spaces, so they can't be clicked
         self.create_player_token()   # Creates all player token
         self.initialize_houses()    # Initializes house labels
+        self.initialize_hotels()    # Initializes hotel labels
         self.window.config(bg="#BFDBAE")
 
         self.window.mainloop()
@@ -301,6 +303,7 @@ class GameBoard:
         self.player_two_label = Label(self.window, image=self.player_two_img, bg="#FF0000")
         self.player_two_label.place(x=35, y=725)
 
+    # Initializes houses
     def initialize_houses(self):
 
         # house image
@@ -328,7 +331,7 @@ class GameBoard:
         self.vermont_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
         self.vermont_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
         self.vermont_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
-        self.vermont_Avenue_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
+        self.vermont_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
 
         # Connecticut house label
         self.connecticut_house_label = Label(self.window, image=self.house_img, bg="#90EE90")
@@ -437,6 +440,36 @@ class GameBoard:
         self.broadwalk_house2_label = Label(self.window, image=self.house_img, bg="#90EE90")
         self.broadwalk_house3_label = Label(self.window, image=self.house_img, bg="#90EE90")
         self.broadwalk_house4_label = Label(self.window, image=self.house_img, bg="#90EE90")
+
+    # Initializes hotels
+    def initialize_hotels(self):
+        # Hotel image
+        self.hotel_img = PhotoImage(file='Resources/hotel.png')
+        self.hotel_img2 = PhotoImage(file='Resources/hotel1.png')
+
+        ## Hotel label
+        self.brown_mediterranean_hotel_label = Label(self.window, image=self.hotel_img, bg="#FF0000")
+        self.baltic_avenue_hotel_label = Label(self.window, image=self.hotel_img, bg="#FF0000")
+        self.oriental_Avenue_hotel_label = Label(self.window, image=self.hotel_img, bg="#FF0000")
+        self.vermont_hotel_label = Label(self.window, image=self.hotel_img, bg="#FF0000")
+        self.connecticut_hotel_label = Label(self.window, image=self.hotel_img, bg="#FF0000")
+        self.st_charles_hotel_label = Label(self.window, image=self.hotel_img2, bg="#FF0000")
+        self.states_hotel_label = Label(self.window, image=self.hotel_img2, bg="#FF0000")
+        self.virginia_hotel_label = Label(self.window, image=self.hotel_img2, bg="#FF0000")
+        self.st_james_hotel_label = Label(self.window, image=self.hotel_img2, bg="#FF0000")
+        self.tennessee_hotel_label = Label(self.window, image=self.hotel_img2, bg="#FF0000")
+        self.new_york_hotel_label = Label(self.window, image=self.hotel_img2, bg="#FF0000")
+        self.kentucky_hotel_label = Label(self.window, image=self.hotel_img, bg="#FF0000")
+        self.indiana_hotel_label = Label(self.window, image=self.hotel_img, bg="#FF0000")
+        self.illnois_hotel_label = Label(self.window, image=self.hotel_img, bg="#FF0000")
+        self.atlantic_hotel_label = Label(self.window, image=self.hotel_img, bg="#FF0000")
+        self.ventnor_hotel_label = Label(self.window, image=self.hotel_img, bg="#FF0000")
+        self.marvin_hotel_label = Label(self.window, image=self.hotel_img, bg="#FF0000")
+        self.pacific_hotel_label = Label(self.window, image=self.hotel_img2, bg="#FF0000")
+        self.north_carolina_hotel_label = Label(self.window, image=self.hotel_img2, bg="#FF0000")
+        self.pennsylvania_hotel_label = Label(self.window, image=self.hotel_img2, bg="#FF0000")
+        self.park_hotel_label = Label(self.window, image=self.hotel_img2, bg="#FF0000")
+        self.broadwalk_hotel_label = Label(self.window, image=self.hotel_img2, bg="#FF0000")
 
     # Moves player one position
     # param Player one index
@@ -612,6 +645,234 @@ class GameBoard:
         elif player2_position == 39:
             self.player_two_label.place(x=113, y=708)
 
+    def create_hotel(self, player_position, house_no):
+        if player_position == 1:
+            if house_no == 1:
+                ## Forget houses
+                self.brown_mediterranean_house_label.place_forget()
+                self.brown_mediterranean_house2_label.place_forget()
+                self.brown_mediterranean_house3_label.place_forget()
+                self.brown_mediterranean_house4_label.place_forget()
+
+                ## Create hotel
+                self.brown_mediterranean_hotel_label.place(x=78, y=628)
+
+        elif player_position == 3:
+            if house_no == 1:
+                ## Forget houses
+                self.baltic_avenue_house_label.place_forget()
+                self.baltic_avenue_house2_label.place_forget()
+                self.baltic_avenue_house3_label.place_forget()
+                self.baltic_avenue_house4_label.place_forget()
+
+                ## Create hotel
+                self.baltic_avenue_hotel_label.place(x=78, y=500)
+
+        elif player_position == 6:
+            if house_no == 1:
+                ## Forget houses
+                self.oriental_Avenue_house_label.place_forget()
+                self.oriental_Avenue_house2_label.place_forget()
+                self.oriental_Avenue_house3_label.place_forget()
+                self.oriental_Avenue_house4_label.place_forget()
+
+                ## Create hotel
+                self.oriental_Avenue_hotel_label.place(x=78, y=308)
+        elif player_position == 8:
+            if house_no == 1:
+                ## Forget houses
+                self.vermont_house_label.place_forget()
+                self.vermont_house2_label.place_forget()
+                self.vermont_house3_label.place_forget()
+                self.vermont_house4_label.place_forget()
+
+                ## Create hotel
+                self.vermont_hotel_label.place(x=78, y=180)
+
+        elif player_position == 9:
+            if house_no == 1:
+                ## Forget houses
+                self.connecticut_house_label.place_forget()
+                self.connecticut_house2_label.place_forget()
+                self.connecticut_house3_label.place_forget()
+                self.connecticut_house4_label.place_forget()
+
+                ## Create hotel
+                self.connecticut_hotel_label.place(x=78, y=116)
+
+        elif player_position == 11:
+            if house_no == 1:
+                ## Forget houses
+                self.st_charles_house_label.place_forget()
+                self.st_charles_house2_label.place_forget()
+                self.st_charles_house3_label.place_forget()
+                self.st_charles_house4_label.place_forget()
+
+                ## Create hotel
+                self.st_charles_hotel_label.place(x=116, y=78)
+        elif player_position == 13:
+            if house_no == 1:
+                ## Forget houses
+                self.states_house_label.place_forget()
+                self.states_house2_label.place_forget()
+                self.states_house3_label.place_forget()
+                self.states_house4_label.place_forget()
+
+                ## Create hotel
+                self.states_hotel_label.place(x=242, y=78)
+
+        elif player_position == 14:
+            if house_no == 1:
+                ## Forget houses
+                self.virginia_house_label.place_forget()
+                self.virginia_house2_label.place_forget()
+                self.virginia_house3_label.place_forget()
+                self.virginia_house4_label.place_forget()
+
+                ##Create hotel
+                self.virginia_hotel_label.place(x=307, y=79)
+
+        elif player_position == 16:
+            if house_no == 1:
+                ## Forget houses
+                self.st_james_house_label.place_forget()
+                self.st_james_house2_label.place_forget()
+                self.st_james_house3_label.place_forget()
+                self.st_james_house4_label.place_forget()
+
+                ##Create hotel
+                self.st_james_hotel_label.place(x=435, y=78)
+        elif player_position == 18:
+            if house_no == 1:
+                ## Forget houses
+                self.tennessee_house_label.place_forget()
+                self.tennessee_house2_label.place_forget()
+                self.tennessee_house3_label.place_forget()
+                self.tennessee_house4_label.place_forget()
+
+                ##Create hotel
+                self.tennessee_hotel_label.place(x=563, y=78)
+        elif player_position == 19:
+            if house_no == 1:
+                ## Forget houses
+                self.new_york_house_label.place_forget()
+                self.new_york_house2_label.place_forget()
+                self.new_york_house3_label.place_forget()
+                self.new_york_house4_label.place_forget()
+
+                ##Create hotel
+                self.new_york_hotel_label.place(x=627, y=78)
+        elif player_position == 21:
+            if house_no == 1:
+                ## Forget houses
+                self.kentucky_house_label.place_forget()
+                self.kentucky_house2_label.place_forget()
+                self.kentucky_house3_label.place_forget()
+                self.kentucky_house4_label.place_forget()
+
+                ##Create hotel
+                self.kentucky_hotel_label.place(x=677, y=117)
+        elif player_position == 23:
+            if house_no == 1:
+                ## Forget houses
+                self.indiana_house_label.place_forget()
+                self.indiana_house2_label.place_forget()
+                self.indiana_house3_label.place_forget()
+                self.indiana_house4_label.place_forget()
+
+                ##Create hotel
+                self.indiana_hotel_label.place(x=677, y=238)
+        elif player_position == 24:
+            if house_no == 1:
+                ## Forget houses
+                self.illnois_house_label.place_forget()
+                self.illnois_house2_label.place_forget()
+                self.illnois_house3_label.place_forget()
+                self.illnois_house4_label.place_forget()
+
+                ##Create hotel
+                self.illnois_hotel_label.place(x=677, y=305)
+
+        elif player_position == 26:
+            if house_no == 1:
+                ## Forget houses
+                self.atlantic_house_label.place_forget()
+                self.atlantic_house2_label.place_forget()
+                self.atlantic_house3_label.place_forget()
+                self.atlantic_house4_label.place_forget()
+
+                # Create hotel
+                self.atlantic_hotel_label.place(x=677, y=433)
+        elif player_position == 27:
+            if house_no == 1:
+                ## Forget houses
+                self.ventnor_house_label.place_forget()
+                self.ventnor_house2_label.place_forget()
+                self.ventnor_house3_label.place_forget()
+                self.ventnor_house4_label.place_forget()
+
+                ##Create hotel
+                self.ventnor_hotel_label.place(x=677, y=497)
+        elif player_position == 29:
+            if house_no == 1:
+                ## Forget houses
+                self.marvin_house_label.place_forget()
+                self.marvin_house2_label.place_forget()
+                self.marvin_house3_label.place_forget()
+                self.marvin_house4_label.place_forget()
+                ##Create hotel
+                self.marvin_hotel_label.place(x=677, y=625)
+        elif player_position == 31:
+            if house_no == 1:
+                ## Forget houses
+                self.pacific_house_label.place_forget()
+                self.pacific_house2_label.place_forget()
+                self.pacific_house3_label.place_forget()
+                self.pacific_house4_label.place_forget()
+
+                ##Create hotel
+                self.pacific_hotel_label.place(x=629, y=675)
+        elif player_position == 32:
+            if house_no == 1:
+                ## Forget houses
+                self.north_carolina_house_label.place_forget()
+                self.north_carolina_house2_label.place_forget()
+                self.north_carolina_house3_label.place_forget()
+                self.north_carolina_house4_label.place_forget()
+
+                ##Create hotel
+                self.north_carolina_hotel_label.place(x=565, y=675)
+        elif player_position == 34:
+            if house_no == 1:
+                ## Forget houses
+                self.pennsylvania_house_label.place_forget()
+                self.pennsylvania_house2_label.place_forget()
+                self.pennsylvania_house3_label.place_forget()
+                self.pennsylvania_house4_label.place_forget()
+
+                ##Create hotel
+                self.pennsylvania_hotel_label.place(x=435, y=675)
+        elif player_position == 37:
+            if house_no == 1:
+                ## Forget houses
+                self.park_house_label.place_forget()
+                self.park_house2_label.place_forget()
+                self.park_house3_label.place_forget()
+                self.park_house4_label.place_forget()
+
+                ##Create hotel
+                self.park_hotel_label.place(x=243, y=675)
+        elif player_position == 39:
+            if house_no == 1:
+                ## Forget houses
+                self.broadwalk_house_label.place_forget()
+                self.broadwalk_house2_label.place_forget()
+                self.broadwalk_house3_label.place_forget()
+                self.broadwalk_house4_label.place_forget()
+
+                ##Create hotel
+                self.broadwalk_hotel_label.place(x=118, y=675)
+
     # Builds the player house
     # Player position && Number of Houses
     def create_house(self, player_position, house_no):
@@ -654,7 +915,7 @@ class GameBoard:
             elif house_no == 3:
                 self.vermont_house3_label.place(x=85, y=180)
             elif house_no == 4:
-                self.vermont_Avenue_house4_label.place(x=85, y=165)
+                self.vermont_house4_label.place(x=85, y=165)
 
         elif player_position == 9:
             if house_no == 1:
@@ -875,6 +1136,9 @@ class GameBoard:
 
     # get request to /api/build/house
     def button_hotel(self):
+        global position, hotel_num
+
+        self.create_hotel(position, hotel_num)
         test = "test"
 
     # submit a get request to /api/update, receive the board update object through json, apply to the current gameboard.

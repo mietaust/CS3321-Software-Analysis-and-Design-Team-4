@@ -64,7 +64,7 @@ public class Player{
         //checkPosition(this.position);
     }
     public void goToJail(){
-        this.position = 10;
+        this.position = Constants.JAIL;
         inJail = true;
     }
 
