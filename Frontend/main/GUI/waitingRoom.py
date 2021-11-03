@@ -1,7 +1,7 @@
 import tkinter
 from tkinter import *
 import gameBoard
-import main.GUI.newPlayer
+import Frontend.main.GUI.newPlayer
 import json
 
 
