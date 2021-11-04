@@ -21,6 +21,7 @@ public class GameState {
     board = Board.getInstance();
     //todo remove the player instantiations and make an actual method for that.
     player1 = new Player("p1");
+    player2 = new Player("p2");
     player1.addToAccount(1500);
   }
 

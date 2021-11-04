@@ -5,6 +5,9 @@
 
 package Backend;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.Javalin;
 import com.google.gson.Gson;
 
@@ -43,6 +46,15 @@ public class Server {
     //temporary variable for active players
     List<NewPlayer> players = new LinkedList<>();
     Gson g = new Gson();
+
+    //gamestate variable for use / testing? <-- TODO: DISCUSS IN DISCORD
+    GameState bigolgame = GameState.getInstance();
+    bigolgame.player1 = new Player("bingus");
+    bigolgame.player2 = new Player("dingus");
+
+    //serializer details
+    ObjectMapper om = new ObjectMapper();
+    om.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
 
     //GAMEPLAY REQUEST HANDLERS
 
@@ -95,7 +107,11 @@ public class Server {
     server.routes(() -> {
       get("/api/update", ctx -> {
         //package the gamestate into json and send it as the response to this get request.
-
+        System.out.println("Received an update request.");
+        String l = g.toJson(bigolgame);
+        System.out.println(bigolgame.player1.getName());
+        ctx.result(l);
+        System.out.println(l);
       });
     });
 
