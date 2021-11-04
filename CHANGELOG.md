@@ -90,3 +90,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Built moving and buying hotel functionality for GUI.
 
 ### Removed
+
+##[0.9.6] - 11/02/2021
+### Added
+-Added clientside gamestate class.
+-Added clientside player class.
+-Added clientside property class.
+-Added clientside railroad class.
+-Added clientside space class.
+-Added clientside street class.
+-Added clientside utility class.
+
+### Removed

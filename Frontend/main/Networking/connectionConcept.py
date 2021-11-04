@@ -16,3 +16,4 @@ r.append(requests.get('https://httpbin.org/gzip'))
 for req in r:
     print(req.status_code)
 
+

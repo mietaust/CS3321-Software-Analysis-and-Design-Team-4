@@ -1,5 +1,7 @@
 from tkinter import *
 from Frontend.main.Networking.ConnectionManager import ConnectionManager
+import json
+from types import SimpleNamespace
 
 
 class DebugPage:
@@ -14,7 +16,7 @@ class DebugPage:
         self.url = url
 
         # button definitions
-        self.get_button = Button(self.window, text="GET", command=self.gbutton, width=10,
+        self.get_button = Button(self.window, text="UPDATE", command=self.gbutton, width=10,
                                  font=('Arial', 13, 'bold')).place(x=155, y=34)
 
         self.post_button = Button(self.window, text="POST", command=self.pbutton, width=10,
@@ -26,8 +28,12 @@ class DebugPage:
     # button functions
     def gbutton(self):
         test = "hg"
-        result = self.cman.create_get_request()
-        print(result)
+        res = self.cman.create_get_request("/api/update")
+        print(res.content)
+        #outputgs = json.loads(res.request.body, object_hook=lambda d: SimpleNamespace(**d))
+        #print(outputgs.player1.name, outputgs.player2.name)
+
+
 
     def pbutton(self):
         test = "hey"

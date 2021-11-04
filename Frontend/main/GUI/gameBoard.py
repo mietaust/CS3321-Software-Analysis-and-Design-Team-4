@@ -1145,5 +1145,6 @@ class GameBoard:
     def get_board_update(self):
         test = "test"
 
-board = GameBoard()
+
+
 
