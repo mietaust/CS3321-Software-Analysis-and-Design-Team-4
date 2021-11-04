@@ -83,7 +83,7 @@ public class Server {
       get("/api/purchase/house", ctx -> {
         //handle game logic on current player submitting a buy house request on the property they're currently on
         Gameplay.buildHouse(
-            GameState.player1);//todo figure out how to differintiate between requests.
+            GameState.getInstance().player1);//todo figure out how to differintiate between requests.
       });
     });
 
@@ -91,7 +91,7 @@ public class Server {
     server.routes(() -> {
       get("/api/purchase/hotel", ctx -> {
         //handle game logic on current player submitting a buy hotel request on the property they're currently on
-        Gameplay.buildHotel(GameState.player1);
+        Gameplay.buildHotel(GameState.getInstance().player1);
       });
     });
 
@@ -99,7 +99,7 @@ public class Server {
     server.routes(() -> {
       get("/api/roll", ctx -> {
         //handle game logic on current player submitting a buy hotel request on the property they're currently on
-        Gameplay.roll(GameState.player1);
+        Gameplay.roll(GameState.getInstance().player1);
       });
     });
 

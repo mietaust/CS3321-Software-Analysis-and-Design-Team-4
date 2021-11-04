@@ -73,18 +73,18 @@ public class Gameplay {
   private static void checkPosition(
       Player player) {//deals with reactive spaces, passing go, etc. todo should exchange all the nasty casting with proper method override stuff
     //this chunk handles rent payment
-    if ((GameState.getBoard()[player.getPosition()]) instanceof Street
-        && ((Street) GameState.getBoard()[player.getPosition()]).getOwner() != null
-        && ((Street) GameState.getBoard()[player.getPosition()]).getOwner() != player) {
-      ((Street) GameState.getBoard()[player.getPosition()]).getOwner()
-          .addToAccount(((Street) GameState.getBoard()[player.getPosition()]).getRent());
-      player.addToAccount(-1 * ((Street) GameState.getBoard()[player.getPosition()]).getRent());
-    } else if ((GameState.getBoard()[player.getPosition()]) instanceof Property
-        && ((Property) GameState.getBoard()[player.getPosition()]).getOwner() != null
-        && ((Property) GameState.getBoard()[player.getPosition()]).getOwner() != player) {
-      ((Property) GameState.getBoard()[player.getPosition()]).getOwner()
-          .addToAccount(((Property) GameState.getBoard()[player.getPosition()]).getRent());
-      player.addToAccount(-1 * ((Property) GameState.getBoard()[player.getPosition()]).getRent());
+    if ((state.getBoard()[player.getPosition()]) instanceof Street
+        && ((Street) state.getBoard()[player.getPosition()]).getOwner() != null
+        && ((Street) state.getBoard()[player.getPosition()]).getOwner() != player) {
+      ((Street) state.getBoard()[player.getPosition()]).getOwner()
+          .addToAccount(((Street) state.getBoard()[player.getPosition()]).getRent());
+      player.addToAccount(-1 * ((Street) state.getBoard()[player.getPosition()]).getRent());
+    } else if ((state.getBoard()[player.getPosition()]) instanceof Property
+        && ((Property) state.getBoard()[player.getPosition()]).getOwner() != null
+        && ((Property) state.getBoard()[player.getPosition()]).getOwner() != player) {
+      ((Property) state.getBoard()[player.getPosition()]).getOwner()
+          .addToAccount(((Property) state.getBoard()[player.getPosition()]).getRent());
+      player.addToAccount(-1 * ((Property) state.getBoard()[player.getPosition()]).getRent());
     }
     //this chunk handles all the other possible reactive spaces
     if (player.getPosition() == Constants.GO_SPACE) {
@@ -114,17 +114,17 @@ public class Gameplay {
    * @param player
    */
   public static void buy(Player player) {
-    System.out.println((GameState.getBoard()[player.getPosition()]) instanceof Property);
-    if ((GameState.getBoard()[player.getPosition()]) instanceof Property) {
-      //System.out.println(player.getAccountBalance()+"\n"+String.valueOf(((Property)GameState.getBoard()[player.getPosition()]).getValue())) ;
+    System.out.println((state.getBoard()[player.getPosition()]) instanceof Property);
+    if ((state.getBoard()[player.getPosition()]) instanceof Property) {
+      //System.out.println(player.getAccountBalance()+"\n"+String.valueOf(((Property)state.getBoard()[player.getPosition()]).getValue())) ;
       if (player.getAccountBalance()
-          > ((Property) GameState.getBoard()[player.getPosition()]).getValue()
-          && ((Property) GameState.getBoard()[player.getPosition()]).getOwner() == null) {
-        player.buy((Property) GameState.getBoard()[player.getPosition()]);
-        //((Property) GameState.getBoard()[player.getPosition()]).setOwner(player);
-        //player.addToAccount(-((Property) GameState.getBoard()[player.getPosition()]).getValue());
+          > ((Property) state.getBoard()[player.getPosition()]).getValue()
+          && ((Property) state.getBoard()[player.getPosition()]).getOwner() == null) {
+        player.buy((Property) state.getBoard()[player.getPosition()]);
+        //((Property) state.getBoard()[player.getPosition()]).setOwner(player);
+        //player.addToAccount(-((Property) state.getBoard()[player.getPosition()]).getValue());
 
-        // System.out.println(((Property) GameState.getBoard()[player.getPosition()]).getOwner().getName());
+        // System.out.println(((Property) state.getBoard()[player.getPosition()]).getOwner().getName());
         // System.out.println(player.getPropertyOwned());
 
       } else {
@@ -195,10 +195,10 @@ public class Gameplay {
 
   public static void main(String[] args) {
     GameState g = GameState.getInstance();
-    GameState.player1.move(1);
-    buy(GameState.player1);
-    GameState.player1.move(11);
-    buy(GameState.player1);
+    state.player1.move(1);
+    buy(state.player1);
+    state.player1.move(11);
+    buy(state.player1);
 
   }
 

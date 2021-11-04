@@ -1,6 +1,10 @@
 package Backend;
 
 import Backend.Board;
+import Backend.Card.CardType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,13 +12,13 @@ public class GameState {
 
   private static GameState gamestate;
   @Getter
-  private static Space[] board;
+  private  Space[] board;
   @Getter
   @Setter
-  private static boolean error = false;
-  static Player player1;
-  static Player player2;
-  CommunityChest communityChest;
+  private  boolean error = false;
+   Player player1;
+   Player player2;
+  CommunityChest communityChest = new CommunityChest("cChest",3, CardType.COMMUNITY);
 
   private GameState() {
 
@@ -31,18 +35,22 @@ public class GameState {
     }
     return gamestate;
   }
-  public static void resetState(){
+
+  public static void resetState() {
     gamestate = new GameState();
   }
 
   public static void main(String[] args) {
+    GameState gs = GameState.getInstance();
 
-    board = Board.getInstance();
-    for (int x = 0; x < board.length; x++) {
-      System.out.println(board[x]);
+    GsonBuilder builder = new GsonBuilder();
+    builder.serializeNulls();
+    Gson gson = builder.create();
+    System.out.println(gson.toJson(gs));
 
-    }
 
   }
 
 }
+
+
