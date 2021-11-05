@@ -79,7 +79,7 @@ public class Board {
   /**
    * Private Constructor
    */
-  private Board() {
+  Board() {
 
   }
 
