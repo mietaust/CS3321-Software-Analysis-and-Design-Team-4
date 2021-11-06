@@ -11,11 +11,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.Javalin;
 import com.google.gson.Gson;
 
+import static io.javalin.apibuilder.ApiBuilder.before;
 import static io.javalin.apibuilder.ApiBuilder.get;
 import static io.javalin.apibuilder.ApiBuilder.post;
+import static java.util.Objects.isNull;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 public class Server {
 
@@ -62,19 +65,30 @@ public class Server {
     server.routes(() -> {
       post("/api/join", ctx -> {
         System.out.println("received");
-        //TODO change logic later on when the rest of the game is more defined - Eventually NewPlayer won't exist
-        try {
-          NewPlayer np = g.fromJson(ctx.body(), NewPlayer.class);
-
-          if (players.contains(np)) {
-            //change name on the server side i guess lol
-          } else {
-            players.add(np);
-            System.out.println("Player " + np.getPname() + " has joined.");
-          }
-        } catch (Exception e) {
-          //handle non-json requests, shouldn't happen but good to have
+        Backend.Player newPlayer = new Player(ctx.body());
+        if(isNull(GameState.getInstance().player1)){
+          GameState.getInstance().player1 = newPlayer;
+        }else if(isNull(GameState.getInstance().player2)){
+          GameState.getInstance().player2 = newPlayer;
+        }else{
+          //game is full until we make it >2 players. shouldn't be too hard just haven't yet.
         }
+        ctx.result(newPlayer.getId().toString());
+        //TODO change logic later on when the rest of the game is more defined - Eventually NewPlayer won't exist
+//        try {
+//          //NewPlayer np = g.fromJson(ctx.body(), NewPlayer.class);
+//          Player newP = new Player(ctx.body());
+//          if (players.contains(np)) {
+//            //change name on the server side i guess lol
+//          } else {
+//            players.add(np);
+//            System.out.println("Player " + np.getPname() + " has joined.");
+//          }
+//        } catch (Exception e) {
+//          //handle non-json requests, shouldn't happen but good to have
+//        }
+
+
       });
     });
 
@@ -97,9 +111,13 @@ public class Server {
 
     //player roll dice handler
     server.routes(() -> {
-      get("/api/roll", ctx -> {
+      post("/api/roll", ctx -> {
+        UUID idFromSender = UUID.fromString(ctx.body());
+        if(idFromSender.equals(GameState.getInstance().turn.getId())){
+          Gameplay.roll(GameState.getInstance().turn);
+        }
         //handle game logic on current player submitting a buy hotel request on the property they're currently on
-        Gameplay.roll(GameState.getInstance().player1);
+
       });
     });
 
@@ -108,7 +126,7 @@ public class Server {
       get("/api/update", ctx -> {
         //package the gamestate into json and send it as the response to this get request.
         System.out.println("Received an update request.");
-        String l = g.toJson(bigolgame);
+        String l = g.toJson(GameState.getInstance());
         System.out.println(bigolgame.player1.getName());
         ctx.result(l);
         System.out.println(l);

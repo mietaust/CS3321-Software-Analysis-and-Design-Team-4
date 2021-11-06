@@ -15,10 +15,16 @@ public class GameState {
   private  Space[] board;
   @Getter
   @Setter
-  private  boolean error = false;
-   Player player1;
-   Player player2;
-  CommunityChest communityChest = new CommunityChest("cChest",3, CardType.COMMUNITY);
+  private boolean error = false;
+  Player player1;
+  Player player2;
+  @Getter
+  @Setter
+  Player turn = player1;
+  @Getter
+  @Setter
+  Boolean rolled = false;
+  CommunityChest communityChest = new CommunityChest("Chest", 3, CardType.COMMUNITY);
 
   private GameState() {
 

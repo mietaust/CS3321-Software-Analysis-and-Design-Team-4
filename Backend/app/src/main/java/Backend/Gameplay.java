@@ -32,6 +32,8 @@ public class Gameplay {
           player.setNumJailEscAttempts(0);
         } else {
           player.setNumJailEscAttempts(player.getNumJailEscAttempts() + 1);
+
+
           if (player.getNumJailEscAttempts() == 3) {
             player.addToAccount(-50);
             player.setInJail(false);
@@ -60,7 +62,7 @@ public class Gameplay {
       player.addToAccount(200);
     }
     player.move(movement);
-
+    state.setRolled(true);
     checkPosition(player);
 
   }
@@ -87,9 +89,7 @@ public class Gameplay {
       player.addToAccount(-1 * ((Property) state.getBoard()[player.getPosition()]).getRent());
     }
     //this chunk handles all the other possible reactive spaces
-    if (player.getPosition() == Constants.GO_SPACE) {
-      player.addToAccount(Constants.PASSING_GO);
-    } else if (player.getPosition() == Constants.COMMUNITY_CHEST
+    if (player.getPosition() == Constants.COMMUNITY_CHEST
         || player.getPosition() == Constants.COMMUNITY_CHEST2
         || player.getPosition() == Constants.COMMUNITY_CHEST3) {
       chest.community((int) Math.floor(Math.random() * 16));
@@ -115,7 +115,7 @@ public class Gameplay {
    */
   public static void buy(Player player) {
     System.out.println((state.getBoard()[player.getPosition()]) instanceof Property);
-    if ((state.getBoard()[player.getPosition()]) instanceof Property) {
+    if (state.getRolled() && (state.getBoard()[player.getPosition()]) instanceof Property) {
       //System.out.println(player.getAccountBalance()+"\n"+String.valueOf(((Property)state.getBoard()[player.getPosition()]).getValue())) ;
       if (player.getAccountBalance()
           > ((Property) state.getBoard()[player.getPosition()]).getValue()
@@ -142,7 +142,7 @@ public class Gameplay {
   public static void buildHouse(@NotNull Player player) {
     int location = player.getPosition();
     //check to see if the space allows building
-    if ((state.getBoard()[location]) instanceof Street) {
+    if (state.getRolled() && (state.getBoard()[location]) instanceof Backend.Street) {
       //check if it isn't full of houses, has no hotels, and player owns it and all of it's color.
       if (((Street) state.getBoard()[location]).getHouseNumber() < 4
           && player.getPropertyOwned().contains((Street) state.getBoard()[location])
@@ -168,7 +168,7 @@ public class Gameplay {
   public static void buildHotel(Player player) {
     int location = player.getPosition();
     //check to see if the space allows building
-    if ((state.getBoard()[location]) instanceof Street) {
+    if (state.getRolled() && (state.getBoard()[location]) instanceof Backend.Street) {
       //check if it isn't full of houses and player owns it and all of the color.
       if (((Street) state.getBoard()[location]).getHouseNumber() == 4
           && player.getPropertyOwned().contains((Street) state.getBoard()[location])
@@ -190,6 +190,19 @@ public class Gameplay {
     } else {
       //not buildable location
     }
+  }
+
+  /**
+   * ends current players turn
+   */
+  public static void endTurn() {
+    if (state.turn.equals(state.player1)) {
+      state.setTurn(state.player2);
+    } else {
+      state.setTurn(state.player1);
+    }
+    state.setRolled(false);
+
   }
 
 
