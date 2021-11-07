@@ -1,10 +1,11 @@
 package Backend;
-
+import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 
 
 import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 
 public class Player{
     @Setter
@@ -28,6 +29,8 @@ public class Player{
     @Getter
     @Setter
     private int numJailEscAttempts = 0;
+    @Getter
+    private UUID id;
     //private ArrayList<Card> cardDrawn;
 
 
@@ -41,6 +44,7 @@ public class Player{
         this.inJail = false;
         this.position = 0;
         this.propertyOwned = new ArrayList<>();
+        id = UUID.randomUUID();
     }
 
 
@@ -142,6 +146,12 @@ public class Player{
         return count;
     }
 
+
+    public boolean equals(@NotNull Player p){
+        if(p.getId().equals(this.id)){
+            return true;
+        }else{return false;}
+    }
     /// Moving checkposition method to game-logic
 
 

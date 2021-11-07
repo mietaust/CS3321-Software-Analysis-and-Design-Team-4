@@ -1,5 +1,14 @@
 package Backend;
 
+import Backend.Card;
+import Backend.Chance;
+import Backend.Color;
+import Backend.CommunityChest;
+import Backend.Property;
+import Backend.Railroad;
+import Backend.Space;
+import Backend.Street;
+import Backend.Utility;
 import lombok.Getter;
 
 //shell class for later
