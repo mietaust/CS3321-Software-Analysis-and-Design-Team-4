@@ -1,6 +1,10 @@
 import tkinter
 from tkinter import *
 import random
+import json
+from types import SimpleNamespace
+import time
+from threading import Thread
 
 position = 0  # temp variable for moving the token 1
 player2_position = 0  # temp variable for moving the token 2
@@ -10,7 +14,9 @@ hotel_num = 1  # temp hotel num
 
 class GameBoard:
 
-    def __init__(self):
+    def __init__(self, cman, player):
+        self.player = player
+        self.cman = cman
         self.window = Tk()
         self.window.title("MonopolyLite")
         self.window.geometry("1300x770")
@@ -22,7 +28,7 @@ class GameBoard:
         self.initialize_hotels()    # Initializes hotel labels
         self.window.config(bg="#BFDBAE")
 
-        self.window.mainloop()
+        self.get_board_update_loop()
 
     # Initializes board spaces with images
     def initialize_spaces(self):
@@ -473,10 +479,7 @@ class GameBoard:
 
     # Moves player one position
     # param Player one index
-    def player_one_position(self):
-        global position
-        position = (position + 1) % 40
-
+    def player_one_position(self, position):
         if position == 0:
             self.player_one_label.place(x=5, y=725)
         elif position == 1:
@@ -560,10 +563,7 @@ class GameBoard:
 
     # Moves Player two token
     # param Player two index
-    def player_two_position(self):
-        global player2_position
-        player2_position = (player2_position + 1) % 40
-
+    def player_two_position(self, player2_position):
         if player2_position == 0:
             self.player_two_label.place(x=35, y=725)
         elif player2_position == 1:
@@ -1117,15 +1117,16 @@ class GameBoard:
             self.space_button_list[i]['command'] = 1
             self.space_button_list[i]['relief'] = 'sunken'
 
-    # get request to /api/roll
+    # post request to /api/roll
     def button_roll(self):
-        test = "test"
+        self.cman.create_post_request(self.player.uuid, "/api/roll")
+        self.get_board_update_single()
 
-    # get request to /api/purchase
+    # post request to /api/purchase
     def button_purchase(self):
         test = "test"
 
-    # get request to /api/build/house
+    # post request to /api/build/house
     def button_house(self):
         # Temp method to make player buy house
         global position, house_num
@@ -1134,7 +1135,7 @@ class GameBoard:
         house_num = (house_num + 1) % 5
         test = "test"
 
-    # get request to /api/build/house
+    # post request to /api/build/house
     def button_hotel(self):
         global position, hotel_num
 
@@ -1142,8 +1143,53 @@ class GameBoard:
         test = "test"
 
     # submit a get request to /api/update, receive the board update object through json, apply to the current gameboard.
-    def get_board_update(self):
-        test = "test"
+    def get_board_update_loop(self):
+        i = 68
+        while i <= 69:
+            self.window.update()
+            l = self.cman.create_get_request("/api/update")
+            outputgs = json.loads(l.content, object_hook=lambda d: SimpleNamespace(**d))
+
+            # update all relevant board info
+            self.player_one_position(outputgs.player1.position)
+            self.player_two_position(outputgs.player2.position)
+            self.window.update()
+            print("Board Updated!")
+
+            # we wait before looping again
+            self.window.update()
+            time.sleep(.5)
+            self.window.update()
+            time.sleep(.5)
+            self.window.update()
+            time.sleep(.5)
+            self.window.update()
+            time.sleep(.5)
+            self.window.update()
+            time.sleep(.5)
+            self.window.update()
+            time.sleep(.5)
+            self.window.update()
+            time.sleep(.5)
+            self.window.update()
+            time.sleep(.5)
+            self.window.update()
+            time.sleep(.5)
+            self.window.update()
+            time.sleep(.5)
+            self.window.update()
+
+
+    def get_board_update_single(self):
+        self.window.update()
+        l = self.cman.create_get_request("/api/update")
+        outputgs = json.loads(l.content, object_hook=lambda d: SimpleNamespace(**d))
+
+        # update all relevant board info
+        self.player_one_position(outputgs.player1.position)
+        self.player_two_position(outputgs.player2.position)
+        self.window.update()
+        print("Board Updated!")
 
 
 
