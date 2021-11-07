@@ -66,11 +66,11 @@ public class Server {
       post("/api/join", ctx -> {
         System.out.println("received");
         Backend.Player newPlayer = new Player(ctx.body());
-        if(isNull(GameState.getInstance().player1)){
+        if (isNull(GameState.getInstance().player1)) {
           GameState.getInstance().player1 = newPlayer;
-        }else if(isNull(GameState.getInstance().player2)){
+        } else if (isNull(GameState.getInstance().player2)) {
           GameState.getInstance().player2 = newPlayer;
-        }else{
+        } else {
           //game is full until we make it >2 players. shouldn't be too hard just haven't yet.
         }
         ctx.result(newPlayer.getId().toString());
@@ -88,7 +88,6 @@ public class Server {
 //          //handle non-json requests, shouldn't happen but good to have
 //        }
 
-
       });
     });
 
@@ -96,16 +95,25 @@ public class Server {
     server.routes(() -> {
       get("/api/purchase/house", ctx -> {
         //handle game logic on current player submitting a buy house request on the property they're currently on
-        Gameplay.buildHouse(
-            GameState.getInstance().player1);//todo figure out how to differintiate between requests.
+        UUID idFromSender = UUID.fromString(ctx.body());
+        if (idFromSender.equals(GameState.getInstance().turn.getId())) {
+          Gameplay.buildHouse(GameState.getInstance().player1);
+        }
+
+
       });
     });
 
     //player purchase hotel handler
     server.routes(() -> {
-      get("/api/purchase/hotel", ctx -> {
-        //handle game logic on current player submitting a buy hotel request on the property they're currently on
-        Gameplay.buildHotel(GameState.getInstance().player1);
+      post("/api/purchase/hotel", ctx -> {
+        UUID idFromSender = UUID.fromString(ctx.body());
+        if (idFromSender.equals(GameState.getInstance().turn.getId())) {
+          Gameplay.buildHotel(GameState.getInstance().turn);
+          //handle game logic on current player submitting a buy hotel request on the property they're currently on
+        }
+
+
       });
     });
 
@@ -113,7 +121,7 @@ public class Server {
     server.routes(() -> {
       post("/api/roll", ctx -> {
         UUID idFromSender = UUID.fromString(ctx.body());
-        if(idFromSender.equals(GameState.getInstance().turn.getId())){
+        if (idFromSender.equals(GameState.getInstance().turn.getId())) {
           Gameplay.roll(GameState.getInstance().turn);
         }
         //handle game logic on current player submitting a buy hotel request on the property they're currently on
