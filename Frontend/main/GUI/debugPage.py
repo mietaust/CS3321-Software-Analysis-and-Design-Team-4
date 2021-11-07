@@ -29,9 +29,8 @@ class DebugPage:
     def gbutton(self):
         test = "hg"
         res = self.cman.create_get_request("/api/update")
-        print(res.content)
-        #outputgs = json.loads(res.request.body, object_hook=lambda d: SimpleNamespace(**d))
-        #print(outputgs.player1.name, outputgs.player2.name)
+        outputgs = json.loads(res.content, object_hook=lambda d: SimpleNamespace(**d))
+        print(outputgs.player1.name, outputgs.player2.name)
 
 
 
