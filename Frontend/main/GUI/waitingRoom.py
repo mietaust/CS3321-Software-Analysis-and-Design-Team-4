@@ -2,7 +2,7 @@ import threading
 import tkinter
 from tkinter import *
 import gameBoard
-import Frontend.main.GUI.newPlayer
+import Frontend.main.GUI.player
 import Frontend.main.GUI.gameBoard
 import json
 from types import SimpleNamespace
@@ -108,3 +108,15 @@ class WaitRoom:
                 time.sleep(.5)
                 self.window.update()
                 print(str(outputgs.gamestart))
+
+
+
+
+
+
+
+
+
+
+
+
