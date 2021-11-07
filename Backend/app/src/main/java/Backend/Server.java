@@ -64,13 +64,19 @@ public class Server {
     //new player handler
     server.routes(() -> {
       post("/api/join", ctx -> {
-        System.out.println("received");
+        System.out.println(GameState.getInstance().getPlayercount());
         Backend.Player newPlayer = new Player(ctx.body());
-        if(isNull(GameState.getInstance().player1)){
+        System.out.println("received new player " + newPlayer.getName() + ", assigned ID " + newPlayer.getId() + ".");
+        if(GameState.getInstance().getPlayercount() == 0){
           GameState.getInstance().player1 = newPlayer;
-        }else if(isNull(GameState.getInstance().player2)){
+          GameState.getInstance().setPlayercount(1);
+        }else if(GameState.getInstance().getPlayercount() == 1){
           GameState.getInstance().player2 = newPlayer;
+          GameState.getInstance().gamestart = true;
+          GameState.getInstance().setPlayercount(2);
+          GameState.getInstance().setTurn(GameState.getInstance().player1);
         }else{
+          System.out.println("hey we're here");
           //game is full until we make it >2 players. shouldn't be too hard just haven't yet.
         }
         ctx.result(newPlayer.getId().toString());
@@ -112,9 +118,28 @@ public class Server {
     //player roll dice handler
     server.routes(() -> {
       post("/api/roll", ctx -> {
-        UUID idFromSender = UUID.fromString(ctx.body());
+        //parse provided uuid TODO add error handling for non-uuid reception
+        String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
+        System.out.println(parsedString);
+        System.out.println(GameState.getInstance().turn.getId());
+        UUID idFromSender = UUID.fromString(parsedString);
+
+        //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
         if(idFromSender.equals(GameState.getInstance().turn.getId())){
+          System.out.println("Got good request from UUID: " + GameState.getInstance().turn.getId());
           Gameplay.roll(GameState.getInstance().turn);
+
+          if(idFromSender.equals(GameState.getInstance().player1.getId())){
+            //set new player to player 2
+            GameState.getInstance().setTurn(GameState.getInstance().player2);
+          }else if ((idFromSender.equals(GameState.getInstance().player2.getId()))){
+            //set new player to player 1
+            GameState.getInstance().setTurn(GameState.getInstance().player1);
+          }
+
+
+        }else{
+          System.out.println("Received bad request. Pass on game logic execution.");
         }
         //handle game logic on current player submitting a buy hotel request on the property they're currently on
 
@@ -127,9 +152,8 @@ public class Server {
         //package the gamestate into json and send it as the response to this get request.
         System.out.println("Received an update request.");
         String l = g.toJson(GameState.getInstance());
-        System.out.println(bigolgame.player1.getName());
         ctx.result(l);
-        System.out.println(l);
+        //System.out.println(l);
       });
     });
 

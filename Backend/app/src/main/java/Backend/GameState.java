@@ -20,6 +20,10 @@ public class GameState {
   Player player2;
   @Getter
   @Setter
+  private int playercount = 0;
+  boolean gamestart = false;
+  @Getter
+  @Setter
   Player turn = player1;
   @Getter
   @Setter
