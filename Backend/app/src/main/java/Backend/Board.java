@@ -101,11 +101,5 @@ public class Board {
     return new Board().getSpaceNames();
   }
 
-  public static void main(String[] args) {
-    Board board = new Board();
-    Space space = Board.getInstance()[1];
-    Property st = (Property) space;
-    System.out.println(st.getRent(st));
-  }
 
 }
