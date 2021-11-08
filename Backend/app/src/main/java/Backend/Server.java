@@ -46,16 +46,8 @@ public class Server {
     // GET request handler
     server.get("/", ctx -> ctx.result("Connection made"));
 
-    //temporary variable for active players
-    List<NewPlayer> players = new LinkedList<>();
-    Gson g = new Gson();
-
-    //gamestate variable for use / testing? <-- TODO: DISCUSS IN DISCORD
-    GameState bigolgame = GameState.getInstance();
-    bigolgame.player1 = new Player("bingus");
-    bigolgame.player2 = new Player("dingus");
-
     //serializer details
+    Gson g = new Gson();
     ObjectMapper om = new ObjectMapper();
     om.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
 
@@ -64,16 +56,16 @@ public class Server {
     //new player handler
     server.routes(() -> {
       post("/api/join", ctx -> {
-        System.out.println(GameState.getInstance().getPlayercount());
+        System.out.println(GameState.getInstance().getPlayerCount());
         Backend.Player newPlayer = new Player(ctx.body());
         System.out.println("received new player " + newPlayer.getName() + ", assigned ID " + newPlayer.getId() + ".");
-        if(GameState.getInstance().getPlayercount() == 0){
+        if(GameState.getInstance().getPlayerCount() == 0){
           GameState.getInstance().player1 = newPlayer;
-          GameState.getInstance().setPlayercount(1);
-        }else if(GameState.getInstance().getPlayercount() == 1){
+          GameState.getInstance().setPlayerCount(1);
+        }else if(GameState.getInstance().getPlayerCount() == 1){
           GameState.getInstance().player2 = newPlayer;
-          GameState.getInstance().gamestart = true;
-          GameState.getInstance().setPlayercount(2);
+          GameState.getInstance().gameStart = true;
+          GameState.getInstance().setPlayerCount(2);
           GameState.getInstance().setTurn(GameState.getInstance().player1);
         }else{
           System.out.println("hey we're here");
