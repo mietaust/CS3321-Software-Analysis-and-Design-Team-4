@@ -30,7 +30,7 @@ public class Player{
     @Setter
     private int numJailEscAttempts = 0;
     @Getter
-    private UUID id;
+    private final UUID id;
     //private ArrayList<Card> cardDrawn;
 
 
