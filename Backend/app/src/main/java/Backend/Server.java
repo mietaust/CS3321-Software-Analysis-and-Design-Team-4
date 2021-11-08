@@ -101,17 +101,57 @@ public class Server {
     //player purchase house handler
     server.routes(() -> {
       get("/api/purchase/house", ctx -> {
-        //handle game logic on current player submitting a buy house request on the property they're currently on
-        Gameplay.buildHouse(
-            GameState.getInstance().player1);//todo figure out how to differintiate between requests.
+        //parse provided uuid TODO add error handling for non-uuid reception
+        String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
+        System.out.println(parsedString);
+        System.out.println(GameState.getInstance().turn.getId());
+        UUID idFromSender = UUID.fromString(parsedString);
+
+        //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
+        if(idFromSender.equals(GameState.getInstance().turn.getId())){
+          System.out.println("Got good house request from UUID: " + GameState.getInstance().turn.getId());
+          Gameplay.buildHouse(GameState.getInstance().turn);
+        }else{
+          System.out.println("Received bad house request. Pass on game logic execution.");
+        }
       });
     });
 
     //player purchase hotel handler
     server.routes(() -> {
       get("/api/purchase/hotel", ctx -> {
-        //handle game logic on current player submitting a buy hotel request on the property they're currently on
-        Gameplay.buildHotel(GameState.getInstance().player1);
+        //parse provided uuid TODO add error handling for non-uuid reception
+        String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
+        System.out.println(parsedString);
+        System.out.println(GameState.getInstance().turn.getId());
+        UUID idFromSender = UUID.fromString(parsedString);
+
+        //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
+        if(idFromSender.equals(GameState.getInstance().turn.getId())){
+          System.out.println("Got good hotel request from UUID: " + GameState.getInstance().turn.getId());
+          Gameplay.buildHotel(GameState.getInstance().turn);
+        }else{
+          System.out.println("Received bad hotel request. Pass on game logic execution.");
+        }
+      });
+    });
+
+    //player purchase property handler
+    server.routes(() -> {
+      get("/api/purchase/property", ctx -> {
+        //parse provided uuid TODO add error handling for non-uuid reception
+        String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
+        System.out.println(parsedString);
+        System.out.println(GameState.getInstance().turn.getId());
+        UUID idFromSender = UUID.fromString(parsedString);
+
+        //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
+        if(idFromSender.equals(GameState.getInstance().turn.getId())){
+          System.out.println("Got good request from UUID: " + GameState.getInstance().turn.getId());
+          Gameplay.buy(GameState.getInstance().turn);
+        }else{
+          System.out.println("Received bad request. Pass on game logic execution.");
+        }
       });
     });
 
@@ -128,7 +168,24 @@ public class Server {
         if(idFromSender.equals(GameState.getInstance().turn.getId())){
           System.out.println("Got good request from UUID: " + GameState.getInstance().turn.getId());
           Gameplay.roll(GameState.getInstance().turn);
+        }else {
+          System.out.println("Received bad request. Pass on game logic execution.");
+        }
+      });
+    });
 
+    //player end turn handler
+    server.routes(() -> {
+      get("/api/end", ctx -> {
+        //parse provided uuid TODO add error handling for non-uuid reception
+        String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
+        System.out.println(parsedString);
+        System.out.println(GameState.getInstance().turn.getId());
+        UUID idFromSender = UUID.fromString(parsedString);
+
+        //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
+        if(idFromSender.equals(GameState.getInstance().turn.getId())){
+          System.out.println("Got good end turn request from UUID: " + GameState.getInstance().turn.getId());
           if(idFromSender.equals(GameState.getInstance().player1.getId())){
             //set new player to player 2
             GameState.getInstance().setTurn(GameState.getInstance().player2);
@@ -136,13 +193,9 @@ public class Server {
             //set new player to player 1
             GameState.getInstance().setTurn(GameState.getInstance().player1);
           }
-
-
         }else{
-          System.out.println("Received bad request. Pass on game logic execution.");
+          System.out.println("Received bad end turn request. Pass on game logic execution.");
         }
-        //handle game logic on current player submitting a buy hotel request on the property they're currently on
-
       });
     });
 
