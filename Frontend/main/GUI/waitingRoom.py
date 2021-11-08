@@ -35,7 +35,7 @@ class WaitRoom:
         self.window.configure(bg="#BFDBAE")
 
         # button definitions
-        self.quit_button = Button(self.window, text="QUIT", command=self.show_game(), width=10,
+        self.quit_button = Button(self.window, text="QUIT", command=self.show_game, width=10,
                                   font=('Arial', 13, 'bold'))
         self.quit_button.place(x=230, y=10)
 
@@ -73,7 +73,7 @@ class WaitRoom:
             response = self.cman.create_get_request("/api/update")
             outputgs = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
 
-            if outputgs.gamestart:
+            if outputgs.gameStart:
                 # we open up the gameboard passing relevant info
                 self.window.destroy()
                 gameBoard.GameBoard(self.cman, self.newPlayer)

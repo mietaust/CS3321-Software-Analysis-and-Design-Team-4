@@ -1,10 +1,7 @@
 package Backend;
 
-import Backend.Board;
+
 import Backend.Card.CardType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,8 +17,8 @@ public class GameState {
   Player player2;
   @Getter
   @Setter
-  private int playercount = 0;
-  boolean gamestart = false;
+  private int playerCount = 0;
+  boolean gameStart = false;
   @Getter
   @Setter
   Player turn;
@@ -51,17 +48,6 @@ public class GameState {
     gamestate = new GameState();
   }
 
-  public static void main(String[] args) {
-    GameState gs = GameState.getInstance();
-    System.out.println(gs.turn.getName());
-
-    GsonBuilder builder = new GsonBuilder();
-    builder.serializeNulls();
-    Gson gson = builder.create();
-    System.out.println(gson.toJson(gs));
-
-
-  }
 
 }
 

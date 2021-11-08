@@ -27,6 +27,8 @@ class GameBoard:
         self.initialize_houses()  # Initializes house labels
         self.initialize_hotels()  # Initializes hotel labels
         self.window.config(bg="#BFDBAE")
+
+
         self.thread = Thread(target=self.get_board_update_single())
         self.thread.start()
         #self.window.update()
@@ -299,6 +301,10 @@ class GameBoard:
         self.roll_button = Button(self.window, text="Roll Dice", command=self.button_roll,
                                   font=("arial", 12, 'bold'), width=15)
         self.roll_button.place(x=310, y=600)
+
+        self.endTurn_button = Button(self.window, text="End Turn", command=self.button_end_Turn,
+                                      font=("arial", 12, 'bold'), width=15)
+        self.endTurn_button.place(x=310, y=520)
 
     # Initializes player tokens
     def create_player_token(self):
@@ -1150,6 +1156,10 @@ class GameBoard:
 
         self.create_hotel(position, hotel_num)
         test = "test"
+
+
+    def button_end_Turn(self):
+        response = self.cman.create_get_request("")
 
     def get_board_update_single(self):
         i = 68

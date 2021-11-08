@@ -80,7 +80,7 @@ public class Player{
      */
     //Thinking of changing property to space, since we cant be sure if the player is on a non-property or property
     public void buy(Property property) {
-        if (property instanceof Space) {
+        if (property != null) {
             for (Property element : getPropertyOwned()) {
                 if (element.equals(property)) {
                     return;

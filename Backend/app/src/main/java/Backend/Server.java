@@ -14,7 +14,6 @@ import com.google.gson.Gson;
 import static io.javalin.apibuilder.ApiBuilder.before;
 import static io.javalin.apibuilder.ApiBuilder.get;
 import static io.javalin.apibuilder.ApiBuilder.post;
-import static java.util.Objects.isNull;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -64,16 +63,16 @@ public class Server {
     //new player handler
     server.routes(() -> {
       post("/api/join", ctx -> {
-        System.out.println(GameState.getInstance().getPlayercount());
+        System.out.println(GameState.getInstance().getPlayerCount());
         Backend.Player newPlayer = new Player(ctx.body());
         System.out.println("received new player " + newPlayer.getName() + ", assigned ID " + newPlayer.getId() + ".");
-        if(GameState.getInstance().getPlayercount() == 0){
+        if(GameState.getInstance().getPlayerCount() == 0){
           GameState.getInstance().player1 = newPlayer;
-          GameState.getInstance().setPlayercount(1);
-        }else if(GameState.getInstance().getPlayercount() == 1){
+          GameState.getInstance().setPlayerCount(1);
+        }else if(GameState.getInstance().getPlayerCount() == 1){
           GameState.getInstance().player2 = newPlayer;
-          GameState.getInstance().gamestart = true;
-          GameState.getInstance().setPlayercount(2);
+          GameState.getInstance().gameStart = true;
+          GameState.getInstance().setPlayerCount(2);
           GameState.getInstance().setTurn(GameState.getInstance().player1);
         }else{
           System.out.println("hey we're here");
