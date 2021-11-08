@@ -24,7 +24,7 @@ public class GameState {
   boolean gamestart = false;
   @Getter
   @Setter
-  Player turn = player1;
+  Player turn;
   @Getter
   @Setter
   Boolean rolled = false;
@@ -36,6 +36,7 @@ public class GameState {
     //todo remove the player instantiations and make an actual method for that.
     player1 = new Player("p1");
     player2 = new Player("p2");
+    turn = player1;
     player1.addToAccount(1500);
   }
 
@@ -52,6 +53,7 @@ public class GameState {
 
   public static void main(String[] args) {
     GameState gs = GameState.getInstance();
+    System.out.println(gs.turn.getName());
 
     GsonBuilder builder = new GsonBuilder();
     builder.serializeNulls();
