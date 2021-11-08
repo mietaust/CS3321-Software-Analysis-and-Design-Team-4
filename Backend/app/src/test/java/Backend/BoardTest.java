@@ -1,27 +1,24 @@
 package Backend;
 
-//import testing libraries
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class BoardTest {
+class BoardTest {
 
-    @BeforeAll
-    public static void before(){
-        System.out.println("Beginning testing on Board:");
-        //um... idk
-    }
-
-    // tests to confirm Board's returned instance data is of the right type
     @Test
-    public void testInstanceType() {
-        Board board = new Board();
-        Space[] instances = board.getInstance();
-        //System.out.println("type is... :" + instances[0].getClass().getSimpleName());
-        assertEquals(instances[0].getClass().getSimpleName(), "Space");
+    void getInstance() {
+        Space [] board = Board.getInstance();
+        assertEquals(40, board.length);
+
     }
 
 
+    @Test
+    void getSpaceNames() {
+        Space [] board = Board.getInstance();
+        assertEquals("GO", board[0].getName());
+        assertEquals("Free Parking", board[20].getName());
+
+    }
 }

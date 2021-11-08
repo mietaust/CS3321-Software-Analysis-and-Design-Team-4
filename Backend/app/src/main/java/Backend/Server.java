@@ -14,7 +14,6 @@ import com.google.gson.Gson;
 import static io.javalin.apibuilder.ApiBuilder.before;
 import static io.javalin.apibuilder.ApiBuilder.get;
 import static io.javalin.apibuilder.ApiBuilder.post;
-import static java.util.Objects.isNull;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -48,7 +47,7 @@ public class Server {
 
     //temporary variable for active players
     List<NewPlayer> players = new LinkedList<>();
-    Gson g = new Gson();
+    Gson gson = new Gson();
 
     //gamestate variable for use / testing? <-- TODO: DISCUSS IN DISCORD
     GameState bigolgame = GameState.getInstance();
@@ -64,16 +63,16 @@ public class Server {
     //new player handler
     server.routes(() -> {
       post("/api/join", ctx -> {
-        System.out.println(GameState.getInstance().getPlayercount());
+        System.out.println(GameState.getInstance().getPlayerCount());
         Backend.Player newPlayer = new Player(ctx.body());
         System.out.println("received new player " + newPlayer.getName() + ", assigned ID " + newPlayer.getId() + ".");
-        if(GameState.getInstance().getPlayercount() == 0){
+        if(GameState.getInstance().getPlayerCount() == 0){
           GameState.getInstance().player1 = newPlayer;
-          GameState.getInstance().setPlayercount(1);
-        }else if(GameState.getInstance().getPlayercount() == 1){
+          GameState.getInstance().setPlayerCount(1);
+        }else if(GameState.getInstance().getPlayerCount() == 1){
           GameState.getInstance().player2 = newPlayer;
-          GameState.getInstance().gamestart = true;
-          GameState.getInstance().setPlayercount(2);
+          GameState.getInstance().gameStart = true;
+          GameState.getInstance().setPlayerCount(2);
           GameState.getInstance().setTurn(GameState.getInstance().player1);
         }else{
           System.out.println("hey we're here");
@@ -82,7 +81,7 @@ public class Server {
         ctx.result(newPlayer.getId().toString());
         //TODO change logic later on when the rest of the game is more defined - Eventually NewPlayer won't exist
 //        try {
-//          //NewPlayer np = g.fromJson(ctx.body(), NewPlayer.class);
+//          //NewPlayer np = gson.fromJson(ctx.body(), NewPlayer.class);
 //          Player newP = new Player(ctx.body());
 //          if (players.contains(np)) {
 //            //change name on the server side i guess lol
@@ -119,7 +118,9 @@ public class Server {
     server.routes(() -> {
       post("/api/roll", ctx -> {
         //parse provided uuid TODO add error handling for non-uuid reception
+
         String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
+        //ctx.bodyAsClass(String.class);
         System.out.println(parsedString);
         System.out.println(GameState.getInstance().turn.getId());
         UUID idFromSender = UUID.fromString(parsedString);
@@ -141,7 +142,8 @@ public class Server {
         }else{
           System.out.println("Received bad request. Pass on game logic execution.");
         }
-        //handle game logic on current player submitting a buy hotel request on the property they're currently on
+        String jsonResponse = gson.toJson(GameState.getInstance());
+        ctx.result(jsonResponse);
 
       });
     });
@@ -151,8 +153,8 @@ public class Server {
       get("/api/update", ctx -> {
         //package the gamestate into json and send it as the response to this get request.
         System.out.println("Received an update request.");
-        String l = g.toJson(GameState.getInstance());
-        ctx.result(l);
+        String jsonResponse = gson.toJson(GameState.getInstance());
+        ctx.result(jsonResponse);
         //System.out.println(l);
       });
     });

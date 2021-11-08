@@ -32,7 +32,7 @@ public class Property extends Space {
    * @return Rent value for the property
    */
   public int getRent(
-      Property property) {//this shouldn't exist. It should either be static, or not take in a parameter.
+      Property property) {
     return rent;
   }
 
