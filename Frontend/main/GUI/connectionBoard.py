@@ -1,7 +1,7 @@
 from tkinter import *
-from main.Networking.ConnectionManager import ConnectionManager
-import main.GUI.waitingRoom
-import main.GUI.debugPage
+from Frontend.main.Networking.ConnectionManager import ConnectionManager
+import Frontend.main.GUI.waitingRoom
+import Frontend.main.GUI.debugPage
 import gameBoard
 
 
@@ -64,7 +64,7 @@ class ConnectionBoard:
             if connection.test(newUrl) == 200 and newUrl is not None:
                 print(connection.create_get_request().text)  # actually meant to pull the game menu
                 self.window.destroy()
-                main.GUI.waitingRoom.WaitRoom(connection, newUrl, self.namehandler())  # Opens player waiting room
+                Frontend.main.GUI.waitingRoom.WaitRoom(connection, newUrl, self.namehandler())  # Opens player waiting room
 
             else:
                 print("Unable to connect to server")
