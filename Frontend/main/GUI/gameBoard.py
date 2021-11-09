@@ -1,15 +1,13 @@
-import tkinter
 from tkinter import *
-import random
 import json
 from types import SimpleNamespace
 import time
 from threading import Thread
 
-position = 0  # temp variable for moving the token 1
-player2_position = 0  # temp variable for moving the token 2
-house_num = 0
-hotel_num = 1  # temp hotel num
+#position = 0  # temp variable for moving the token 1
+#player2_position = 0  # temp variable for moving the token 2
+#house_num = 0
+#hotel_num = 1  # temp hotel num
 
 
 class GameBoard:
@@ -27,7 +25,6 @@ class GameBoard:
         self.initialize_houses()  # Initializes house labels
         self.initialize_hotels()  # Initializes hotel labels
         self.window.config(bg="#BFDBAE")
-
 
         self.thread = Thread(target=self.main_update_loop())
         self.thread.start()
@@ -303,7 +300,7 @@ class GameBoard:
         self.roll_button.place(x=310, y=600)
 
         self.endTurn_button = Button(self.window, text="End Turn", command=self.button_end_turn,
-                                      font=("arial", 12, 'bold'), width=15)
+                                     font=("arial", 12, 'bold'), width=15)
         self.endTurn_button.place(x=310, y=520)
 
     # Initializes player tokens
@@ -1126,7 +1123,7 @@ class GameBoard:
             self.space_button_list[i]['command'] = 1
             self.space_button_list[i]['relief'] = 'sunken'
 
-# gameplay buttons
+    # gameplay buttons
 
     # post request to /api/roll
     def button_roll(self):
@@ -1159,7 +1156,7 @@ class GameBoard:
         response = self.cman.create_post_request(self.player.uuid, "/api/end")
         self.get_board_update_single()
 
-# Utility Functions
+    # Utility Functions
 
     def get_board_update_single(self):
         response = self.cman.create_get_request("/api/update")
@@ -1170,13 +1167,13 @@ class GameBoard:
         self.player_two_position(outputgs.player2.position)
         for l in outputgs.board:
 
-            if l.location == 1 or l.location == 3 or l.location == 6 or\
+            if l.location == 1 or l.location == 3 or l.location == 6 or \
                     l.location == 8 or l.location == 9 or l.location == 11 \
-                    or l.location == 13 or l.location == 14 or l.location == 16 or\
-                    l.location == 18 or l.location == 19 or l.location == 21\
-                    or l.location == 23 or l.location == 24 or l.location == 26\
+                    or l.location == 13 or l.location == 14 or l.location == 16 or \
+                    l.location == 18 or l.location == 19 or l.location == 21 \
+                    or l.location == 23 or l.location == 24 or l.location == 26 \
                     or l.location == 27 or l.location == 29 or l.location == 31 \
-                    or l.location == 32 or l.location == 34 or l.location == 37\
+                    or l.location == 32 or l.location == 34 or l.location == 37 \
                     or l.location == 39:
                 numhouses = l.houseNumber
                 numhotels = l.hotelNumber
@@ -1190,8 +1187,8 @@ class GameBoard:
     # main update loop for drawing window and updating gameboard
     def main_update_loop(self):
         i = 69
-        while i <=70:
-            #submit a get request to the server
+        while i <= 70:
+            # submit a get request to the server
             self.get_board_update_single()
             # we wait before looping again for another server update,
             # drawing the window regularly while not spamming requests to the server
@@ -1219,7 +1216,3 @@ class GameBoard:
             self.window.update()
             time.sleep(.25)
             self.window.update()
-
-
-
-

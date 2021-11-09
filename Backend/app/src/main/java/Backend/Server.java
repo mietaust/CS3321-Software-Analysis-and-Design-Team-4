@@ -152,7 +152,7 @@ public class Server {
 
         //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
         if(idFromSender.equals(GameState.getInstance().turn.getId())){
-          if(hasRolled==false) {
+          if(!hasRolled) {
             System.out.println("Got good request from UUID: " + GameState.getInstance().turn.getId());
             Gameplay.roll(GameState.getInstance().turn);
             hasRolled = true;

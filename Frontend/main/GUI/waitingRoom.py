@@ -1,9 +1,9 @@
 import threading
 import tkinter
 from tkinter import *
-import Frontend.main.GUI.gameBoard
-import Frontend.main.GUI.player
-import Frontend.main.GUI.gameBoard
+import main.GUI.gameBoard
+import main.GUI.player
+import main.GUI.gameBoard
 import json
 from types import SimpleNamespace
 import time
@@ -61,14 +61,14 @@ class WaitRoom:
 
     def open_game(self):
         self.window.destroy()  # Closes waiting room
-        Frontend.GameBoard()  # Opens GameBoard
+        #Frontend.GameBoard()  # Opens GameBoard
 
     def introduce(self):
         l = self.cman.create_post_request(self.name, "/api/join")
         modifiedString = str(l.content)
         d = modifiedString.lstrip('b')
         print("Received UUID " + d + ".")
-        return Frontend.main.GUI.player.NewPlayer(self.name, d)
+        return main.GUI.player.NewPlayer(self.name, d)
 
     def draw_window(self):
         self.window.update()
@@ -79,11 +79,11 @@ class WaitRoom:
             l = self.cman.create_get_request("/api/update")
             outputgs = json.loads(l.content, object_hook=lambda d: SimpleNamespace(**d))
 
-            if outputgs.gameStart == True:
+            if outputgs.gameStart:
                 # we open up the gameboard passing relevant info
                 self.window.destroy()
-                Frontend.main.GUI.gameBoard.GameBoard(self.cman, self.newplayer)
-                i=700000000000
+                main.GUI.gameBoard.GameBoard(self.cman, self.newplayer)
+                #i=700000000000
             else:
                 # we wait before looping again
                 self.window.update()
