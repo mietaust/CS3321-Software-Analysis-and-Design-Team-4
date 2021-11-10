@@ -187,6 +187,7 @@ public class Server {
       });
     });
 
+
     //client request board update handler
     server.routes(() -> {
       get("/api/update", ctx -> {
