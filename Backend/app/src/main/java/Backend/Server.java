@@ -129,7 +129,7 @@ public class Server {
 
     //player purchase property handler
     server.routes(() -> {
-      get("/api/purchase/property", ctx -> {
+      post("/api/purchase/property", ctx -> {
         //parse provided uuid TODO add error handling for non-uuid reception
         String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
         UUID idFromSender = UUID.fromString(parsedString);

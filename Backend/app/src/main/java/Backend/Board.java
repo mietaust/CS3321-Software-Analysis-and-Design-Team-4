@@ -82,7 +82,8 @@ public class Board {
           new int[]{175, 500, 1100, 1300, 1500}),
       new Space("Luxury Tax", 38),
       new Street("Boardwalk", 39, Color.LIGHTBLUE, 400, 50, 200,
-          new int[]{200, 600, 1400, 1700, 2000})};
+          new int[]{200, 600, 1400, 1700, 2000})
+  };
 
 
   /**
@@ -99,6 +100,7 @@ public class Board {
      * @return Array of spaces
      */
     return new Board().getSpaceNames();
+
   }
 
 
