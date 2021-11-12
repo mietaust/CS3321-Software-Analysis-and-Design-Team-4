@@ -40,11 +40,11 @@ public class Player{
      */
     public Player(String name) {
         this.name = name;
-        this.accountBalance = 0;
+        this.accountBalance = 200;
         this.inJail = false;
         this.position = 0;
         this.propertyOwned = new ArrayList<>();
-        id = UUID.randomUUID();
+        this.id = UUID.randomUUID();
     }
 
 
@@ -80,7 +80,7 @@ public class Player{
      */
     //Thinking of changing property to space, since we cant be sure if the player is on a non-property or property
     public void buy(Property property) {
-        if (property instanceof Space) {
+        if (property != null) {
             for (Property element : getPropertyOwned()) {
                 if (element.equals(property)) {
                     return;
@@ -106,10 +106,7 @@ public class Player{
                 }
             }
         }
-        if(count == street.getColorGroup().totalGroupNumber){
-            return true;
-        }
-        return false;
+        return count == street.getColorGroup().totalGroupNumber;
     }
 
 
@@ -148,9 +145,7 @@ public class Player{
 
 
     public boolean equals(@NotNull Player p){
-        if(p.getId().equals(this.id)){
-            return true;
-        }else{return false;}
+        return p.getId().equals(this.id);
     }
     /// Moving checkposition method to game-logic
 

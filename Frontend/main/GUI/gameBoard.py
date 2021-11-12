@@ -1,15 +1,13 @@
-import tkinter
 from tkinter import *
-import random
 import json
 from types import SimpleNamespace
 import time
 from threading import Thread
 
-position = 0  # temp variable for moving the token 1
-player2_position = 0  # temp variable for moving the token 2
-house_num = 0
-hotel_num = 1  # temp hotel num
+#position = 0  # temp variable for moving the token 1
+#player2_position = 0  # temp variable for moving the token 2
+#house_num = 0
+#hotel_num = 1  # temp hotel num
 
 
 class GameBoard:
@@ -27,11 +25,12 @@ class GameBoard:
         self.initialize_houses()  # Initializes house labels
         self.initialize_hotels()  # Initializes hotel labels
         self.window.config(bg="#BFDBAE")
-        self.thread = Thread(target=self.get_board_update_single())
-        self.thread.start()
-        #self.window.update()
 
-        #self.get_board_update_loop()
+        self.thread = Thread(target=self.main_update_loop())
+        self.thread.start()
+        # self.window.update()
+
+        # self.get_board_update_loop()
 
     # Initializes board spaces with images
     def initialize_spaces(self):
@@ -299,6 +298,10 @@ class GameBoard:
         self.roll_button = Button(self.window, text="Roll Dice", command=self.button_roll,
                                   font=("arial", 12, 'bold'), width=15)
         self.roll_button.place(x=310, y=600)
+
+        self.endTurn_button = Button(self.window, text="End Turn", command=self.button_end_turn,
+                                     font=("arial", 12, 'bold'), width=15)
+        self.endTurn_button.place(x=310, y=520)
 
     # Initializes player tokens
     def create_player_token(self):
@@ -648,9 +651,9 @@ class GameBoard:
         elif player2_position == 39:
             self.player_two_label.place(x=113, y=708)
 
-    def create_hotel(self, player_position, house_no):
-        if player_position == 1:
-            if house_no == 1:
+    def create_hotel(self, location, hotel_number):
+        if location == 1:
+            if hotel_number == 1:
                 ## Forget houses
                 self.brown_mediterranean_house_label.place_forget()
                 self.brown_mediterranean_house2_label.place_forget()
@@ -660,8 +663,8 @@ class GameBoard:
                 ## Create hotel
                 self.brown_mediterranean_hotel_label.place(x=78, y=628)
 
-        elif player_position == 3:
-            if house_no == 1:
+        elif location == 3:
+            if hotel_number == 1:
                 ## Forget houses
                 self.baltic_avenue_house_label.place_forget()
                 self.baltic_avenue_house2_label.place_forget()
@@ -671,8 +674,8 @@ class GameBoard:
                 ## Create hotel
                 self.baltic_avenue_hotel_label.place(x=78, y=500)
 
-        elif player_position == 6:
-            if house_no == 1:
+        elif location == 6:
+            if hotel_number == 1:
                 ## Forget houses
                 self.oriental_Avenue_house_label.place_forget()
                 self.oriental_Avenue_house2_label.place_forget()
@@ -681,8 +684,8 @@ class GameBoard:
 
                 ## Create hotel
                 self.oriental_Avenue_hotel_label.place(x=78, y=308)
-        elif player_position == 8:
-            if house_no == 1:
+        elif location == 8:
+            if hotel_number == 1:
                 ## Forget houses
                 self.vermont_house_label.place_forget()
                 self.vermont_house2_label.place_forget()
@@ -692,8 +695,8 @@ class GameBoard:
                 ## Create hotel
                 self.vermont_hotel_label.place(x=78, y=180)
 
-        elif player_position == 9:
-            if house_no == 1:
+        elif location == 9:
+            if hotel_number == 1:
                 ## Forget houses
                 self.connecticut_house_label.place_forget()
                 self.connecticut_house2_label.place_forget()
@@ -703,8 +706,8 @@ class GameBoard:
                 ## Create hotel
                 self.connecticut_hotel_label.place(x=78, y=116)
 
-        elif player_position == 11:
-            if house_no == 1:
+        elif location == 11:
+            if hotel_number == 1:
                 ## Forget houses
                 self.st_charles_house_label.place_forget()
                 self.st_charles_house2_label.place_forget()
@@ -713,8 +716,8 @@ class GameBoard:
 
                 ## Create hotel
                 self.st_charles_hotel_label.place(x=116, y=78)
-        elif player_position == 13:
-            if house_no == 1:
+        elif location == 13:
+            if hotel_number == 1:
                 ## Forget houses
                 self.states_house_label.place_forget()
                 self.states_house2_label.place_forget()
@@ -724,8 +727,8 @@ class GameBoard:
                 ## Create hotel
                 self.states_hotel_label.place(x=242, y=78)
 
-        elif player_position == 14:
-            if house_no == 1:
+        elif location == 14:
+            if hotel_number == 1:
                 ## Forget houses
                 self.virginia_house_label.place_forget()
                 self.virginia_house2_label.place_forget()
@@ -735,8 +738,8 @@ class GameBoard:
                 ##Create hotel
                 self.virginia_hotel_label.place(x=307, y=79)
 
-        elif player_position == 16:
-            if house_no == 1:
+        elif location == 16:
+            if hotel_number == 1:
                 ## Forget houses
                 self.st_james_house_label.place_forget()
                 self.st_james_house2_label.place_forget()
@@ -745,8 +748,8 @@ class GameBoard:
 
                 ##Create hotel
                 self.st_james_hotel_label.place(x=435, y=78)
-        elif player_position == 18:
-            if house_no == 1:
+        elif location == 18:
+            if hotel_number == 1:
                 ## Forget houses
                 self.tennessee_house_label.place_forget()
                 self.tennessee_house2_label.place_forget()
@@ -755,8 +758,8 @@ class GameBoard:
 
                 ##Create hotel
                 self.tennessee_hotel_label.place(x=563, y=78)
-        elif player_position == 19:
-            if house_no == 1:
+        elif location == 19:
+            if hotel_number == 1:
                 ## Forget houses
                 self.new_york_house_label.place_forget()
                 self.new_york_house2_label.place_forget()
@@ -765,8 +768,8 @@ class GameBoard:
 
                 ##Create hotel
                 self.new_york_hotel_label.place(x=627, y=78)
-        elif player_position == 21:
-            if house_no == 1:
+        elif location == 21:
+            if hotel_number == 1:
                 ## Forget houses
                 self.kentucky_house_label.place_forget()
                 self.kentucky_house2_label.place_forget()
@@ -775,8 +778,8 @@ class GameBoard:
 
                 ##Create hotel
                 self.kentucky_hotel_label.place(x=677, y=117)
-        elif player_position == 23:
-            if house_no == 1:
+        elif location == 23:
+            if hotel_number == 1:
                 ## Forget houses
                 self.indiana_house_label.place_forget()
                 self.indiana_house2_label.place_forget()
@@ -785,8 +788,8 @@ class GameBoard:
 
                 ##Create hotel
                 self.indiana_hotel_label.place(x=677, y=238)
-        elif player_position == 24:
-            if house_no == 1:
+        elif location == 24:
+            if hotel_number == 1:
                 ## Forget houses
                 self.illnois_house_label.place_forget()
                 self.illnois_house2_label.place_forget()
@@ -796,8 +799,8 @@ class GameBoard:
                 ##Create hotel
                 self.illnois_hotel_label.place(x=677, y=305)
 
-        elif player_position == 26:
-            if house_no == 1:
+        elif location == 26:
+            if hotel_number == 1:
                 ## Forget houses
                 self.atlantic_house_label.place_forget()
                 self.atlantic_house2_label.place_forget()
@@ -806,8 +809,8 @@ class GameBoard:
 
                 # Create hotel
                 self.atlantic_hotel_label.place(x=677, y=433)
-        elif player_position == 27:
-            if house_no == 1:
+        elif location == 27:
+            if hotel_number == 1:
                 ## Forget houses
                 self.ventnor_house_label.place_forget()
                 self.ventnor_house2_label.place_forget()
@@ -816,8 +819,8 @@ class GameBoard:
 
                 ##Create hotel
                 self.ventnor_hotel_label.place(x=677, y=497)
-        elif player_position == 29:
-            if house_no == 1:
+        elif location == 29:
+            if hotel_number == 1:
                 ## Forget houses
                 self.marvin_house_label.place_forget()
                 self.marvin_house2_label.place_forget()
@@ -825,8 +828,8 @@ class GameBoard:
                 self.marvin_house4_label.place_forget()
                 ##Create hotel
                 self.marvin_hotel_label.place(x=677, y=625)
-        elif player_position == 31:
-            if house_no == 1:
+        elif location == 31:
+            if hotel_number == 1:
                 ## Forget houses
                 self.pacific_house_label.place_forget()
                 self.pacific_house2_label.place_forget()
@@ -835,8 +838,8 @@ class GameBoard:
 
                 ##Create hotel
                 self.pacific_hotel_label.place(x=629, y=675)
-        elif player_position == 32:
-            if house_no == 1:
+        elif location == 32:
+            if hotel_number == 1:
                 ## Forget houses
                 self.north_carolina_house_label.place_forget()
                 self.north_carolina_house2_label.place_forget()
@@ -845,8 +848,8 @@ class GameBoard:
 
                 ##Create hotel
                 self.north_carolina_hotel_label.place(x=565, y=675)
-        elif player_position == 34:
-            if house_no == 1:
+        elif location == 34:
+            if hotel_number == 1:
                 ## Forget houses
                 self.pennsylvania_house_label.place_forget()
                 self.pennsylvania_house2_label.place_forget()
@@ -855,8 +858,8 @@ class GameBoard:
 
                 ##Create hotel
                 self.pennsylvania_hotel_label.place(x=435, y=675)
-        elif player_position == 37:
-            if house_no == 1:
+        elif location == 37:
+            if hotel_number == 1:
                 ## Forget houses
                 self.park_house_label.place_forget()
                 self.park_house2_label.place_forget()
@@ -865,8 +868,8 @@ class GameBoard:
 
                 ##Create hotel
                 self.park_hotel_label.place(x=243, y=675)
-        elif player_position == 39:
-            if house_no == 1:
+        elif location == 39:
+            if hotel_number == 1:
                 ## Forget houses
                 self.broadwalk_house_label.place_forget()
                 self.broadwalk_house2_label.place_forget()
@@ -878,9 +881,9 @@ class GameBoard:
 
     # Builds the player house
     # Player position && Number of Houses
-    def create_house(self, player_position, house_no):
+    def create_house(self, space_position, house_no):
 
-        if player_position == 1:
+        if space_position == 1:
             if house_no == 1:
                 self.brown_mediterranean_house_label.place(x=85, y=658)
             elif house_no == 2:
@@ -890,7 +893,7 @@ class GameBoard:
             elif house_no == 4:
                 self.brown_mediterranean_house4_label.place(x=85, y=613)
 
-        elif player_position == 3:
+        elif space_position == 3:
             if house_no == 1:
                 self.baltic_avenue_house_label.place(x=85, y=530)
             elif house_no == 2:
@@ -900,7 +903,7 @@ class GameBoard:
             elif house_no == 4:
                 self.baltic_avenue_house4_label.place(x=85, y=485)
 
-        elif player_position == 6:
+        elif space_position == 6:
             if house_no == 1:
                 self.oriental_Avenue_house_label.place(x=85, y=338)
             elif house_no == 2:
@@ -910,7 +913,7 @@ class GameBoard:
             elif house_no == 4:
                 self.oriental_Avenue_house4_label.place(x=85, y=293)
 
-        elif player_position == 8:
+        elif space_position == 8:
             if house_no == 1:
                 self.vermont_house_label.place(x=85, y=210)
             elif house_no == 2:
@@ -920,7 +923,7 @@ class GameBoard:
             elif house_no == 4:
                 self.vermont_house4_label.place(x=85, y=165)
 
-        elif player_position == 9:
+        elif space_position == 9:
             if house_no == 1:
                 self.connecticut_house_label.place(x=85, y=146)
             elif house_no == 2:
@@ -930,7 +933,7 @@ class GameBoard:
             elif house_no == 4:
                 self.connecticut_house4_label.place(x=85, y=101)
 
-        elif player_position == 11:
+        elif space_position == 11:
             if house_no == 1:
                 self.st_charles_house_label.place(x=101, y=80)
             elif house_no == 2:
@@ -940,7 +943,7 @@ class GameBoard:
             elif house_no == 4:
                 self.st_charles_house4_label.place(x=146, y=80)
 
-        elif player_position == 13:
+        elif space_position == 13:
             if house_no == 1:
                 self.states_house_label.place(x=227, y=80)
             elif house_no == 2:
@@ -950,7 +953,7 @@ class GameBoard:
             elif house_no == 4:
                 self.states_house4_label.place(x=273, y=80)
 
-        elif player_position == 14:
+        elif space_position == 14:
             if house_no == 1:
                 self.virginia_house_label.place(x=291, y=80)
             elif house_no == 2:
@@ -960,7 +963,7 @@ class GameBoard:
             elif house_no == 4:
                 self.virginia_house4_label.place(x=337, y=80)
 
-        elif player_position == 16:
+        elif space_position == 16:
             if house_no == 1:
                 self.st_james_house_label.place(x=420, y=80)
             elif house_no == 2:
@@ -970,7 +973,7 @@ class GameBoard:
             elif house_no == 4:
                 self.st_james_house4_label.place(x=465, y=80)
 
-        elif player_position == 18:
+        elif space_position == 18:
             if house_no == 1:
                 self.tennessee_house_label.place(x=548, y=80)
             elif house_no == 2:
@@ -980,7 +983,7 @@ class GameBoard:
             elif house_no == 4:
                 self.tennessee_house4_label.place(x=593, y=80)
 
-        elif player_position == 19:
+        elif space_position == 19:
             if house_no == 1:
                 self.new_york_house_label.place(x=612, y=80)
             elif house_no == 2:
@@ -990,7 +993,7 @@ class GameBoard:
             elif house_no == 4:
                 self.new_york_house4_label.place(x=657, y=80)
 
-        elif player_position == 21:
+        elif space_position == 21:
             if house_no == 1:
                 self.kentucky_house_label.place(x=677, y=102)
             elif house_no == 2:
@@ -1000,7 +1003,7 @@ class GameBoard:
             elif house_no == 4:
                 self.kentucky_house4_label.place(x=677, y=147)
 
-        elif player_position == 23:
+        elif space_position == 23:
             if house_no == 1:
                 self.indiana_house_label.place(x=677, y=225)
             elif house_no == 2:
@@ -1010,7 +1013,7 @@ class GameBoard:
             elif house_no == 4:
                 self.indiana_house4_label.place(x=677, y=268)
 
-        elif player_position == 24:
+        elif space_position == 24:
             if house_no == 1:
                 self.illnois_house_label.place(x=677, y=290)
             elif house_no == 2:
@@ -1020,7 +1023,7 @@ class GameBoard:
             elif house_no == 4:
                 self.illnois_house4_label.place(x=677, y=335)
 
-        elif player_position == 26:
+        elif space_position == 26:
             if house_no == 1:
                 self.atlantic_house_label.place(x=677, y=418)
             elif house_no == 2:
@@ -1030,7 +1033,7 @@ class GameBoard:
             elif house_no == 4:
                 self.atlantic_house_label.place(x=677, y=463)
 
-        elif player_position == 27:
+        elif space_position == 27:
             if house_no == 1:
                 self.ventnor_house_label.place(x=677, y=482)
             elif house_no == 2:
@@ -1040,7 +1043,7 @@ class GameBoard:
             elif house_no == 4:
                 self.ventnor_house4_label.place(x=677, y=527)
 
-        elif player_position == 29:
+        elif space_position == 29:
             if house_no == 1:
                 self.marvin_house_label.place(x=677, y=610)
             elif house_no == 2:
@@ -1050,7 +1053,7 @@ class GameBoard:
             elif house_no == 4:
                 self.marvin_house4_label.place(x=677, y=655)
 
-        elif player_position == 31:
+        elif space_position == 31:
             if house_no == 1:
                 self.pacific_house_label.place(x=614, y=677)
             elif house_no == 2:
@@ -1060,7 +1063,7 @@ class GameBoard:
             elif house_no == 4:
                 self.pacific_house4_label.place(x=659, y=677)
 
-        elif player_position == 32:
+        elif space_position == 32:
             if house_no == 1:
                 self.north_carolina_house_label.place(x=550, y=677)
             elif house_no == 2:
@@ -1070,7 +1073,7 @@ class GameBoard:
             elif house_no == 4:
                 self.north_carolina_house4_label.place(x=595, y=677)
 
-        elif player_position == 34:
+        elif space_position == 34:
             if house_no == 1:
                 self.pennsylvania_house_label.place(x=420, y=677)
             elif house_no == 2:
@@ -1080,7 +1083,7 @@ class GameBoard:
             elif house_no == 4:
                 self.pennsylvania_house4_label.place(x=465, y=677)
 
-        elif player_position == 37:
+        elif space_position == 37:
             if house_no == 1:
                 self.park_house_label.place(x=228, y=677)
             elif house_no == 2:
@@ -1090,7 +1093,7 @@ class GameBoard:
             elif house_no == 4:
                 self.park_house4_label.place(x=273, y=677)
 
-        elif player_position == 39:
+        elif space_position == 39:
             if house_no == 1:
                 self.broadwalk_house_label.place(x=103, y=677)
             elif house_no == 2:
@@ -1120,86 +1123,96 @@ class GameBoard:
             self.space_button_list[i]['command'] = 1
             self.space_button_list[i]['relief'] = 'sunken'
 
+    # gameplay buttons
+
     # post request to /api/roll
     def button_roll(self):
         response = self.cman.create_post_request(self.player.uuid, "/api/roll")
-        outputgs = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
-
-        # update all relevant board info
-
-        self.player_one_position(outputgs.player1.position)
-        self.player_two_position(outputgs.player2.position)
-
+        self.get_board_update_single()
 
     # post request to /api/purchase
     def button_purchase(self):
-        test = "test"
+        response = self.cman.create_post_request(self.player.uuid, "/api/purchase/property")
+        self.get_board_update_single()
 
     # post request to /api/build/house
     def button_house(self):
         # Temp method to make player buy house
-        global position, house_num
-
-        self.create_house(position, house_num + 1)
-        house_num = (house_num + 1) % 5
-        test = "test"
+        # global position, house_num
+        # self.create_house(position, house_num + 1)
+        # house_num = (house_num + 1) % 5
+        response = self.cman.create_post_request(self.player.uuid, "/api/purchase/house")
+        self.get_board_update_single()
 
     # post request to /api/build/house
     def button_hotel(self):
-        global position, hotel_num
+        # global position, hotel_num
+        # self.create_hotel(position, hotel_num)
+        # test = "test"
+        response = self.cman.create_post_request(self.player.uuid, "/api/purchase/hotel")
+        self.get_board_update_single()
 
-        self.create_hotel(position, hotel_num)
-        test = "test"
+    def button_end_turn(self):
+        response = self.cman.create_post_request(self.player.uuid, "/api/end")
+        self.get_board_update_single()
+
+    # Utility Functions
 
     def get_board_update_single(self):
-        i = 68
-        while i <= 69:
-            self.window.update()
-            response = self.cman.create_get_request("/api/update")
-            outputgs = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
+        response = self.cman.create_get_request("/api/update")
+        outputgs = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
 
-            # update all relevant board info
-            time.sleep(0.2)
-            self.player_one_position(outputgs.player1.position)
-            self.player_two_position(outputgs.player2.position)
-            self.window.update()
-            print("Board Updated!")
+        # update all relevant board info TODO devise a way to draw the other necessary board information
+        self.player_one_position(outputgs.player1.position)
+        self.player_two_position(outputgs.player2.position)
+        for l in outputgs.board:
 
-    # submit a get request to /api/update, receive the board update object through json, apply to the current gameboard.
-    """def get_board_update_loop(self):
-        i = 68
-        while i <= 69:
-            self.window.update()
-            response = self.cman.create_get_request("/api/update")
-            outputgs = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
+            if l.location == 1 or l.location == 3 or l.location == 6 or \
+                    l.location == 8 or l.location == 9 or l.location == 11 \
+                    or l.location == 13 or l.location == 14 or l.location == 16 or \
+                    l.location == 18 or l.location == 19 or l.location == 21 \
+                    or l.location == 23 or l.location == 24 or l.location == 26 \
+                    or l.location == 27 or l.location == 29 or l.location == 31 \
+                    or l.location == 32 or l.location == 34 or l.location == 37 \
+                    or l.location == 39:
+                numhouses = l.houseNumber
+                numhotels = l.hotelNumber
+                location = l.location
+                self.create_house(location, numhouses)
+                self.create_hotel(location, numhotels)
 
-            # update all relevant board info
-            self.player_one_position(outputgs.player1.position)
-            self.player_two_position(outputgs.player2.position)
-            self.window.update()
-            print("Board Updated!")
+        self.window.update()
+        print("Board Updated From Server!")
 
-            # we wait before looping again
+    # main update loop for drawing window and updating gameboard
+    def main_update_loop(self):
+        i = 69
+        while i <= 70:
+            # submit a get request to the server
+            self.get_board_update_single()
+            # we wait before looping again for another server update,
+            # drawing the window regularly while not spamming requests to the server
+            time.sleep(.25)
             self.window.update()
-            time.sleep(.5)
+            time.sleep(.25)
             self.window.update()
-            time.sleep(.5)
+            time.sleep(.25)
             self.window.update()
-            time.sleep(.5)
+            time.sleep(.25)
             self.window.update()
-            time.sleep(.5)
+            time.sleep(.25)
             self.window.update()
-            time.sleep(.5)
+            time.sleep(.25)
             self.window.update()
-            time.sleep(.5)
+            time.sleep(.25)
             self.window.update()
-            time.sleep(.5)
+            time.sleep(.25)
             self.window.update()
-            time.sleep(.5)
+            time.sleep(.25)
             self.window.update()
-            time.sleep(.5)
+            time.sleep(.25)
             self.window.update()
-            time.sleep(.5)
-            self.window.update()"""
-
-
+            time.sleep(.25)
+            self.window.update()
+            time.sleep(.25)
+            self.window.update()
