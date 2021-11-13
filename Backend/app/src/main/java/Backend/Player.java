@@ -40,7 +40,7 @@ public class Player{
      */
     public Player(String name) {
         this.name = name;
-        this.accountBalance = 200;
+        this.accountBalance = 1500;
         this.inJail = false;
         this.position = 0;
         this.propertyOwned = new ArrayList<>();

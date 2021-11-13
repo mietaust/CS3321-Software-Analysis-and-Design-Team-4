@@ -280,14 +280,6 @@ class GameBoard:
         self.pacific_button.place(x=608, y=670)
 
         # Buttons
-        self.move_button = Button(self.window, text="Player 1", command=self.player_one_position,
-                                  font=('Arial', 12, 'bold'), width=7)
-        self.move_button.place(x=1000, y=700)
-
-        self.new_button = Button(self.window, text="Player 2", command=self.player_two_position,
-                                 font=('Arial', 12, 'bold'), width=7)
-        self.new_button.place(x=1100, y=700)
-
         self.purchase_button = Button(self.window, text="Buy Property", command=self.button_purchase,
                                       font=("arial", 12, 'bold'), width=15)
         self.purchase_button.place(x=140, y=120)
@@ -311,6 +303,7 @@ class GameBoard:
     def server_update(self):
 
         self.update_frame = Frame(self.window)
+        # Create scrollbar
         self.scroll_bar = Scrollbar(self.update_frame, orient="vertical")
         self.scroll_bar.pack(side=RIGHT, fill=Y)
 
@@ -326,19 +319,6 @@ class GameBoard:
 
         for x in range(100):
             self.game_log_list.insert(END, x)
-
-        # Create scrollbar
-        #####self.text_scroll.pack(side=RIGHT, fill=Y)
-
-        # self.update_frame.place(x=773, y=0)
-
-        # Configure window grid
-        # self.root.grid_columnconfigure(0, weight=1)
-        # self.root.grid_rowconfigure(0, weight=1)
-
-        # Create textbox for scrollbar
-        # self.text = Text(self.root, height=10)
-        # self.text.grid(row=0, column=0, sticky="ewns")
 
         # Initializes Player One display
 
