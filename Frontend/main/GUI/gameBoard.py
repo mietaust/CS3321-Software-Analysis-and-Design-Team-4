@@ -17,7 +17,7 @@ class GameBoard:
         self.cman = cman
         self.window = Tk()
         self.window.title("MonopolyLite")
-        self.window.geometry("1300x770")
+        self.window.geometry("1374x770")
         self.window.resizable(False, False)
         self.initialize_spaces()  # Creates board spaces
         self.deactivate_space_button()  # Deactivates spaces, so they can't be clicked
@@ -25,6 +25,9 @@ class GameBoard:
         self.initialize_houses()  # Initializes house labels
         self.initialize_hotels()  # Initializes hotel labels
         self.window.config(bg="#BFDBAE")
+        self.server_update()  # Updates game log
+        self.create_player_one_display() # Updates Player 1 info
+        self.create_player_two_display() # Updates Player 2 info
 
         self.thread = Thread(target=self.main_update_loop())
         self.thread.start()
@@ -307,96 +310,101 @@ class GameBoard:
 
     def server_update(self):
 
-        self.root = tk.Tk()
-        self.root.title("Game Updates")  # Title window
-        self.root.geometry("570x500")  # Restricts box resizing
-        self.root.resizable(False, False)  # Set window size of box
+        self.update_frame = Frame(self.window)
+        self.scroll_bar = Scrollbar(self.update_frame, orient="vertical")
+        self.scroll_bar.pack(side=RIGHT, fill=Y)
 
-        # Configure window grid
-        self.root.grid_columnconfigure(0, weight=1)
-        self.root.grid_rowconfigure(0, weight=1)
+        self.game_log_list = Listbox(self.update_frame, width=97, height=23, yscrollcommand=self.scroll_bar.set,
+                                     font=("Times", 10))
 
-        # Create textbox for scrollbar
-        self.text = tk.Text(self.root, height=10)
-        self.text.grid(row=0, column=0, sticky="ewns")
+        self.game_log_list.configure(exportselection=False)
+        self.game_log_list.pack(side=LEFT, fill=Y)
+
+        self.scroll_bar.config(command=self.game_log_list.yview)
+
+        self.update_frame.place(x=773, y=0)
+
+        for x in range(100):
+            self.game_log_list.insert(END, x)
 
         # Create scrollbar
-        self.text_scroll = ttk.Scrollbar(self.root, orient="vertical", command=self.text.yview)
-        self.text_scroll.grid(row=0, column=1, sticky="ns")
-        self.text['yscrollcommand'] = self.text_scroll.set
+        #####self.text_scroll.pack(side=RIGHT, fill=Y)
+
+        # self.update_frame.place(x=773, y=0)
+
+        # Configure window grid
+        # self.root.grid_columnconfigure(0, weight=1)
+        # self.root.grid_rowconfigure(0, weight=1)
+
+        # Create textbox for scrollbar
+        # self.text = Text(self.root, height=10)
+        # self.text.grid(row=0, column=0, sticky="ewns")
 
         # Initializes Player One display
 
     def create_player_one_display(self):
         ## Player 1 Information
-
-        self.root = tk.Tk()
-        self.root.title("Player Info")  # Title window
-        self.root.resizable(False, False)  # Restricts box resizing
-        self.root.geometry("285x400")  # Set window size of box
-        self.new = LabelFrame(self.root, text="Player Information")  # Create Frame frame for labels
-        self.new.pack(fill="both", expand="yes")  # Filling window
-        self.new.config(bg="light blue")  # Set background window background color
+        self.label_frame = LabelFrame(self.window, text="Player Information", width=70)  # Create Frame frame for labels
+        self.label_frame.place(x=773, y=374)  # Filling window
+        self.label_frame.config(bg="light blue")  # Set background window background color
 
         # Create and position labels and text boxes for Player One
-        self.player_one_label = tk.Label(self.new, text="Player 1: ", relief=RIDGE, font=("Arial", 10, "bold"))
+        self.player_one_label = Label(self.label_frame, text="Player 1: ", relief=RIDGE, font=("Arial", 10, "bold"))
         self.player_one_label.grid(row=0, column=0, padx=10, pady=10, sticky=NW)
 
-        self.player_one_name = tk.Entry(self.new, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
+        self.player_one_name = Entry(self.label_frame, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
         self.player_one_name.grid(row=0, column=1, padx=0, pady=10, sticky=NW)
 
-        self.player_one_cash_amount = tk.Label(self.new, text="", width=7, relief=SUNKEN, font=("Arial", 10),
-                                               bg='yellow')
+        self.player_one_cash_amount = Label(self.label_frame, text="", width=7, relief=SUNKEN, font=("Arial", 10),
+                                            bg='yellow')
         self.player_one_cash_amount.grid(row=0, column=4, padx=0, pady=10, sticky=NW)
 
-        self.player_one_cash_label = tk.Label(self.new, text="$:", font=("Arial", 10), bg="light blue")
+        self.player_one_cash_label = Label(self.label_frame, text="$:", font=("Arial", 10), bg="light blue")
         self.player_one_cash_label.grid(row=0, column=3, padx=0, pady=10, sticky=E)
 
-        self.ttk.Separator(self.new, orient=HORIZONTAL).grid(columnspan=5, row=1, sticky='ew')
+        # self.root.Separator(self.root, orient=HORIZONTAL).grid(columnspan=5, row=1, sticky='ew')
 
-        self.player_one_property_header = tk.Label(self.new, text="Player Properties", relief=RIDGE,
-                                                   font=("Arial", 10, "bold"))
+        self.player_one_property_header = Label(self.label_frame, text="Player Properties", relief=RIDGE,
+                                                font=("Arial", 10, "bold"))
         self.player_one_property_header.grid(row=2, column=1, padx=0, pady=20, sticky=N)
 
-        self.player_one_property_label = tk.Label(self.new, height=20, font=("Arial", 8), relief=SUNKEN, bg="white")
+        self.player_one_property_label = Label(self.label_frame, height=292, width=48, font=("Arial", 8), relief=SUNKEN,
+                                               bg="white")
         self.player_one_property_label.grid(columnspan=5, row=3, sticky="wens")
-        
-         # Initializes Player Two display
-        
+
+        # Initializes Player Two display
+
     def create_player_two_display(self):
         ## Player 2 Information
-
-        self.root = tk.Tk()
-        self.root.title("Player Info")  # Title window
-        self.root.resizable(False, False)  # Restricts box resizing
-        self.root.geometry("285x400")  # Set window size of box
-        self.new = LabelFrame(self.root, text="Player Information")  # Create Frame frame for labels
-        self.new.pack(fill="both", expand="yes")  # Filling window
-        self.new.config(bg="light green")  # Set background window background color
+        self.label_frame2 = LabelFrame(self.window, text="Player Information",
+                                       width=75)  # Create Frame frame for labels
+        self.label_frame2.place(x=1072, y=374)  # Filling window
+        self.label_frame2.config(bg="light green")  # Set background window background color
 
         # Create and position labels and text boxes for Player Two
-        self.player_two_label = tk.Label(self.new, text="Player 2: ", relief=RIDGE, font=("Arial", 10, "bold"))
+        self.player_two_label = Label(self.label_frame2, text="Player 2: ", relief=RIDGE, font=("Arial", 10, "bold"))
         self.player_two_label.grid(row=0, column=0, padx=10, pady=10, sticky=NW)
 
-        self.player_two_name = tk.Entry(self.new, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
+        self.player_two_name = Entry(self.label_frame2, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
         self.player_two_name.grid(row=0, column=1, padx=0, pady=10, sticky=NW)
 
-        self.player_two_cash_amount = tk.Label(self.new, text="", width=7, relief=SUNKEN, font=("Arial", 10),
-                                               bg='yellow')
+        self.player_two_cash_amount = Label(self.label_frame2, text="", width=7, relief=SUNKEN, font=("Arial", 10),
+                                            bg='yellow')
         self.player_two_cash_amount.grid(row=0, column=4, padx=0, pady=10, sticky=NW)
 
-        self.player_two_cash_label = tk.Label(self.new, text="$:", font=("Arial", 10), bg="light green")
+        self.player_two_cash_label = Label(self.label_frame2, text="$:", font=("Arial", 10), bg="light green")
         self.player_two_cash_label.grid(row=0, column=3, padx=0, pady=10, sticky=E)
 
-        self.ttk.Separator(self.new, orient=HORIZONTAL).grid(columnspan=5, row=1, sticky='ew')
+        # self.root.Separator(self.label_frame, orient=HORIZONTAL).grid(columnspan=5, row=1, sticky='ew')
 
-        self.player_two_property_header = tk.Label(self.new, text="Player Properties", relief=RIDGE,
-                                                   font=("Arial", 10, "bold"))
+        self.player_two_property_header = Label(self.label_frame2, text="Player Properties", relief=RIDGE,
+                                                font=("Arial", 10, "bold"))
         self.player_two_property_header.grid(row=2, column=1, padx=0, pady=20, sticky=N)
 
-        self.player_two_property_label = tk.Label(self.new, height=20, font=("Arial", 8), relief=SUNKEN, bg="white")
+        self.player_two_property_label = Label(self.label_frame2, height=292, width=49, font=("Arial", 8),
+                                               relief=SUNKEN,
+                                               bg="white")
         self.player_two_property_label.grid(columnspan=5, row=3, sticky="wens")
-
     # Initializes player tokens
     def create_player_token(self):
         ## Player 1 token
