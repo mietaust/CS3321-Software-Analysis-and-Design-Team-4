@@ -79,7 +79,7 @@ class PlayerTest {
     @Test
     void getAccountBalance() {
         Player playerTest = new Player("Testing");
-        assertEquals(0, playerTest.getAccountBalance());
+        assertEquals(1500, playerTest.getAccountBalance());
     }
 
     @Test
@@ -110,7 +110,7 @@ class PlayerTest {
     @Test
     void setInJail() {
         Player playerTest = new Player("Testing");
-        playerTest.setInJail(true);
+        playerTest.goToJail();
         assertTrue(playerTest.isInJail());
         assertEquals(Constants.JAIL, playerTest.getPosition());
     }
