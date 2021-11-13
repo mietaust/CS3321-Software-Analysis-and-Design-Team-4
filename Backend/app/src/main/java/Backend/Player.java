@@ -149,6 +149,10 @@ public class Player{
     }
     /// Moving checkposition method to game-logic
 
-
+public static void main(String args[]){
+    Player playerTest = new Player("Testing");
+    playerTest.setAccountBalance(200);
+    System.out.println("200 "+ playerTest.getAccountBalance());
+}
 
 }

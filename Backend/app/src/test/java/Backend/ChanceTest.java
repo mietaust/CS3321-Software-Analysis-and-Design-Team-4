@@ -40,76 +40,76 @@ public class ChanceTest {
         test.chance(3);
         assertEquals(Card.CardAction.MOVE, test.getAction());
     }
-    @Test
-    public void railroad() {
-        Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
-        test.chance(4);
-        assertEquals(Card.CardAction.MOVE, test.getAction());
-    }
-    @Test
-    public void utility() {
-        Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
-        test.chance(5);
-        assertEquals(Card.CardAction.MOVE, test.getAction());
-    }
+//    @Test
+//    public void railroad() {
+//        Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
+//        test.chance(4);
+//        assertEquals(Card.CardAction.MOVE, test.getAction());
+//    }
+//    @Test
+//    public void utility() {
+//        Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
+//        test.chance(5);
+//        assertEquals(Card.CardAction.MOVE, test.getAction());
+//    }
     @Test
     public void dividend() {
         Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
-        test.chance(6);
+        test.chance(4);
         assertEquals(Card.CardAction.ADDMONEY, test.getAction());
     }
-    @Test
-    public void goback() {
-        Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
-        test.chance(7);
-        assertEquals(Card.CardAction.MOVE, test.getAction());
-    }
+//    @Test
+//    public void goback() {
+//        Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
+//        test.chance(7);
+//        assertEquals(Card.CardAction.MOVE, test.getAction());
+//    }
     @Test
     public void speeding() {
         Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
-        test.chance(8);
+        test.chance(5);
         assertEquals(Card.CardAction.LOSEMONEY, test.getAction());
     }
     @Test
     public void reading() {
         Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
-        test.chance(9);
+        test.chance(6);
         assertEquals(Card.CardAction.MOVE, test.getAction());
     }
     @Test
     public void elected() {
         Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
-        test.chance(10);
+        test.chance(7);
         assertEquals(Card.CardAction.LOSEMONEY, test.getAction());
     }
     @Test
     public void loan() {
         Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
-        test.chance(11);
+        test.chance(8);
         assertEquals(Card.CardAction.ADDMONEY, test.getAction());
     }
     @Test
     public void jail() {
         Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
-        test.chance(12);
+        test.chance(9);
         assertEquals(Card.CardAction.JAIL, test.getAction());
     }
     @Test
     public void jailout() {
         Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
-        test.chance(13);
+        test.chance(10);
         assertEquals(Card.CardAction.JAILBREAK, test.getAction());
     }
-    @Test
-    public void repair() {
-        Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
-        test.chance(14);
-        assertEquals(Card.CardAction.LOSEMONEY, test.getAction());
-    }
+//    @Test
+//    public void repair() {
+//        Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
+//        test.chance(14);
+//        assertEquals(Card.CardAction.LOSEMONEY, test.getAction());
+//    }
     @Test
     public void crossword() {
         Chance test = new Chance("testcard",(0), Card.CardType.COMMUNITY);
-        test.chance(15);
+        test.chance(11);
         assertEquals(Card.CardAction.ADDMONEY, test.getAction());
     }
 }

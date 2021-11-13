@@ -30,6 +30,8 @@ public class Street extends Property {
         this.colorGroup = colorGroup;
         this.buildPrice = buildPrice;
         this.rentList = rentList;
+        this.setNoOfHotel(0);
+        this.setHouseNumber(0);
     }
 
     /**
