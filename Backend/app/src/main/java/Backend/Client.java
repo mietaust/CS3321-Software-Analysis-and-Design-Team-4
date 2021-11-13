@@ -5,14 +5,21 @@
 
 package Backend;
 
+import com.google.gson.Gson;
 import io.javalin.Javalin;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.net.http.*;
 import java.util.concurrent.CompletableFuture;
+import org.eclipse.jetty.http.HttpURI;
 
 public class Client {
 
@@ -47,8 +54,10 @@ public class Client {
 
   }
 
+
   public static void main(String args[]) throws IOException, InterruptedException {
     System.out.println(Client.get("http://localhost:7000/"));
+
 
   }
 }

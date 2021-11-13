@@ -88,7 +88,6 @@ public class Server {
 //          //handle non-json requests, shouldn't happen but good to have
 //        }
 
-
       });
     });
 
@@ -106,12 +105,14 @@ public class Server {
         }else{
           System.out.println("Received bad house request. Pass on game logic execution.");
         }
+
       });
     });
 
     //player purchase hotel handler
     server.routes(() -> {
       post("/api/purchase/hotel", ctx -> {
+
         //parse provided uuid TODO add error handling for non-uuid reception
         String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
         UUID idFromSender = UUID.fromString(parsedString);
@@ -128,7 +129,7 @@ public class Server {
 
     //player purchase property handler
     server.routes(() -> {
-      get("/api/purchase/property", ctx -> {
+      post("/api/purchase/property", ctx -> {
         //parse provided uuid TODO add error handling for non-uuid reception
         String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
         UUID idFromSender = UUID.fromString(parsedString);
@@ -140,18 +141,21 @@ public class Server {
         }else{
           System.out.println("Received bad property purchase request. Pass on game logic execution.");
         }
+
       });
     });
 
     //player roll dice handler
     server.routes(() -> {
       post("/api/roll", ctx -> {
+        System.out.println(ctx.body());
         //parse provided uuid TODO add error handling for non-uuid reception
         String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
         UUID idFromSender = UUID.fromString(parsedString);
 
         //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
         if(idFromSender.equals(GameState.getInstance().turn.getId())){
+
           if(!hasRolled) {
             System.out.println("Got good request from UUID: " + GameState.getInstance().turn.getId());
             Gameplay.roll(GameState.getInstance().turn);
@@ -162,6 +166,7 @@ public class Server {
         }
       });
     });
+
 
     //player end turn handler
     server.routes(() -> {
