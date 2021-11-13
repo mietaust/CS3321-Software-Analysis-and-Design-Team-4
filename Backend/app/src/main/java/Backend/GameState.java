@@ -14,7 +14,7 @@ public class GameState {
   @Getter
   @Setter
   private boolean error = false;
-
+  @Getter
   private ArrayList<String> log;
   Player player1;
   Player player2;

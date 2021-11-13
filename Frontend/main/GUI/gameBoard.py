@@ -29,11 +29,11 @@ class GameBoard:
         self.create_player_one_display() # Updates Player 1 info
         self.create_player_two_display() # Updates Player 2 info
 
-        self.thread = Thread(target=self.main_update_loop())
+        self.thread = Thread(self.main_update_loop())
         self.thread.start()
-        # self.window.update()
 
-        # self.get_board_update_loop()
+
+        #self.get_board_update_loop()
 
     # Initializes board spaces with images
     def initialize_spaces(self):
@@ -329,8 +329,8 @@ class GameBoard:
         self.label_frame.config(bg="light blue")  # Set background window background color
 
         # Create and position labels and text boxes for Player One
-        self.player_one_label = Label(self.label_frame, text="Player 1: ", relief=RIDGE, font=("Arial", 10, "bold"))
-        self.player_one_label.grid(row=0, column=0, padx=10, pady=10, sticky=NW)
+        self.player_one_display = Label(self.label_frame, text="Player 1: ", relief=RIDGE, font=("Arial", 10, "bold"))
+        self.player_one_display.grid(row=0, column=0, padx=10, pady=10, sticky=NW)
 
         self.player_one_name = Entry(self.label_frame, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
         self.player_one_name.grid(row=0, column=1, padx=0, pady=10, sticky=NW)
@@ -362,8 +362,8 @@ class GameBoard:
         self.label_frame2.config(bg="light green")  # Set background window background color
 
         # Create and position labels and text boxes for Player Two
-        self.player_two_label = Label(self.label_frame2, text="Player 2: ", relief=RIDGE, font=("Arial", 10, "bold"))
-        self.player_two_label.grid(row=0, column=0, padx=10, pady=10, sticky=NW)
+        self.player_two_label_display = Label(self.label_frame2, text="Player 2: ", relief=RIDGE, font=("Arial", 10, "bold"))
+        self.player_two_label_display.grid(row=0, column=0, padx=10, pady=10, sticky=NW)
 
         self.player_two_name = Entry(self.label_frame2, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
         self.player_two_name.grid(row=0, column=1, padx=0, pady=10, sticky=NW)
@@ -569,7 +569,7 @@ class GameBoard:
     # param Player one index
     def player_one_position(self, position):
         if position == 0:
-            self.player_one_label.place(x=5, y=725)
+            self.player_one_label.place(x=7, y=725)
         elif position == 1:
             self.player_one_label.place(x=5, y=639)
         elif position == 2:

@@ -34,7 +34,7 @@ class WaitRoom:
         self.window.configure(bg="#BFDBAE")
 
         # button definitions
-        self.quit_button = Button(self.window, text="QUIT", command=self.wait_loop(), width=10,
+        self.quit_button = Button(self.window, text="QUIT", command=self.wait_loop, width=10,
                                   font=('Arial', 13, 'bold'))
         self.quit_button.place(x=230, y=10)
 
@@ -50,8 +50,8 @@ class WaitRoom:
         # TODO |exchanged unique identifiers, and is capable of passing information back and forth. When
         # TODO |the server sends the go-ahead to the clients to begin the game, we will launch the Resources.
 
-        t2 = Thread(self.wait_loop())
-        t2.start()
+        self.t2 = Thread(self.wait_loop())
+        self.t2.start()
 
     # button functions
     def quit_button(self):
