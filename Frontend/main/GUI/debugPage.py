@@ -1,5 +1,5 @@
 from tkinter import *
-from main.Networking.ConnectionManager import ConnectionManager
+from Frontend.main.Networking.ConnectionManager import ConnectionManager
 import json
 from types import SimpleNamespace
 

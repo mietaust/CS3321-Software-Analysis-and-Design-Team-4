@@ -8,6 +8,7 @@ from threading import Thread
 #player2_position = 0  # temp variable for moving the token 2
 #house_num = 0
 #hotel_num = 1  # temp hotel num
+clog = []
 
 
 class GameBoard:
@@ -25,15 +26,13 @@ class GameBoard:
         self.initialize_houses()  # Initializes house labels
         self.initialize_hotels()  # Initializes hotel labels
         self.window.config(bg="#BFDBAE")
-        self.server_update()  # Updates game log
-        self.create_player_one_display() # Updates Player 1 info
-        self.create_player_two_display() # Updates Player 2 info
-
-        self.thread = Thread(self.main_update_loop())
+        self.currentlog = []
+        self.server_update()
+        self.thread = Thread(target=self.main_update_loop())
         self.thread.start()
+        # self.window.update()
 
-
-        #self.get_board_update_loop()
+        # self.get_board_update_loop()
 
     # Initializes board spaces with images
     def initialize_spaces(self):
@@ -297,94 +296,7 @@ class GameBoard:
         self.endTurn_button = Button(self.window, text="End Turn", command=self.button_end_turn,
                                      font=("arial", 12, 'bold'), width=15)
         self.endTurn_button.place(x=310, y=520)
-    
-     # Initialize Server Update Scroller Window
 
-    def server_update(self):
-
-        self.update_frame = Frame(self.window)
-        # Create scrollbar
-        self.scroll_bar = Scrollbar(self.update_frame, orient="vertical")
-        self.scroll_bar.pack(side=RIGHT, fill=Y)
-
-        self.game_log_list = Listbox(self.update_frame, width=97, height=23, yscrollcommand=self.scroll_bar.set,
-                                     font=("Times", 10))
-
-        self.game_log_list.configure(exportselection=False)
-        self.game_log_list.pack(side=LEFT, fill=Y)
-
-        self.scroll_bar.config(command=self.game_log_list.yview)
-
-        self.update_frame.place(x=773, y=0)
-
-        for x in range(100):
-            self.game_log_list.insert(END, x)
-
-        # Initializes Player One display
-
-    def create_player_one_display(self):
-        ## Player 1 Information
-        self.label_frame = LabelFrame(self.window, text="Player Information", width=70)  # Create Frame frame for labels
-        self.label_frame.place(x=773, y=374)  # Filling window
-        self.label_frame.config(bg="light blue")  # Set background window background color
-
-        # Create and position labels and text boxes for Player One
-        self.player_one_display = Label(self.label_frame, text="Player 1: ", relief=RIDGE, font=("Arial", 10, "bold"))
-        self.player_one_display.grid(row=0, column=0, padx=10, pady=10, sticky=NW)
-
-        self.player_one_name = Entry(self.label_frame, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
-        self.player_one_name.grid(row=0, column=1, padx=0, pady=10, sticky=NW)
-
-        self.player_one_cash_amount = Label(self.label_frame, text="", width=7, relief=SUNKEN, font=("Arial", 10),
-                                            bg='yellow')
-        self.player_one_cash_amount.grid(row=0, column=4, padx=0, pady=10, sticky=NW)
-
-        self.player_one_cash_label = Label(self.label_frame, text="$:", font=("Arial", 10), bg="light blue")
-        self.player_one_cash_label.grid(row=0, column=3, padx=0, pady=10, sticky=E)
-
-        # self.root.Separator(self.root, orient=HORIZONTAL).grid(columnspan=5, row=1, sticky='ew')
-
-        self.player_one_property_header = Label(self.label_frame, text="Player Properties", relief=RIDGE,
-                                                font=("Arial", 10, "bold"))
-        self.player_one_property_header.grid(row=2, column=1, padx=0, pady=20, sticky=N)
-
-        self.player_one_property_label = Label(self.label_frame, height=292, width=48, font=("Arial", 8), relief=SUNKEN,
-                                               bg="white")
-        self.player_one_property_label.grid(columnspan=5, row=3, sticky="wens")
-
-        # Initializes Player Two display
-
-    def create_player_two_display(self):
-        ## Player 2 Information
-        self.label_frame2 = LabelFrame(self.window, text="Player Information",
-                                       width=75)  # Create Frame frame for labels
-        self.label_frame2.place(x=1072, y=374)  # Filling window
-        self.label_frame2.config(bg="light green")  # Set background window background color
-
-        # Create and position labels and text boxes for Player Two
-        self.player_two_label_display = Label(self.label_frame2, text="Player 2: ", relief=RIDGE, font=("Arial", 10, "bold"))
-        self.player_two_label_display.grid(row=0, column=0, padx=10, pady=10, sticky=NW)
-
-        self.player_two_name = Entry(self.label_frame2, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
-        self.player_two_name.grid(row=0, column=1, padx=0, pady=10, sticky=NW)
-
-        self.player_two_cash_amount = Label(self.label_frame2, text="", width=7, relief=SUNKEN, font=("Arial", 10),
-                                            bg='yellow')
-        self.player_two_cash_amount.grid(row=0, column=4, padx=0, pady=10, sticky=NW)
-
-        self.player_two_cash_label = Label(self.label_frame2, text="$:", font=("Arial", 10), bg="light green")
-        self.player_two_cash_label.grid(row=0, column=3, padx=0, pady=10, sticky=E)
-
-        # self.root.Separator(self.label_frame, orient=HORIZONTAL).grid(columnspan=5, row=1, sticky='ew')
-
-        self.player_two_property_header = Label(self.label_frame2, text="Player Properties", relief=RIDGE,
-                                                font=("Arial", 10, "bold"))
-        self.player_two_property_header.grid(row=2, column=1, padx=0, pady=20, sticky=N)
-
-        self.player_two_property_label = Label(self.label_frame2, height=292, width=49, font=("Arial", 8),
-                                               relief=SUNKEN,
-                                               bg="white")
-        self.player_two_property_label.grid(columnspan=5, row=3, sticky="wens")
     # Initializes player tokens
     def create_player_token(self):
         ## Player 1 token
@@ -568,8 +480,9 @@ class GameBoard:
     # Moves player one position
     # param Player one index
     def player_one_position(self, position):
+        print("MADE IT HERE")
         if position == 0:
-            self.player_one_label.place(x=7, y=725)
+            self.player_one_label.place(x=5, y=725)
         elif position == 1:
             self.player_one_label.place(x=5, y=639)
         elif position == 2:
@@ -648,6 +561,8 @@ class GameBoard:
             self.player_one_label.place(x=177, y=738)
         elif position == 39:
             self.player_one_label.place(x=113, y=738)
+
+        self.window.update()
 
     # Moves Player two token
     # param Player two index
@@ -1238,6 +1153,95 @@ class GameBoard:
         response = self.cman.create_post_request(self.player.uuid, "/api/end")
         self.get_board_update_single()
 
+    # info boxes
+    # Initialize Server Update Scroller Window
+
+    def server_update(self):
+
+        self.update_frame = Frame(self.window)
+        # Create scrollbar
+        self.scroll_bar = Scrollbar(self.update_frame, orient="vertical")
+        self.scroll_bar.pack(side=RIGHT, fill=Y)
+
+        self.game_log_list = Listbox(self.update_frame, width=97, height=23, yscrollcommand=self.scroll_bar.set,
+                                     font=("Times", 10))
+
+        self.game_log_list.configure(exportselection=False)
+        self.game_log_list.pack(side=LEFT, fill=Y)
+
+        self.scroll_bar.config(command=self.game_log_list.yview)
+
+        self.update_frame.place(x=773, y=0)
+
+        for x in range(100):
+            self.game_log_list.insert(END, x)
+
+        # Initializes Player One display
+
+    def create_player_one_display(self):
+        ## Player 1 Information
+        self.label_frame = LabelFrame(self.window, text="Player Information", width=70)  # Create Frame frame for labels
+        self.label_frame.place(x=773, y=374)  # Filling window
+        self.label_frame.config(bg="light blue")  # Set background window background color
+
+        # Create and position labels and text boxes for Player One
+        self.player_one_label = Label(self.label_frame, text="Player 1: ", relief=RIDGE, font=("Arial", 10, "bold"))
+        self.player_one_label.grid(row=0, column=0, padx=10, pady=10, sticky=NW)
+
+        self.player_one_name = Entry(self.label_frame, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
+        self.player_one_name.grid(row=0, column=1, padx=0, pady=10, sticky=NW)
+
+        self.player_one_cash_amount = Label(self.label_frame, text="", width=7, relief=SUNKEN, font=("Arial", 10),
+                                            bg='yellow')
+        self.player_one_cash_amount.grid(row=0, column=4, padx=0, pady=10, sticky=NW)
+
+        self.player_one_cash_label = Label(self.label_frame, text="$:", font=("Arial", 10), bg="light blue")
+        self.player_one_cash_label.grid(row=0, column=3, padx=0, pady=10, sticky=E)
+
+        # self.root.Separator(self.root, orient=HORIZONTAL).grid(columnspan=5, row=1, sticky='ew')
+
+        self.player_one_property_header = Label(self.label_frame, text="Player Properties", relief=RIDGE,
+                                                font=("Arial", 10, "bold"))
+        self.player_one_property_header.grid(row=2, column=1, padx=0, pady=20, sticky=N)
+
+        self.player_one_property_label = Label(self.label_frame, height=292, width=48, font=("Arial", 8), relief=SUNKEN,
+                                               bg="white")
+        self.player_one_property_label.grid(columnspan=5, row=3, sticky="wens")
+
+        # Initializes Player Two display
+
+    def create_player_two_display(self):
+        ## Player 2 Information
+        self.label_frame2 = LabelFrame(self.window, text="Player Information",
+                                       width=75)  # Create Frame frame for labels
+        self.label_frame2.place(x=1072, y=374)  # Filling window
+        self.label_frame2.config(bg="light green")  # Set background window background color
+
+        # Create and position labels and text boxes for Player Two
+        self.player_two_label = Label(self.label_frame2, text="Player 2: ", relief=RIDGE, font=("Arial", 10, "bold"))
+        self.player_two_label.grid(row=0, column=0, padx=10, pady=10, sticky=NW)
+
+        self.player_two_name = Entry(self.label_frame2, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
+        self.player_two_name.grid(row=0, column=1, padx=0, pady=10, sticky=NW)
+
+        self.player_two_cash_amount = Label(self.label_frame2, text="", width=7, relief=SUNKEN, font=("Arial", 10),
+                                            bg='yellow')
+        self.player_two_cash_amount.grid(row=0, column=4, padx=0, pady=10, sticky=NW)
+
+        self.player_two_cash_label = Label(self.label_frame2, text="$:", font=("Arial", 10), bg="light green")
+        self.player_two_cash_label.grid(row=0, column=3, padx=0, pady=10, sticky=E)
+
+        # self.root.Separator(self.label_frame, orient=HORIZONTAL).grid(columnspan=5, row=1, sticky='ew')
+
+        self.player_two_property_header = Label(self.label_frame2, text="Player Properties", relief=RIDGE,
+                                                font=("Arial", 10, "bold"))
+        self.player_two_property_header.grid(row=2, column=1, padx=0, pady=20, sticky=N)
+
+        self.player_two_property_label = Label(self.label_frame2, height=292, width=49, font=("Arial", 8),
+                                               relief=SUNKEN,
+                                               bg="white")
+        self.player_two_property_label.grid(columnspan=5, row=3, sticky="wens")
+
     # Utility Functions
 
     def get_board_update_single(self):
@@ -1245,8 +1249,10 @@ class GameBoard:
         outputgs = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
 
         # update all relevant board info TODO devise a way to draw the other necessary board information
+        # player update
         self.player_one_position(outputgs.player1.position)
         self.player_two_position(outputgs.player2.position)
+        # house and hotel draw
         for l in outputgs.board:
 
             if l.location == 1 or l.location == 3 or l.location == 6 or \
@@ -1262,9 +1268,24 @@ class GameBoard:
                 location = l.location
                 self.create_house(location, numhouses)
                 self.create_hotel(location, numhotels)
+        # server log update
+        if(self.currentlog != outputgs.log):
+            x = 0
+            if (("Player 1 Balance: " + str(outputgs.player1.accountBalance)) not in self.currentlog):
+                self.game_log_list.insert(x + 1, ("Player 1 Balance: " + str(outputgs.player1.accountBalance)))
+                self.currentlog.append(("Player 1 Balance: " + str(outputgs.player1.accountBalance)))
+            if (("Player 2 Balance: " + str(outputgs.player2.accountBalance)) not in self.currentlog):
+                self.game_log_list.insert(x + 1, ("Player 2 Balance: " + str(outputgs.player2.accountBalance)))
+                self.currentlog.append(("Player 2 Balance: " + str(outputgs.player2.accountBalance)))
+            for log in outputgs.log:
+                if(log not in self.currentlog):
+                    self.game_log_list.insert(x, log)
+                    x += 1
+                    self.currentlog.append(log)
+            x = 0
 
         self.window.update()
-        print("Board Updated From Server!")
+        # print("Board Updated From Server!")
 
     # main update loop for drawing window and updating gameboard
     def main_update_loop(self):
@@ -1272,26 +1293,9 @@ class GameBoard:
         while i <= 70:
             # submit a get request to the server
             self.get_board_update_single()
+            self.window.update()
             # we wait before looping again for another server update,
             # drawing the window regularly while not spamming requests to the server
-            time.sleep(.25)
-            self.window.update()
-            time.sleep(.25)
-            self.window.update()
-            time.sleep(.25)
-            self.window.update()
-            time.sleep(.25)
-            self.window.update()
-            time.sleep(.25)
-            self.window.update()
-            time.sleep(.25)
-            self.window.update()
-            time.sleep(.25)
-            self.window.update()
-            time.sleep(.25)
-            self.window.update()
-            time.sleep(.25)
-            self.window.update()
             time.sleep(.25)
             self.window.update()
             time.sleep(.25)
