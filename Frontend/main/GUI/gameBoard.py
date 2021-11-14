@@ -1271,13 +1271,19 @@ class GameBoard:
         # server log update
         if(self.currentlog != outputgs.log):
             x = 0
-            self.game_log_list.insert(x + 1, ("Player 1 Balance: " + str(outputgs.player1.accountBalance)))
-            self.game_log_list.insert(x + 2, ("Player 2 Balance: " + str(outputgs.player2.accountBalance)))
+            if (("Player 1 Balance: " + str(outputgs.player1.accountBalance)) not in self.currentlog):
+                self.game_log_list.insert(x + 1, ("Player 1 Balance: " + str(outputgs.player1.accountBalance)))
+                self.currentlog.append(("Player 1 Balance: " + str(outputgs.player1.accountBalance)))
+            if (("Player 2 Balance: " + str(outputgs.player2.accountBalance)) not in self.currentlog):
+                self.game_log_list.insert(x + 1, ("Player 2 Balance: " + str(outputgs.player2.accountBalance)))
+                self.currentlog.append(("Player 2 Balance: " + str(outputgs.player2.accountBalance)))
             for log in outputgs.log:
-                self.game_log_list.insert(x, log)
-                x += 1
+                if(log not in self.currentlog):
+                    self.game_log_list.insert(x, log)
+                    x += 1
+                    self.currentlog.append(log)
             x = 0
-            self.currentlog = outputgs.log
+
         self.window.update()
         # print("Board Updated From Server!")
 
