@@ -21,8 +21,9 @@ public class Player{
     @Getter
     private boolean inJail;
     private boolean turn;
+    @Setter
     @Getter
-    private ArrayList<Property> propertyOwned;
+    private transient ArrayList<Property> propertyOwned;
     @Getter
     @Setter
     private int OOJCards = 0;
