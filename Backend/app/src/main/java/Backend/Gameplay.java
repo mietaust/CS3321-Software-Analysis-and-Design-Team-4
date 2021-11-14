@@ -133,6 +133,7 @@ public class Gameplay {
    * @param player
    */
   public static void buy(Player player) {
+    System.out.println("made it to here before SHTF");
     System.out.println((state.getBoard()[player.getPosition()]) instanceof Property);
     if (state.getRolled() && (state.getBoard()[player.getPosition()]) instanceof Property) {
       //System.out.println(player.getAccountBalance()+"\n"+String.valueOf(((Property)state.getBoard()[player.getPosition()]).getValue())) ;
@@ -152,6 +153,7 @@ public class Gameplay {
       }
     } else {
       //player is not on a purchasable location.
+      System.out.println("not standing on purchasable square");
     }
   }
 

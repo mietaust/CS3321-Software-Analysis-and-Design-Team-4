@@ -197,7 +197,7 @@ public class Server {
     server.routes(() -> {
       get("/api/update", ctx -> {
         //package the gamestate into json and send it as the response to this get request.
-        System.out.println("Received an update request.");
+        //This got too verbose. System.out.println("Received an update request.");
         String l = g.toJson(GameState.getInstance());
         ctx.result(l);
         //System.out.println(l);

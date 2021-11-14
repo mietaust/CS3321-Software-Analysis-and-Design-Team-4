@@ -8,9 +8,9 @@ import java.util.Objects;
 public class Space {
 
     @Getter
-    private final String name;
+    private String name;
     @Getter
-    private final int location;
+    private int location;
 
     /**
      * Constructor
