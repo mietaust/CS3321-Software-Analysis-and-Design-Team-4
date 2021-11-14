@@ -1173,8 +1173,7 @@ class GameBoard:
 
         self.update_frame.place(x=773, y=0)
 
-        for x in range(100):
-            self.game_log_list.insert(END, x)
+
 
         # Initializes Player One display
 

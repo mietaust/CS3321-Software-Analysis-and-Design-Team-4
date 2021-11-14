@@ -56,7 +56,7 @@ class PlayerTest {
         Player playerTest = new Player("Testing");
         playerTest.setAccountBalance(1000);
         playerTest.buy(new Utility("test", 12, 150, 0));
-        assertEquals(1, playerTest.utilitiesOwned(new Utility("Electric Company", 12, 150, 0)));
+        assertEquals(1, playerTest.utilitiesOwned());
     }
 
     @Test
@@ -65,7 +65,7 @@ class PlayerTest {
         playerTest.setAccountBalance(500);
         playerTest.buy(new Railroad("testRailroad", 5, 200, 25));
         playerTest.buy(new Railroad("testRail", 5, 100, 35));
-        assertEquals(2, playerTest.railRoadsOwned(new Railroad("testRailroad", 5, 200, 25)));
+        assertEquals(2, playerTest.railRoadsOwned());
         assertEquals(200, playerTest.getAccountBalance());
 
     }

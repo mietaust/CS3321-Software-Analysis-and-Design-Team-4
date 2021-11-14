@@ -37,9 +37,7 @@ public class Space {
     @Override
     public String toString() {
         return "Space{" +
-                "name='" + name + '\'' +
-                ", location=" + location +
-                '}';
+                "name='" + name;
     }
 
 

@@ -21,16 +21,16 @@ public class Railroad extends Property{
     @Override
     public int getRent(Property property) {
         if(Property.ownerIsPlayer(getOwner())){
-            if (((Player)getOwner()).railRoadsOwned((Railroad) property) == 1){
+            if (((Player)getOwner()).railRoadsOwned() == 1){
                 return 25;
             }
-            if (((Player)getOwner()).railRoadsOwned((Railroad) property) == 2){
+            if (((Player)getOwner()).railRoadsOwned() == 2){
                 return 50;
             }
-            else if (((Player)getOwner()).railRoadsOwned((Railroad) property) == 3){
+            else if (((Player)getOwner()).railRoadsOwned() == 3){
                 return 100;
             }
-            if (((Player)getOwner()).railRoadsOwned((Railroad) property) == 4){
+            if (((Player)getOwner()).railRoadsOwned() == 4){
                 return 200;
             }
         }

@@ -1,5 +1,7 @@
 package Backend;
 import java.util.UUID;
+
+import com.google.gson.Gson;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,7 +34,7 @@ public class Player{
     private int numJailEscAttempts = 0;
     @Getter
     private final UUID id;
-    //private ArrayList<Card> cardDrawn;
+    private ArrayList<String> propertyName;
 
 
     /**
@@ -45,6 +47,7 @@ public class Player{
         this.inJail = false;
         this.position = 0;
         this.propertyOwned = new ArrayList<>();
+        this.propertyName = new ArrayList<>();
         this.id = UUID.randomUUID();
     }
 
@@ -87,9 +90,13 @@ public class Player{
                     return;
                 }
             }
-            this.accountBalance -= property.getValue();
-            propertyOwned.add(property);
-            property.setOwner(this);
+            if(property.getOwner() == null ){
+                this.accountBalance -= property.getValue();
+                propertyOwned.add(property);
+                propertyName.add(property.getName());
+                property.setOwner(this);
+            }
+
         }
     }
 
@@ -113,10 +120,9 @@ public class Player{
 
     /**
      *
-     * @param utility,
      * @return number of utilities the player holds (maximum of 2)
      */
-    public int utilitiesOwned(Utility utility){
+    public int utilitiesOwned(){
         int count = 0;
         // for all the properties owned, search for Utilities
         for (Property property : getPropertyOwned()){
@@ -131,10 +137,9 @@ public class Player{
 
     /**
      *
-     * @param railRoad
      * @return The number of railroads owned by a player
      */
-    public int railRoadsOwned(Railroad railRoad){
+    public int railRoadsOwned(){
         int count = 0;
         for (Property property : getPropertyOwned()) {
             if (property instanceof Railroad) {
@@ -152,8 +157,21 @@ public class Player{
 
 public static void main(String args[]){
     Player playerTest = new Player("Testing");
-    playerTest.setAccountBalance(200);
-    System.out.println("200 "+ playerTest.getAccountBalance());
+    playerTest.setAccountBalance(1000);
+
+    Property property = new Street("Mediterranean Avenue", 1, Color.BROWN, 60, 2, 50,
+            new int[]{10, 30, 90, 160, 250});
+
+    playerTest.buy(property);
+    playerTest.buy(property);
+
+
+
+
+    Gson gson = new Gson();
+    String j = gson.toJson(playerTest);
+    System.out.println(j);
+
 }
 
 }
