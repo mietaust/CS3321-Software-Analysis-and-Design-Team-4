@@ -1,9 +1,9 @@
 import threading
 import tkinter
 from tkinter import *
-import main.GUI.gameBoard
-import main.GUI.player
-import main.GUI.gameBoard
+import Frontend.main.GUI.gameBoard
+import Frontend.main.GUI.player
+import Frontend.main.GUI.gameBoard
 import json
 from types import SimpleNamespace
 import time
@@ -68,7 +68,7 @@ class WaitRoom:
         modifiedString = str(l.content)
         d = modifiedString.lstrip('b')
         print("Received UUID " + d + ".")
-        return main.GUI.player.NewPlayer(self.name, d)
+        return Frontend.main.GUI.player.NewPlayer(self.name, d)
 
     def draw_window(self):
         self.window.update()
@@ -82,32 +82,17 @@ class WaitRoom:
             if outputgs.gameStart:
                 # we open up the gameboard passing relevant info
                 self.window.destroy()
-                main.GUI.gameBoard.GameBoard(self.cman, self.newplayer)
+                Frontend.main.GUI.gameBoard.GameBoard(self.cman, self.newplayer)
                 #i=700000000000
             else:
-                # we wait before looping again
+                # we wait before looping again - Made the choice to constantly poll the server instead
+                time.sleep(.25)
                 self.window.update()
-                time.sleep(.5)
+                time.sleep(.25)
                 self.window.update()
-                time.sleep(.5)
+                time.sleep(.25)
                 self.window.update()
-                time.sleep(.5)
-                self.window.update()
-                time.sleep(.5)
-                self.window.update()
-                time.sleep(.5)
-                self.window.update()
-                time.sleep(.5)
-                self.window.update()
-                time.sleep(.5)
-                self.window.update()
-                time.sleep(.5)
-                self.window.update()
-                time.sleep(.5)
-                self.window.update()
-                time.sleep(.5)
-                self.window.update()
-                print(str(outputgs.gameStart))
+                print(outputgs)
 
 
 
