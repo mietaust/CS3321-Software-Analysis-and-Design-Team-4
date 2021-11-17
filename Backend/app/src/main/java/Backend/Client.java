@@ -54,10 +54,4 @@ public class Client {
 
   }
 
-
-  public static void main(String args[]) throws IOException, InterruptedException {
-    System.out.println(Client.get("http://localhost:7000/"));
-
-
-  }
 }

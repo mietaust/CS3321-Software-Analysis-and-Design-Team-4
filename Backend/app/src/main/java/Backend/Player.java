@@ -155,23 +155,5 @@ public class Player{
     }
     /// Moving checkposition method to game-logic
 
-public static void main(String args[]){
-    Player playerTest = new Player("Testing");
-    playerTest.setAccountBalance(1000);
-
-    Property property = new Street("Mediterranean Avenue", 1, Color.BROWN, 60, 2, 50,
-            new int[]{10, 30, 90, 160, 250});
-
-    playerTest.buy(property);
-    playerTest.buy(property);
-
-
-
-
-    Gson gson = new Gson();
-    String j = gson.toJson(playerTest);
-    System.out.println(j);
-
-}
 
 }

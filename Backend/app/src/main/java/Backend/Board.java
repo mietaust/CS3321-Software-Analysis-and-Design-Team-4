@@ -21,8 +21,6 @@ public class Board {
    * List of spaces on the game board
    */
 
-Street space39 =  new Street("Boardwalk", 39, Color.LIGHTBLUE, 400, 50, 200,
-          new int[]{200, 600, 1400, 1700, 2000});
   @Getter
   final Space[] spaceNames = {new Space("GO", 0),
       new Street("Mediterranean Avenue", 1, Color.BROWN, 60, 2, 50,
