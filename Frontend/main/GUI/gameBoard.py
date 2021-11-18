@@ -886,220 +886,352 @@ class GameBoard:
             if house_no == 1:
                 self.brown_mediterranean_house_label.place(x=85, y=658)
             elif house_no == 2:
+                self.brown_mediterranean_house_label.place(x=85, y=658)
                 self.brown_mediterranean_house2_label.place(x=85, y=643)
             elif house_no == 3:
+                self.brown_mediterranean_house_label.place(x=85, y=658)
+                self.brown_mediterranean_house2_label.place(x=85, y=643)
                 self.brown_mediterranean_house3_label.place(x=85, y=628)
             elif house_no == 4:
+                self.brown_mediterranean_house_label.place(x=85, y=658)
+                self.brown_mediterranean_house2_label.place(x=85, y=643)
+                self.brown_mediterranean_house3_label.place(x=85, y=628)
                 self.brown_mediterranean_house4_label.place(x=85, y=613)
 
         elif space_position == 3:
             if house_no == 1:
                 self.baltic_avenue_house_label.place(x=85, y=530)
             elif house_no == 2:
+                self.baltic_avenue_house_label.place(x=85, y=530)
                 self.baltic_avenue_house2_label.place(x=85, y=515)
             elif house_no == 3:
+                self.baltic_avenue_house_label.place(x=85, y=530)
+                self.baltic_avenue_house2_label.place(x=85, y=515)
                 self.baltic_avenue_house3_label.place(x=85, y=500)
             elif house_no == 4:
+                self.baltic_avenue_house_label.place(x=85, y=530)
+                self.baltic_avenue_house2_label.place(x=85, y=515)
+                self.baltic_avenue_house3_label.place(x=85, y=500)
                 self.baltic_avenue_house4_label.place(x=85, y=485)
 
         elif space_position == 6:
             if house_no == 1:
                 self.oriental_Avenue_house_label.place(x=85, y=338)
             elif house_no == 2:
+                self.oriental_Avenue_house_label.place(x=85, y=338)
                 self.oriental_Avenue_house2_label.place(x=85, y=323)
             elif house_no == 3:
+                self.oriental_Avenue_house_label.place(x=85, y=338)
+                self.oriental_Avenue_house2_label.place(x=85, y=323)
                 self.oriental_Avenue_house3_label.place(x=85, y=308)
             elif house_no == 4:
+                self.oriental_Avenue_house_label.place(x=85, y=338)
+                self.oriental_Avenue_house2_label.place(x=85, y=323)
+                self.oriental_Avenue_house3_label.place(x=85, y=308)
                 self.oriental_Avenue_house4_label.place(x=85, y=293)
 
         elif space_position == 8:
             if house_no == 1:
                 self.vermont_house_label.place(x=85, y=210)
             elif house_no == 2:
+                self.vermont_house_label.place(x=85, y=210)
                 self.vermont_house2_label.place(x=85, y=195)
             elif house_no == 3:
+                self.vermont_house_label.place(x=85, y=210)
+                self.vermont_house2_label.place(x=85, y=195)
                 self.vermont_house3_label.place(x=85, y=180)
             elif house_no == 4:
+                self.vermont_house_label.place(x=85, y=210)
+                self.vermont_house2_label.place(x=85, y=195)
+                self.vermont_house3_label.place(x=85, y=180)
                 self.vermont_house4_label.place(x=85, y=165)
 
         elif space_position == 9:
             if house_no == 1:
                 self.connecticut_house_label.place(x=85, y=146)
             elif house_no == 2:
+                self.connecticut_house_label.place(x=85, y=146)
                 self.connecticut_house2_label.place(x=85, y=131)
             elif house_no == 3:
+                self.connecticut_house_label.place(x=85, y=146)
+                self.connecticut_house2_label.place(x=85, y=131)
                 self.connecticut_house3_label.place(x=85, y=116)
             elif house_no == 4:
+                self.connecticut_house_label.place(x=85, y=146)
+                self.connecticut_house2_label.place(x=85, y=131)
+                self.connecticut_house3_label.place(x=85, y=116)
                 self.connecticut_house4_label.place(x=85, y=101)
 
         elif space_position == 11:
             if house_no == 1:
                 self.st_charles_house_label.place(x=101, y=80)
             elif house_no == 2:
+                self.st_charles_house_label.place(x=101, y=80)
                 self.st_charles_house2_label.place(x=116, y=80)
             elif house_no == 3:
+                self.st_charles_house_label.place(x=101, y=80)
+                self.st_charles_house2_label.place(x=116, y=80)
                 self.st_charles_house3_label.place(x=131, y=80)
             elif house_no == 4:
+                self.st_charles_house_label.place(x=101, y=80)
+                self.st_charles_house2_label.place(x=116, y=80)
+                self.st_charles_house3_label.place(x=131, y=80)
                 self.st_charles_house4_label.place(x=146, y=80)
 
         elif space_position == 13:
             if house_no == 1:
                 self.states_house_label.place(x=227, y=80)
             elif house_no == 2:
+                self.states_house_label.place(x=227, y=80)
                 self.states_house2_label.place(x=242, y=80)
             elif house_no == 3:
+                self.states_house_label.place(x=227, y=80)
+                self.states_house2_label.place(x=242, y=80)
                 self.states_house3_label.place(x=257, y=80)
             elif house_no == 4:
+                self.states_house_label.place(x=227, y=80)
+                self.states_house2_label.place(x=242, y=80)
+                self.states_house3_label.place(x=257, y=80)
                 self.states_house4_label.place(x=273, y=80)
 
         elif space_position == 14:
             if house_no == 1:
                 self.virginia_house_label.place(x=291, y=80)
             elif house_no == 2:
+                self.virginia_house_label.place(x=291, y=80)
                 self.virginia_house2_label.place(x=307, y=80)
             elif house_no == 3:
+                self.virginia_house_label.place(x=291, y=80)
+                self.virginia_house2_label.place(x=307, y=80)
                 self.virginia_house3_label.place(x=322, y=80)
             elif house_no == 4:
+                self.virginia_house_label.place(x=291, y=80)
+                self.virginia_house2_label.place(x=307, y=80)
+                self.virginia_house3_label.place(x=322, y=80)
                 self.virginia_house4_label.place(x=337, y=80)
 
         elif space_position == 16:
             if house_no == 1:
                 self.st_james_house_label.place(x=420, y=80)
             elif house_no == 2:
+                self.st_james_house_label.place(x=420, y=80)
                 self.st_james_house2_label.place(x=435, y=80)
             elif house_no == 3:
+                self.st_james_house_label.place(x=420, y=80)
+                self.st_james_house2_label.place(x=435, y=80)
                 self.st_james_house3_label.place(x=450, y=80)
             elif house_no == 4:
+                self.st_james_house_label.place(x=420, y=80)
+                self.st_james_house2_label.place(x=435, y=80)
+                self.st_james_house3_label.place(x=450, y=80)
                 self.st_james_house4_label.place(x=465, y=80)
 
         elif space_position == 18:
             if house_no == 1:
                 self.tennessee_house_label.place(x=548, y=80)
             elif house_no == 2:
+                self.tennessee_house_label.place(x=548, y=80)
                 self.tennessee_house2_label.place(x=563, y=80)
             elif house_no == 3:
+                self.tennessee_house_label.place(x=548, y=80)
+                self.tennessee_house2_label.place(x=563, y=80)
                 self.tennessee_house3_label.place(x=578, y=80)
             elif house_no == 4:
+                self.tennessee_house_label.place(x=548, y=80)
+                self.tennessee_house2_label.place(x=563, y=80)
+                self.tennessee_house3_label.place(x=578, y=80)
                 self.tennessee_house4_label.place(x=593, y=80)
 
         elif space_position == 19:
             if house_no == 1:
                 self.new_york_house_label.place(x=612, y=80)
             elif house_no == 2:
+                self.new_york_house_label.place(x=612, y=80)
                 self.new_york_house2_label.place(x=627, y=80)
             elif house_no == 3:
+                self.new_york_house_label.place(x=612, y=80)
+                self.new_york_house2_label.place(x=627, y=80)
                 self.new_york_house3_label.place(x=642, y=80)
             elif house_no == 4:
+                self.new_york_house_label.place(x=612, y=80)
+                self.new_york_house2_label.place(x=627, y=80)
+                self.new_york_house3_label.place(x=642, y=80)
                 self.new_york_house4_label.place(x=657, y=80)
 
         elif space_position == 21:
             if house_no == 1:
                 self.kentucky_house_label.place(x=677, y=102)
             elif house_no == 2:
+                self.kentucky_house_label.place(x=677, y=102)
                 self.kentucky_house2_label.place(x=677, y=117)
             elif house_no == 3:
+                self.kentucky_house_label.place(x=677, y=102)
+                self.kentucky_house2_label.place(x=677, y=117)
                 self.kentucky_house3_label.place(x=677, y=132)
             elif house_no == 4:
+                self.kentucky_house_label.place(x=677, y=102)
+                self.kentucky_house2_label.place(x=677, y=117)
+                self.kentucky_house3_label.place(x=677, y=132)
                 self.kentucky_house4_label.place(x=677, y=147)
 
         elif space_position == 23:
             if house_no == 1:
                 self.indiana_house_label.place(x=677, y=225)
             elif house_no == 2:
+                self.indiana_house_label.place(x=677, y=225)
                 self.indiana_house2_label.place(x=677, y=238)
             elif house_no == 3:
+                self.indiana_house_label.place(x=677, y=225)
+                self.indiana_house2_label.place(x=677, y=238)
                 self.indiana_house3_label.place(x=677, y=253)
             elif house_no == 4:
+                self.indiana_house_label.place(x=677, y=225)
+                self.indiana_house2_label.place(x=677, y=238)
+                self.indiana_house3_label.place(x=677, y=253)
                 self.indiana_house4_label.place(x=677, y=268)
 
         elif space_position == 24:
             if house_no == 1:
                 self.illnois_house_label.place(x=677, y=290)
             elif house_no == 2:
+                self.illnois_house_label.place(x=677, y=290)
                 self.illnois_house2_label.place(x=677, y=305)
             elif house_no == 3:
+                self.illnois_house_label.place(x=677, y=290)
+                self.illnois_house2_label.place(x=677, y=305)
                 self.illnois_house3_label.place(x=677, y=320)
             elif house_no == 4:
+                self.illnois_house_label.place(x=677, y=290)
+                self.illnois_house2_label.place(x=677, y=305)
+                self.illnois_house3_label.place(x=677, y=320)
                 self.illnois_house4_label.place(x=677, y=335)
 
         elif space_position == 26:
             if house_no == 1:
                 self.atlantic_house_label.place(x=677, y=418)
             elif house_no == 2:
+                self.atlantic_house_label.place(x=677, y=418)
                 self.atlantic_house2_label.place(x=677, y=433)
             elif house_no == 3:
+                self.atlantic_house_label.place(x=677, y=418)
+                self.atlantic_house2_label.place(x=677, y=433)
                 self.atlantic_house_label.place(x=677, y=448)
             elif house_no == 4:
+                self.atlantic_house_label.place(x=677, y=418)
+                self.atlantic_house2_label.place(x=677, y=433)
+                self.atlantic_house_label.place(x=677, y=448)
                 self.atlantic_house_label.place(x=677, y=463)
 
         elif space_position == 27:
             if house_no == 1:
                 self.ventnor_house_label.place(x=677, y=482)
             elif house_no == 2:
+                self.ventnor_house_label.place(x=677, y=482)
                 self.ventnor_house2_label.place(x=677, y=497)
             elif house_no == 3:
+                self.ventnor_house_label.place(x=677, y=482)
+                self.ventnor_house2_label.place(x=677, y=497)
                 self.ventnor_house3_label.place(x=677, y=512)
             elif house_no == 4:
+                self.ventnor_house_label.place(x=677, y=482)
+                self.ventnor_house2_label.place(x=677, y=497)
+                self.ventnor_house3_label.place(x=677, y=512)
                 self.ventnor_house4_label.place(x=677, y=527)
 
         elif space_position == 29:
             if house_no == 1:
                 self.marvin_house_label.place(x=677, y=610)
             elif house_no == 2:
+                self.marvin_house_label.place(x=677, y=610)
                 self.marvin_house2_label.place(x=677, y=625)
             elif house_no == 3:
+                self.marvin_house_label.place(x=677, y=610)
+                self.marvin_house2_label.place(x=677, y=625)
                 self.marvin_house3_label.place(x=677, y=640)
             elif house_no == 4:
+                self.marvin_house_label.place(x=677, y=610)
+                self.marvin_house2_label.place(x=677, y=625)
+                self.marvin_house3_label.place(x=677, y=640)
                 self.marvin_house4_label.place(x=677, y=655)
 
         elif space_position == 31:
             if house_no == 1:
                 self.pacific_house_label.place(x=614, y=677)
             elif house_no == 2:
+                self.pacific_house_label.place(x=614, y=677)
                 self.pacific_house2_label.place(x=629, y=677)
             elif house_no == 3:
+                self.pacific_house_label.place(x=614, y=677)
+                self.pacific_house2_label.place(x=629, y=677)
                 self.pacific_house3_label.place(x=644, y=677)
             elif house_no == 4:
+                self.pacific_house_label.place(x=614, y=677)
+                self.pacific_house2_label.place(x=629, y=677)
+                self.pacific_house3_label.place(x=644, y=677)
                 self.pacific_house4_label.place(x=659, y=677)
 
         elif space_position == 32:
             if house_no == 1:
                 self.north_carolina_house_label.place(x=550, y=677)
             elif house_no == 2:
+                self.north_carolina_house_label.place(x=550, y=677)
                 self.north_carolina_house2_label.place(x=565, y=677)
             elif house_no == 3:
+                self.north_carolina_house_label.place(x=550, y=677)
+                self.north_carolina_house2_label.place(x=565, y=677)
                 self.north_carolina_house3_label.place(x=580, y=677)
             elif house_no == 4:
+                self.north_carolina_house_label.place(x=550, y=677)
+                self.north_carolina_house2_label.place(x=565, y=677)
+                self.north_carolina_house3_label.place(x=580, y=677)
                 self.north_carolina_house4_label.place(x=595, y=677)
 
         elif space_position == 34:
             if house_no == 1:
                 self.pennsylvania_house_label.place(x=420, y=677)
             elif house_no == 2:
+                self.pennsylvania_house_label.place(x=420, y=677)
                 self.pennsylvania_house2_label.place(x=435, y=677)
             elif house_no == 3:
+                self.pennsylvania_house_label.place(x=420, y=677)
+                self.pennsylvania_house2_label.place(x=435, y=677)
                 self.pennsylvania_house3_label.place(x=450, y=677)
             elif house_no == 4:
+                self.pennsylvania_house_label.place(x=420, y=677)
+                self.pennsylvania_house2_label.place(x=435, y=677)
+                self.pennsylvania_house3_label.place(x=450, y=677)
                 self.pennsylvania_house4_label.place(x=465, y=677)
 
         elif space_position == 37:
             if house_no == 1:
                 self.park_house_label.place(x=228, y=677)
             elif house_no == 2:
+                self.park_house_label.place(x=228, y=677)
                 self.park_house2_label.place(x=243, y=677)
             elif house_no == 3:
+                self.park_house_label.place(x=228, y=677)
+                self.park_house2_label.place(x=243, y=677)
                 self.park_house3_label.place(x=258, y=677)
             elif house_no == 4:
+                self.park_house_label.place(x=228, y=677)
+                self.park_house2_label.place(x=243, y=677)
+                self.park_house3_label.place(x=258, y=677)
                 self.park_house4_label.place(x=273, y=677)
 
         elif space_position == 39:
             if house_no == 1:
                 self.broadwalk_house_label.place(x=103, y=677)
             elif house_no == 2:
+                self.broadwalk_house_label.place(x=103, y=677)
                 self.broadwalk_house2_label.place(x=118, y=677)
             elif house_no == 3:
+                self.broadwalk_house_label.place(x=103, y=677)
+                self.broadwalk_house2_label.place(x=118, y=677)
                 self.broadwalk_house3_label.place(x=133, y=677)
             elif house_no == 4:
+                self.broadwalk_house_label.place(x=103, y=677)
+                self.broadwalk_house2_label.place(x=118, y=677)
+                self.broadwalk_house3_label.place(x=133, y=677)
                 self.broadwalk_house4_label.place(x=148, y=677)
 
     def deactivate_space_button(self):
