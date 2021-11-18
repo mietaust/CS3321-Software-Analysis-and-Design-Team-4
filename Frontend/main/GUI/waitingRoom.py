@@ -92,7 +92,7 @@ class WaitRoom:
                 self.window.update()
                 time.sleep(.25)
                 self.window.update()
-                print(outputgs)
+                print(outputgs.gameStart)
 
 
 

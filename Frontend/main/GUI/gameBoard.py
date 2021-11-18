@@ -8,6 +8,8 @@ from threading import Thread
 #player2_position = 0  # temp variable for moving the token 2
 #house_num = 0
 #hotel_num = 1  # temp hotel num
+import requests.exceptions
+
 clog = []
 
 
@@ -1268,23 +1270,24 @@ class GameBoard:
                 self.create_house(location, numhouses)
                 self.create_hotel(location, numhotels)
         # server log update
-        if(self.currentlog != outputgs.log):
+        if (self.currentlog != outputgs.log):
             x = 0
-            if (("Player 1 Balance: " + str(outputgs.player1.accountBalance)) not in self.currentlog):
-                self.game_log_list.insert(x + 1, ("Player 1 Balance: " + str(outputgs.player1.accountBalance)))
-                self.currentlog.append(("Player 1 Balance: " + str(outputgs.player1.accountBalance)))
-            if (("Player 2 Balance: " + str(outputgs.player2.accountBalance)) not in self.currentlog):
-                self.game_log_list.insert(x + 1, ("Player 2 Balance: " + str(outputgs.player2.accountBalance)))
-                self.currentlog.append(("Player 2 Balance: " + str(outputgs.player2.accountBalance)))
+           # if (("Player 1 Balance: " + str(outputgs.player1.accountBalance)) not in self.currentlog):
+           #     self.game_log_list.insert(x + 1, ("Player 1 Balance: " + str(outputgs.player1.accountBalance)))
+           #     self.currentlog.append(("Player 1 Balance: " + str(outputgs.player1.accountBalance)))
+           # if (("Player 2 Balance: " + str(outputgs.player2.accountBalance)) not in self.currentlog):
+           #     self.game_log_list.insert(x + 1, ("Player 2 Balance: " + str(outputgs.player2.accountBalance)))
+           #     self.currentlog.append(("Player 2 Balance: " + str(outputgs.player2.accountBalance)))
             for log in outputgs.log:
-                if(log not in self.currentlog):
+                if (log not in self.currentlog):
                     self.game_log_list.insert(x, log)
                     x += 1
                     self.currentlog.append(log)
             x = 0
 
         self.window.update()
-        # print("Board Updated From Server!")
+
+
 
     # main update loop for drawing window and updating gameboard
     def main_update_loop(self):
