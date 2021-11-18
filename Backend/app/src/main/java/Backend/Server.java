@@ -156,7 +156,7 @@ public class Server {
         //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
         if(idFromSender.equals(GameState.getInstance().turn.getId())){
 
-          if(!hasRolled) {
+          if(!Gameplay.state.getRolled()) {
             System.out.println("Got good request from UUID: " + GameState.getInstance().turn.getId());
             Gameplay.roll(GameState.getInstance().turn);
             hasRolled = true;
@@ -179,13 +179,14 @@ public class Server {
         if(idFromSender.equals(GameState.getInstance().turn.getId())){
           System.out.println("Got good end turn request from UUID: " + GameState.getInstance().turn.getId());
           hasRolled = false;
-          if(idFromSender.equals(GameState.getInstance().player1.getId())){
+          Gameplay.endTurn();
+         // if(idFromSender.equals(GameState.getInstance().player1.getId())){
             //set new player to player 2
-            GameState.getInstance().setTurn(GameState.getInstance().player2);
-          }else if ((idFromSender.equals(GameState.getInstance().player2.getId()))){
+         //   GameState.getInstance().setTurn(GameState.getInstance().player2);
+         // }else if ((idFromSender.equals(GameState.getInstance().player2.getId()))){
             //set new player to player 1
-            GameState.getInstance().setTurn(GameState.getInstance().player1);
-          }
+         //   GameState.getInstance().setTurn(GameState.getInstance().player1);
+         // }
         }else{
           System.out.println("Received bad end turn request. Pass on game logic execution.");
         }

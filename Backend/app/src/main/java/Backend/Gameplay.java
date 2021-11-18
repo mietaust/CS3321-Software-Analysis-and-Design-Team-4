@@ -172,11 +172,12 @@ public class Gameplay {
           && player.ownAllStreetGroup((Street) state.getBoard()[location])
           && ((Street) state.getBoard()[location]).getHotelNumber() == 0) {
         //check if the player can afford the house
-        if (player.getAccountBalance() < ((Street) state.getBoard()[location]).getBuildPrice()) {
+        if (player.getAccountBalance() > ((Street) state.getBoard()[location]).getBuildPrice()) {
           ((Street) state.getBoard()[location]).setHouseNumber
               (((Street) state.getBoard()[location]).getHouseNumber() + 1);
           GameState.getInstance().log(player.getName()+" has built a house at "+state.getBoard()[player.getPosition()].getName());
         } else {
+          GameState.getInstance().log(player.getName() +"Not enough money");
           //not enough money
         }
       }
@@ -200,7 +201,7 @@ public class Gameplay {
           && player.ownAllStreetGroup((Street) state.getBoard()[location])
           && ((Street) state.getBoard()[location]).getHotelNumber() == 0) {
         //check if the player can afford the house
-        if (player.getAccountBalance() < ((Street) state.getBoard()[location]).getBuildPrice()) {
+        if (player.getAccountBalance() > ((Street) state.getBoard()[location]).getBuildPrice()) {
           ((Street) state.getBoard()[location]).setHouseNumber(0);
           ((Street) state.getBoard()[location]).setNoOfHotel(1);
           GameState.getInstance().log(player.getName()+" has built a hotel at "+state.getBoard()[player.getPosition()].getName());
@@ -223,14 +224,14 @@ public class Gameplay {
    * ends current players turn
    */
   public static void endTurn() {
-    GameState.getInstance().log(GameState.getInstance().getTurn()+" has ended their turn.");
+    GameState.getInstance().log(GameState.getInstance().getTurn().getName()+" has ended their turn.");
     if (state.turn.equals(state.player1)) {
       state.setTurn(state.player2);
     } else {
       state.setTurn(state.player1);
     }
     state.setRolled(false);
-    GameState.getInstance().log("It is now "+GameState.getInstance().turn+"'s turn");
+    GameState.getInstance().log("It is now "+GameState.getInstance().turn.getName()+"'s turn");
   }
 
 
