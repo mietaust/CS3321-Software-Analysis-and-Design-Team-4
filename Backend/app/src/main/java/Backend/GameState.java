@@ -30,6 +30,12 @@ public class GameState {
   @Getter
   @Setter
   Boolean rolled = false;
+  @Setter
+  @Getter
+  Boolean gameOver = false;
+  @Setter
+  @Getter
+  Player winner;
   CommunityChest communityChest = new CommunityChest("Chest", 3, CardType.COMMUNITY);
 
 

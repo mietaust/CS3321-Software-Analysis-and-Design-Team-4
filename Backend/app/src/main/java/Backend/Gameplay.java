@@ -42,7 +42,8 @@ public class Gameplay {
           if (player.getNumJailEscAttempts() == 3) {
             player.addToAccount(-50);
             player.setInJail(false);
-            GameState.getInstance().log(player.getName() + " failed to escape in 3 rounds and payed 50$ bail");
+            GameState.getInstance()
+                .log(player.getName() + " failed to escape in 3 rounds and payed 50$ bail");
           }
         }
 
@@ -71,12 +72,13 @@ public class Gameplay {
       if (player.getPosition() + movement > 39) {
         //this should give player 200 for passing go
         player.addToAccount(200);
-        GameState.getInstance().log(player.getName()+" gets 200$ for passing go");
+        GameState.getInstance().log(player.getName() + " gets 200$ for passing go");
       }
       player.move(movement);
       state.setRolled(true);
-      GameState.getInstance().log(player.getName() +" has moved "+movement+" spaces");
+      GameState.getInstance().log(player.getName() + " has moved " + movement + " spaces");
       checkPosition(player);
+      checkWinState();
     }
   }
 
@@ -94,14 +96,18 @@ public class Gameplay {
       ((Street) state.getBoard()[player.getPosition()]).getOwner()
           .addToAccount(((Street) state.getBoard()[player.getPosition()]).getRent());
       player.addToAccount(-1 * ((Street) state.getBoard()[player.getPosition()]).getRent());
-      GameState.getInstance().log(player.getName() +" is now paying a rent of "+(((Street) state.getBoard()[player.getPosition()]).getRent())+" to "+((Street) state.getBoard()[player.getPosition()]).getOwner().getName());
+      GameState.getInstance().log(player.getName() + " is now paying a rent of "
+          + (((Street) state.getBoard()[player.getPosition()]).getRent()) + " to "
+          + ((Street) state.getBoard()[player.getPosition()]).getOwner().getName());
     } else if ((state.getBoard()[player.getPosition()]) instanceof Property
         && ((Property) state.getBoard()[player.getPosition()]).getOwner() != null
         && ((Property) state.getBoard()[player.getPosition()]).getOwner() != player) {
       ((Property) state.getBoard()[player.getPosition()]).getOwner()
           .addToAccount(((Property) state.getBoard()[player.getPosition()]).getRent());
       player.addToAccount(-1 * ((Property) state.getBoard()[player.getPosition()]).getRent());
-      GameState.getInstance().log(player.getName() +" is now paying a rent of "+(((Property) state.getBoard()[player.getPosition()]).getRent())+" to "+((Property) state.getBoard()[player.getPosition()]).getOwner().getName());
+      GameState.getInstance().log(player.getName() + " is now paying a rent of "
+          + (((Property) state.getBoard()[player.getPosition()]).getRent()) + " to "
+          + ((Property) state.getBoard()[player.getPosition()]).getOwner().getName());
     }
     //this chunk handles all the other possible reactive spaces
     if (player.getPosition() == Constants.COMMUNITY_CHEST
@@ -109,19 +115,19 @@ public class Gameplay {
         || player.getPosition() == Constants.COMMUNITY_CHEST3) {
       chest.community((int) Math.floor(Math.random() * 16));
       chest.performAction(chest.getAction(), player);
-      GameState.getInstance().log(player.getName()+" has drawn a card: "+chest.getCardDesc());
+      GameState.getInstance().log(player.getName() + " has drawn a card: " + chest.getCardDesc());
     } else if (player.getPosition() == Constants.CHANCE_RED
         || player.getPosition() == Constants.CHANCE_ORANGE
         || player.getPosition() == Constants.CHANCE_BLUE) {
       chance.chance((int) Math.floor(Math.random() * 12));
       chance.performAction(chance.getAction(), player);
-      GameState.getInstance().log(player.getName()+" has drawn a card: "+chance.getCardDesc());
+      GameState.getInstance().log(player.getName() + " has drawn a card: " + chance.getCardDesc());
     } else if (player.getPosition() == Constants.GOTO_JAIL) {
       if (!player.isInJail()) {
         player.goToJail();
       }
       player.goToJail();
-      GameState.getInstance().log(player.getName()+" is going to Jail Baby");
+      GameState.getInstance().log(player.getName() + " is going to brazil");
     } else {
       return;
     }
@@ -141,7 +147,8 @@ public class Gameplay {
           > ((Property) state.getBoard()[player.getPosition()]).getValue()
           && ((Property) state.getBoard()[player.getPosition()]).getOwner() == null) {
         player.buy((Property) state.getBoard()[player.getPosition()]);
-        GameState.getInstance().log(player.getName()+" has purchased "+state.getBoard()[player.getPosition()].getName());
+        GameState.getInstance().log(player.getName() + " has purchased "
+            + state.getBoard()[player.getPosition()].getName());
         //((Property) state.getBoard()[player.getPosition()]).setOwner(player);
         //player.addToAccount(-((Property) state.getBoard()[player.getPosition()]).getValue());
 
@@ -175,9 +182,10 @@ public class Gameplay {
         if (player.getAccountBalance() > ((Street) state.getBoard()[location]).getBuildPrice()) {
           ((Street) state.getBoard()[location]).setHouseNumber
               (((Street) state.getBoard()[location]).getHouseNumber() + 1);
-          GameState.getInstance().log(player.getName()+" has built a house at "+state.getBoard()[player.getPosition()].getName());
+          GameState.getInstance().log(player.getName() + " has built a house at "
+              + state.getBoard()[player.getPosition()].getName());
         } else {
-          GameState.getInstance().log(player.getName() +"Not enough money");
+          GameState.getInstance().log(player.getName() + "Not enough money");
           //not enough money
         }
       }
@@ -204,7 +212,8 @@ public class Gameplay {
         if (player.getAccountBalance() > ((Street) state.getBoard()[location]).getBuildPrice()) {
           ((Street) state.getBoard()[location]).setHouseNumber(0);
           ((Street) state.getBoard()[location]).setNoOfHotel(1);
-          GameState.getInstance().log(player.getName()+" has built a hotel at "+state.getBoard()[player.getPosition()].getName());
+          GameState.getInstance().log(player.getName() + " has built a hotel at "
+              + state.getBoard()[player.getPosition()].getName());
 
         } else {
           //not enough money
@@ -224,14 +233,24 @@ public class Gameplay {
    * ends current players turn
    */
   public static void endTurn() {
-    GameState.getInstance().log(GameState.getInstance().getTurn().getName()+" has ended their turn.");
+    GameState.getInstance()
+        .log(GameState.getInstance().getTurn().getName() + " has ended their turn.");
     if (state.turn.equals(state.player1)) {
       state.setTurn(state.player2);
     } else {
       state.setTurn(state.player1);
     }
     state.setRolled(false);
-    GameState.getInstance().log("It is now "+GameState.getInstance().turn.getName()+"'s turn");
+    GameState.getInstance().log("It is now " + GameState.getInstance().turn.getName() + "'s turn");
+  }
+  public static void checkWinState(){
+    if(state.player1.getAccountBalance()<0){
+      state.setWinner(state.player2);
+      state.setGameOver(true);
+    }else if(state.player2.getAccountBalance()<0){
+      state.setWinner(state.player2);
+      state.setGameOver(true);
+    }
   }
 
 

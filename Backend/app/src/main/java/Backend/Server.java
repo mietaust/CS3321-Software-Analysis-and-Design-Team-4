@@ -99,7 +99,7 @@ public class Server {
         UUID idFromSender = UUID.fromString(parsedString);
 
         //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
-        if(idFromSender.equals(GameState.getInstance().turn.getId())){
+        if(idFromSender.equals(GameState.getInstance().turn.getId()) && GameState.getInstance().gameOver == false){
           System.out.println("Got good house request from UUID: " + GameState.getInstance().turn.getId());
           Gameplay.buildHouse(GameState.getInstance().turn);
         }else{
@@ -118,7 +118,7 @@ public class Server {
         UUID idFromSender = UUID.fromString(parsedString);
 
         //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
-        if(idFromSender.equals(GameState.getInstance().turn.getId())){
+        if(idFromSender.equals(GameState.getInstance().turn.getId()) && GameState.getInstance().gameOver == false){
           System.out.println("Got good hotel request from UUID: " + GameState.getInstance().turn.getId());
           Gameplay.buildHotel(GameState.getInstance().turn);
         }else{
@@ -135,7 +135,7 @@ public class Server {
         UUID idFromSender = UUID.fromString(parsedString);
 
         //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
-        if(idFromSender.equals(GameState.getInstance().turn.getId())){
+        if(idFromSender.equals(GameState.getInstance().turn.getId()) && GameState.getInstance().gameOver == false){
           System.out.println("Got good property purchase request from UUID: " + GameState.getInstance().turn.getId());
           Gameplay.buy(GameState.getInstance().turn);
         }else{
@@ -154,7 +154,7 @@ public class Server {
         UUID idFromSender = UUID.fromString(parsedString);
 
         //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
-        if(idFromSender.equals(GameState.getInstance().turn.getId())){
+        if(idFromSender.equals(GameState.getInstance().turn.getId()) && GameState.getInstance().gameOver == false){
 
           if(!Gameplay.state.getRolled()) {
             System.out.println("Got good request from UUID: " + GameState.getInstance().turn.getId());

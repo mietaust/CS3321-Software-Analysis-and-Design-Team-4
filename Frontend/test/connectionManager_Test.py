@@ -1,5 +1,5 @@
 import unittest
-from Frontend.main.Networking.ConnectionManager import ConnectionManager
+from Frontend.main.GUI.ConnectionManager import ConnectionManager
 
 
 class TestConnectionMethods(unittest.TestCase):

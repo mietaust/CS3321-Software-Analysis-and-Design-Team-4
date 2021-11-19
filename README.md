@@ -1,5 +1,9 @@
 # CS3321-Software-Analysis-and-Design-Team-4
 
+##Docker commands, IDK where else to put these:
+docker build -t monopserver .
+docker run -p 7000:7000 monopserver
+
 ## Team 4 Info
 ### Members: Active Roles
 * Nicholas Garrett: 
