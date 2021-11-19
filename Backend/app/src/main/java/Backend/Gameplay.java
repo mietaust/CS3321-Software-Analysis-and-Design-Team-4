@@ -121,7 +121,7 @@ public class Gameplay {
         player.goToJail();
       }
       player.goToJail();
-      GameState.getInstance().log(player.getName()+" is going to brazil");
+      GameState.getInstance().log(player.getName()+" is going to Jail Baby");
     } else {
       return;
     }
