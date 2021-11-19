@@ -1308,7 +1308,6 @@ class GameBoard:
         self.update_frame.place(x=773, y=0)
 
 
-
         # Initializes Player One display for name and money
 
     def create_player_one_display(self):
@@ -1330,7 +1329,26 @@ class GameBoard:
         self.player_one_cash_amount = Label(self.label_frame, text="", width=7, relief=SUNKEN, font=("Arial", 10),
                                             bg='yellow')
         self.player_one_cash_amount.pack(padx=0, pady=10, anchor=NE, side=tk.LEFT)
+        
+        
+        #Initializes Player One property scrollbar
+        
+    def create_player_one_property_scrollbar(self):
+        ##Player 1 Information
+        self.player_one_sb = Scrollbar(root, orient=VERTICAL)
+        self.player_one_sb.pack(side=RIGHT, fill=Y)
+        
+        self.property_list = Listbox(root, width=48, height=12, yscrollcommand=set.player_one_sb.set,
+                        font=("Times", 10))
+        
+        self.property_list.config(exportselection=False)
+        self.property_list.pack(side=LEFT, fill=Y)
 
+        self.player_one_sb.config(command=self.player_one_sb.yview)
+        
+        # root.place(x=700, y=0) Not sure where to place this exactly
+        
+        
         # Initializes Player Two display for name and money
 
     def create_player_two_display(self):
@@ -1353,7 +1371,25 @@ class GameBoard:
         self.player_two_cash_amount = Label(self.label_frame2, text="", width=7, relief=SUNKEN, font=("Arial", 10),
                                             bg='yellow')
         self.player_two_cash_amount.pack(padx=5, pady=10, anchor=NE, side=tk.LEFT)
+        
+        
+        #Initializes Player Two property scrollbar
+        
+    def create_player_two_property_scrollbar(self):
+        ##Player 1 Information
+        self.player_two_sb = Scrollbar(root, orient=VERTICAL)
+        self.player_two_sb.pack(side=RIGHT, fill=Y)
+        
+        self.property_list = Listbox(root, width=48, height=12, yscrollcommand=set.player_two_sb.set,
+                        font=("Times", 10))
+        
+        self.property_list.config(exportselection=False)
+        self.property_list.pack(side=LEFT, fill=Y)
 
+        self.player_one_sb.config(command=self.player_two_sb.yview)
+        
+        # root.place(x=700, y=0) Not sure where to place this exactly
+        
 
     # Utility Functions
 
