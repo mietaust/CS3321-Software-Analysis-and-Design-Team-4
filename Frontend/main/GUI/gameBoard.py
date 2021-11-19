@@ -1308,8 +1308,7 @@ class GameBoard:
         self.update_frame.place(x=773, y=0)
 
 
-
-        # Initializes Player One display
+        # Initializes Player One display for name and money
 
     def create_player_one_display(self):
         ## Player 1 Information
@@ -1319,29 +1318,38 @@ class GameBoard:
 
         # Create and position labels and text boxes for Player One
         self.player_one_label = Label(self.label_frame, text="Player 1: ", relief=RIDGE, font=("Arial", 10, "bold"))
-        self.player_one_label.grid(row=0, column=0, padx=10, pady=10, sticky=NW)
+        self.player_one_label.pack(padx=5, pady=10, anchor=NW, side=tk.LEFT)
 
         self.player_one_name = Entry(self.label_frame, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
-        self.player_one_name.grid(row=0, column=1, padx=0, pady=10, sticky=NW)
+        self.player_one_name.pack(padx=5, pady=10, anchor=NW, side=tk.LEFT)
+        
+        self.player_one_cash_label = Label(self.label_frame, text="$:", font=("Arial", 10), bg="light blue")
+        self.player_one_cash_label.pack(padx=5, pady=10, anchor=NE, side=tk.LEFT)
 
         self.player_one_cash_amount = Label(self.label_frame, text="", width=7, relief=SUNKEN, font=("Arial", 10),
                                             bg='yellow')
-        self.player_one_cash_amount.grid(row=0, column=4, padx=0, pady=10, sticky=NW)
+        self.player_one_cash_amount.pack(padx=0, pady=10, anchor=NE, side=tk.LEFT)
+        
+        
+        #Initializes Player One property scrollbar
+        
+    def create_player_one_property_scrollbar(self):
+        ##Player 1 Information
+        self.player_one_sb = Scrollbar(root, orient=VERTICAL)
+        self.player_one_sb.pack(side=RIGHT, fill=Y)
+        
+        self.property_list = Listbox(root, width=48, height=12, yscrollcommand=set.player_one_sb.set,
+                        font=("Times", 10))
+        
+        self.property_list.config(exportselection=False)
+        self.property_list.pack(side=LEFT, fill=Y)
 
-        self.player_one_cash_label = Label(self.label_frame, text="$:", font=("Arial", 10), bg="light blue")
-        self.player_one_cash_label.grid(row=0, column=3, padx=0, pady=10, sticky=E)
-
-        # self.root.Separator(self.root, orient=HORIZONTAL).grid(columnspan=5, row=1, sticky='ew')
-
-        self.player_one_property_header = Label(self.label_frame, text="Player Properties", relief=RIDGE,
-                                                font=("Arial", 10, "bold"))
-        self.player_one_property_header.grid(row=2, column=1, padx=0, pady=20, sticky=N)
-
-        self.player_one_property_label = Label(self.label_frame, height=292, width=48, font=("Arial", 8), relief=SUNKEN,
-                                               bg="white")
-        self.player_one_property_label.grid(columnspan=5, row=3, sticky="wens")
-
-        # Initializes Player Two display
+        self.player_one_sb.config(command=self.player_one_sb.yview)
+        
+        # root.place(x=700, y=0) Not sure where to place this exactly
+        
+        
+        # Initializes Player Two display for name and money
 
     def create_player_two_display(self):
         ## Player 2 Information
@@ -1352,28 +1360,36 @@ class GameBoard:
 
         # Create and position labels and text boxes for Player Two
         self.player_two_label = Label(self.label_frame2, text="Player 2: ", relief=RIDGE, font=("Arial", 10, "bold"))
-        self.player_two_label.grid(row=0, column=0, padx=10, pady=10, sticky=NW)
+        self.player_two_label.pack(padx=5, pady=10, anchor=NW, side=tk.LEFT)
 
         self.player_two_name = Entry(self.label_frame2, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
-        self.player_two_name.grid(row=0, column=1, padx=0, pady=10, sticky=NW)
+        self.player_two_name.pack(padx=5, pady=10, anchor=NW, side=tk.LEFT)
+        
+        self.player_two_cash_label = Label(self.label_frame2, text="$:", font=("Arial", 10), bg="light green")
+        self.player_two_cash_label.pack(padx=5, pady=10, anchor=NE, side=tk.LEFT)
 
         self.player_two_cash_amount = Label(self.label_frame2, text="", width=7, relief=SUNKEN, font=("Arial", 10),
                                             bg='yellow')
-        self.player_two_cash_amount.grid(row=0, column=4, padx=0, pady=10, sticky=NW)
+        self.player_two_cash_amount.pack(padx=5, pady=10, anchor=NE, side=tk.LEFT)
+        
+        
+        #Initializes Player Two property scrollbar
+        
+    def create_player_two_property_scrollbar(self):
+        ##Player 1 Information
+        self.player_two_sb = Scrollbar(root, orient=VERTICAL)
+        self.player_two_sb.pack(side=RIGHT, fill=Y)
+        
+        self.property_list = Listbox(root, width=48, height=12, yscrollcommand=set.player_two_sb.set,
+                        font=("Times", 10))
+        
+        self.property_list.config(exportselection=False)
+        self.property_list.pack(side=LEFT, fill=Y)
 
-        self.player_two_cash_label = Label(self.label_frame2, text="$:", font=("Arial", 10), bg="light green")
-        self.player_two_cash_label.grid(row=0, column=3, padx=0, pady=10, sticky=E)
-
-        # self.root.Separator(self.label_frame, orient=HORIZONTAL).grid(columnspan=5, row=1, sticky='ew')
-
-        self.player_two_property_header = Label(self.label_frame2, text="Player Properties", relief=RIDGE,
-                                                font=("Arial", 10, "bold"))
-        self.player_two_property_header.grid(row=2, column=1, padx=0, pady=20, sticky=N)
-
-        self.player_two_property_label = Label(self.label_frame2, height=292, width=49, font=("Arial", 8),
-                                               relief=SUNKEN,
-                                               bg="white")
-        self.player_two_property_label.grid(columnspan=5, row=3, sticky="wens")
+        self.player_one_sb.config(command=self.player_two_sb.yview)
+        
+        # root.place(x=700, y=0) Not sure where to place this exactly
+        
 
     # Utility Functions
 
