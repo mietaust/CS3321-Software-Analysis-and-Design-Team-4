@@ -1,9 +1,9 @@
 import threading
 import tkinter
 from tkinter import *
-import main.GUI.gameBoard
-import main.GUI.player
-import main.GUI.gameBoard
+import gameBoard
+import player
+import gameBoard
 import json
 from types import SimpleNamespace
 import time
@@ -68,7 +68,7 @@ class WaitRoom:
         modifiedString = str(l.content)
         d = modifiedString.lstrip('b')
         print("Received UUID " + d + ".")
-        return main.GUI.player.NewPlayer(self.name, d)
+        return player.NewPlayer(self.name, d)
 
     def draw_window(self):
         self.window.update()
@@ -82,7 +82,7 @@ class WaitRoom:
             if outputgs.gameStart:
                 # we open up the gameboard passing relevant info
                 self.window.destroy()
-                main.GUI.gameBoard.GameBoard(self.cman, self.newplayer)
+                gameBoard.GameBoard(self.cman, self.newplayer)
                 #i=700000000000
             else:
                 # we wait before looping again - Made the choice to constantly poll the server instead
