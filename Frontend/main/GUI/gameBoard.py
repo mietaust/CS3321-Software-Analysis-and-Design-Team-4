@@ -31,13 +31,13 @@ class GameBoard:
         self.currentlog = []
         self.server_update()
         self.create_player_one_display()
-        self.create_player_two_property_scrollbar()
-        #self.thread = Thread(target=self.main_update_loop())
-        #self.thread.start()
-        # self.window.update()
+        self.create_player_two_display()
+        self.thread = Thread(target=self.main_update_loop())
+        self.thread.start()
+        self.window.update()
 
-        # self.get_board_update_loop()
-        self.window.mainloop()
+        self.get_board_update_loop()
+        #self.window.mainloop()
 
     # Initializes board spaces with images
     def initialize_spaces(self):
@@ -301,6 +301,7 @@ class GameBoard:
         self.endTurn_button = Button(self.window, text="End Turn", command=self.button_end_turn,
                                      font=("arial", 12, 'bold'), width=15)
         self.endTurn_button.place(x=310, y=520)
+        #self.reset_button = Button(self.window, text="Reset Game", font=("arial", 12, 'bold'), width=15)
 
     # Initializes player tokens
     def create_player_token(self):
@@ -1337,31 +1338,10 @@ class GameBoard:
         
         # Initializes Player Two display for name and money
 
-    def create_player_two_display(self):
-        ## Player 2 Information
-        self.label_frame2 = LabelFrame(self.window, text="Player Information",
-                                       width=75)  # Create Frame frame for labels
-        self.label_frame2.place(x=1072, y=372)  # Filling window
-        self.label_frame2.config(bg="light green")  # Set background window background color
 
-        # Create and position labels and text boxes for Player Two
-        self.player_two_label = Label(self.label_frame2, text="Player 2: ", relief=RIDGE, font=("Arial", 10, "bold"))
-        self.player_two_label.pack(padx=5, pady=10, anchor=NW, side=tk.LEFT)
-
-        self.player_two_name = Entry(self.label_frame2, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
-        self.player_two_name.pack(padx=5, pady=10, anchor=NW, side=tk.LEFT)
-        
-        self.player_two_cash_label = Label(self.label_frame2, text="$:", font=("Arial", 10), bg="light green")
-        self.player_two_cash_label.pack(padx=5, pady=10, anchor=NE, side=tk.LEFT)
-
-        self.player_two_cash_amount = Label(self.label_frame2, text="", width=7, relief=SUNKEN, font=("Arial", 10),
-                                            bg='yellow')
-        self.player_two_cash_amount.pack(padx=5, pady=10, anchor=NE, side=tk.LEFT)
-        
-        
         #Initializes Player Two property scrollbar
         
-    def create_player_two_property_scrollbar(self):
+    def create_player_two_display(self):
         ##Player 1 Information
         self.update_player_two_frame = Frame(self.window)
         self.player_two_sb = Scrollbar(self.update_player_two_frame, orient=VERTICAL)
@@ -1439,4 +1419,4 @@ class GameBoard:
             self.window.update()
 
 #player = Frontend.main.GUI.player.NewPlayer(self.name, d)
-game = GameBoard("guwiqgf",7)
+#game = GameBoard("guwiqgf",7)
