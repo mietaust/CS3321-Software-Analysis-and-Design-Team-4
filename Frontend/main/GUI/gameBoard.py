@@ -486,7 +486,6 @@ class GameBoard:
     # Moves player one position
     # param Player one index
     def player_one_position(self, position):
-        print("MADE IT HERE")
         if position == 0:
             self.player_one_label.place(x=5, y=725)
         elif position == 1:
@@ -1387,18 +1386,37 @@ class GameBoard:
         # server log update
         if (self.currentlog != outputgs.log):
             x = 0
-           # if (("Player 1 Balance: " + str(outputgs.player1.accountBalance)) not in self.currentlog):
-           #     self.game_log_list.insert(x + 1, ("Player 1 Balance: " + str(outputgs.player1.accountBalance)))
-           #     self.currentlog.append(("Player 1 Balance: " + str(outputgs.player1.accountBalance)))
-           # if (("Player 2 Balance: " + str(outputgs.player2.accountBalance)) not in self.currentlog):
-           #     self.game_log_list.insert(x + 1, ("Player 2 Balance: " + str(outputgs.player2.accountBalance)))
-           #     self.currentlog.append(("Player 2 Balance: " + str(outputgs.player2.accountBalance)))
+            self.game_log_list.delete(0, END)
             for log in outputgs.log:
-                if (log not in self.currentlog):
-                    self.game_log_list.insert(x, log)
-                    x += 1
-                    self.currentlog.append(log)
+                self.game_log_list.insert(x, log)
+                x += 1
             x = 0
+        #Player 1 Info Box
+        self.player_one_property_list.delete(0, END)
+        x = 0
+        self.player_one_property_list.insert(x,
+                                             "Player 1: " + outputgs.player1.name + ". Balance: $" + str(
+                                                 outputgs.player1.accountBalance) + ".")
+        x += 1
+        self.player_one_property_list.insert(x, "Properties owned:")
+        x += 1
+        for prop in outputgs.player1.propertyName:
+            self.player_one_property_list.insert(x, prop)
+            x = x+1
+        # Player 2 Info Box
+        x = 0
+        self.player_two_property_list.delete(0, END)
+        self.player_two_property_list.insert(x,
+                                             "Player 2: " + outputgs.player2.name + ". Balance: $" + str(
+                                                 outputgs.player2.accountBalance) + ".")
+        x += 1
+        self.player_two_property_list.insert(x, "Properties owned:")
+        x += 1
+        for prop in outputgs.player2.propertyName:
+            self.player_two_property_list.insert(x, prop)
+            x = x + 1
+
+        x = 0
 
         self.window.update()
 
