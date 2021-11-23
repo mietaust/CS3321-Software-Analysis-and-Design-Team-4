@@ -49,10 +49,11 @@ public class Card extends Space{
                 break;
             case MOVE:
                 //logic to move player
-                player.setPosition(cardValue);
-                if(cardValue < player.getPosition()){
+                if(cardValue <= player.getPosition()){
                     player.addToAccount(200);
                 }
+                player.setPosition(cardValue);
+
                 break;
             case JAILBREAK:
                 //logic to break player out of jail
