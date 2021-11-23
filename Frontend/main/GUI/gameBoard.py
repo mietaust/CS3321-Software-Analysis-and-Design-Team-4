@@ -30,11 +30,14 @@ class GameBoard:
         self.window.config(bg="#BFDBAE")
         self.currentlog = []
         self.server_update()
+        self.create_player_one_display()
+        self.create_player_two_display()
         self.thread = Thread(target=self.main_update_loop())
         self.thread.start()
-        # self.window.update()
+        self.window.update()
 
-        # self.get_board_update_loop()
+        self.get_board_update_loop()
+        #self.window.mainloop()
 
     # Initializes board spaces with images
     def initialize_spaces(self):
@@ -298,6 +301,7 @@ class GameBoard:
         self.endTurn_button = Button(self.window, text="End Turn", command=self.button_end_turn,
                                      font=("arial", 12, 'bold'), width=15)
         self.endTurn_button.place(x=310, y=520)
+        #self.reset_button = Button(self.window, text="Reset Game", font=("arial", 12, 'bold'), width=15)
 
     # Initializes player tokens
     def create_player_token(self):
@@ -482,7 +486,6 @@ class GameBoard:
     # Moves player one position
     # param Player one index
     def player_one_position(self, position):
-        print("MADE IT HERE")
         if position == 0:
             self.player_one_label.place(x=5, y=725)
         elif position == 1:
@@ -1309,86 +1312,49 @@ class GameBoard:
 
 
         # Initializes Player One display for name and money
-
-    def create_player_one_display(self):
-        ## Player 1 Information
-        self.label_frame = LabelFrame(self.window, text="Player Information", width=70)  # Create Frame frame for labels
-        self.label_frame.place(x=773, y=374)  # Filling window
-        self.label_frame.config(bg="light blue")  # Set background window background color
-
-        # Create and position labels and text boxes for Player One
-        self.player_one_label = Label(self.label_frame, text="Player 1: ", relief=RIDGE, font=("Arial", 10, "bold"))
-        self.player_one_label.pack(padx=5, pady=10, anchor=NW, side=tk.LEFT)
-
-        self.player_one_name = Entry(self.label_frame, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
-        self.player_one_name.pack(padx=5, pady=10, anchor=NW, side=tk.LEFT)
-        
-        self.player_one_cash_label = Label(self.label_frame, text="$:", font=("Arial", 10), bg="light blue")
-        self.player_one_cash_label.pack(padx=5, pady=10, anchor=NE, side=tk.LEFT)
-
-        self.player_one_cash_amount = Label(self.label_frame, text="", width=7, relief=SUNKEN, font=("Arial", 10),
-                                            bg='yellow')
-        self.player_one_cash_amount.pack(padx=0, pady=10, anchor=NE, side=tk.LEFT)
-        
         
         #Initializes Player One property scrollbar
         
-    def create_player_one_property_scrollbar(self):
+    def create_player_one_display(self):
         ##Player 1 Information
-        self.player_one_sb = Scrollbar(root, orient=VERTICAL)
+
+        self.update_player_frame = Frame(self.window)
+        self.player_one_sb = Scrollbar(self.update_player_frame, orient=VERTICAL)
         self.player_one_sb.pack(side=RIGHT, fill=Y)
         
-        self.property_list = Listbox(root, width=48, height=12, yscrollcommand=set.player_one_sb.set,
-                        font=("Times", 10))
+        self.player_one_property_list = Listbox(self.update_player_frame, width=45, height=25, yscrollcommand=self.player_one_sb.set,
+                                                font=("Times", 10))
         
-        self.property_list.config(exportselection=False)
-        self.property_list.pack(side=LEFT, fill=Y)
+        self.player_one_property_list.config(exportselection=False)
+        self.player_one_property_list.pack(side=LEFT, fill=Y)
 
-        self.player_one_sb.config(command=self.player_one_sb.yview)
+        self.player_one_sb.config(command=self.player_one_property_list.yview)
+
+        self.update_player_frame.place(x=773, y=372)
         
         # root.place(x=700, y=0) Not sure where to place this exactly
         
         
         # Initializes Player Two display for name and money
 
-    def create_player_two_display(self):
-        ## Player 2 Information
-        self.label_frame2 = LabelFrame(self.window, text="Player Information",
-                                       width=75)  # Create Frame frame for labels
-        self.label_frame2.place(x=1072, y=374)  # Filling window
-        self.label_frame2.config(bg="light green")  # Set background window background color
 
-        # Create and position labels and text boxes for Player Two
-        self.player_two_label = Label(self.label_frame2, text="Player 2: ", relief=RIDGE, font=("Arial", 10, "bold"))
-        self.player_two_label.pack(padx=5, pady=10, anchor=NW, side=tk.LEFT)
-
-        self.player_two_name = Entry(self.label_frame2, text="Enter Name", width=12, relief=SUNKEN, font=("Arial", 10))
-        self.player_two_name.pack(padx=5, pady=10, anchor=NW, side=tk.LEFT)
-        
-        self.player_two_cash_label = Label(self.label_frame2, text="$:", font=("Arial", 10), bg="light green")
-        self.player_two_cash_label.pack(padx=5, pady=10, anchor=NE, side=tk.LEFT)
-
-        self.player_two_cash_amount = Label(self.label_frame2, text="", width=7, relief=SUNKEN, font=("Arial", 10),
-                                            bg='yellow')
-        self.player_two_cash_amount.pack(padx=5, pady=10, anchor=NE, side=tk.LEFT)
-        
-        
         #Initializes Player Two property scrollbar
         
-    def create_player_two_property_scrollbar(self):
+    def create_player_two_display(self):
         ##Player 1 Information
-        self.player_two_sb = Scrollbar(root, orient=VERTICAL)
+        self.update_player_two_frame = Frame(self.window)
+        self.player_two_sb = Scrollbar(self.update_player_two_frame, orient=VERTICAL)
         self.player_two_sb.pack(side=RIGHT, fill=Y)
         
-        self.property_list = Listbox(root, width=48, height=12, yscrollcommand=set.player_two_sb.set,
-                        font=("Times", 10))
+        self.player_two_property_list = Listbox(self.update_player_two_frame, width=48, height=25, yscrollcommand=self.player_two_sb.set,
+                                                font=("Times", 10))
         
-        self.property_list.config(exportselection=False)
-        self.property_list.pack(side=LEFT, fill=Y)
+        self.player_two_property_list.config(exportselection=False)
+        self.player_two_property_list.pack(side=LEFT, fill=Y)
 
-        self.player_one_sb.config(command=self.player_two_sb.yview)
+        self.player_one_sb.config(command=self.player_two_property_list.yview)
         
-        # root.place(x=700, y=0) Not sure where to place this exactly
+        self.update_player_two_frame.place(x=1065, y=372)
         
 
     # Utility Functions
@@ -1420,22 +1386,39 @@ class GameBoard:
         # server log update
         if (self.currentlog != outputgs.log):
             x = 0
-           # if (("Player 1 Balance: " + str(outputgs.player1.accountBalance)) not in self.currentlog):
-           #     self.game_log_list.insert(x + 1, ("Player 1 Balance: " + str(outputgs.player1.accountBalance)))
-           #     self.currentlog.append(("Player 1 Balance: " + str(outputgs.player1.accountBalance)))
-           # if (("Player 2 Balance: " + str(outputgs.player2.accountBalance)) not in self.currentlog):
-           #     self.game_log_list.insert(x + 1, ("Player 2 Balance: " + str(outputgs.player2.accountBalance)))
-           #     self.currentlog.append(("Player 2 Balance: " + str(outputgs.player2.accountBalance)))
+            self.game_log_list.delete(0, END)
             for log in outputgs.log:
-                if (log not in self.currentlog):
-                    self.game_log_list.insert(x, log)
-                    x += 1
-                    self.currentlog.append(log)
+                self.game_log_list.insert(x, log)
+                x += 1
             x = 0
+        #Player 1 Info Box
+        self.player_one_property_list.delete(0, END)
+        x = 0
+        self.player_one_property_list.insert(x,
+                                             "Player 1: " + outputgs.player1.name + ". Balance: $" + str(
+                                                 outputgs.player1.accountBalance) + ".")
+        x += 1
+        self.player_one_property_list.insert(x, "Properties owned:")
+        x += 1
+        for prop in outputgs.player1.propertyName:
+            self.player_one_property_list.insert(x, prop)
+            x = x+1
+        # Player 2 Info Box
+        x = 0
+        self.player_two_property_list.delete(0, END)
+        self.player_two_property_list.insert(x,
+                                             "Player 2: " + outputgs.player2.name + ". Balance: $" + str(
+                                                 outputgs.player2.accountBalance) + ".")
+        x += 1
+        self.player_two_property_list.insert(x, "Properties owned:")
+        x += 1
+        for prop in outputgs.player2.propertyName:
+            self.player_two_property_list.insert(x, prop)
+            x = x + 1
+
+        x = 0
 
         self.window.update()
-
-
 
     # main update loop for drawing window and updating gameboard
     def main_update_loop(self):
@@ -1452,3 +1435,6 @@ class GameBoard:
             self.window.update()
             time.sleep(.25)
             self.window.update()
+
+#player = Frontend.main.GUI.player.NewPlayer(self.name, d)
+#game = GameBoard("guwiqgf",7)

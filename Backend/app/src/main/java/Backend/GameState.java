@@ -67,19 +67,7 @@ public class GameState {
     gamestate = new GameState();
   }
 
-  public static void main(String[] args) {
 
-    Gson gson = new Gson();
-    GameState.getInstance().player2.buy((Property) GameState.getInstance().getBoard()[39]);
-    GameState.getInstance().player1.buy((Property) GameState.getInstance().getBoard()[39]);
-    GameState.getInstance().player1.buy((Property) GameState.getInstance().getBoard()[1]);
-    GameState.getInstance().player1.buy((Property) GameState.getInstance().getBoard()[3]);
-    GameState.getInstance().player2.buy((Property) GameState.getInstance().getBoard()[3]);
-    String j = gson.toJson(GameState.getInstance().player1);
-    String d = gson.toJson(GameState.getInstance().player2);
-    System.out.println(j);
-    System.out.println(d);
-  }
 }
 
 

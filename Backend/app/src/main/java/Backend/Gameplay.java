@@ -87,8 +87,7 @@ public class Gameplay {
    *
    * @param player Player to check position of.
    */
-  private static void checkPosition(
-      Player player) {//deals with reactive spaces, passing go, etc. todo should exchange all the nasty casting with proper method override stuff
+  private static void checkPosition(Player player) {//deals with reactive spaces, passing go, etc. todo should exchange all the nasty casting with proper method override stuff
     //this chunk handles rent payment
     if ((state.getBoard()[player.getPosition()]) instanceof Street
         && ((Street) state.getBoard()[player.getPosition()]).getOwner() != null
