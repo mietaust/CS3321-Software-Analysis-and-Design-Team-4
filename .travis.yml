@@ -6,7 +6,8 @@ services:
 - docker
 
 before_install:
-- gradle clean build
+- cd Backend
+- gradle build
 script:
 - ls
 
