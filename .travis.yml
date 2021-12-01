@@ -7,4 +7,4 @@ services:
 
 script:
 - ls
-- ./gradlew build --scan -s
+- gradle build --scan -s
