@@ -5,6 +5,8 @@ jdk:
 services:
 - docker
 
+before_install:
+- gradle -b wrapper.gradle wrapper
 script:
 - ls
-- gradle build --scan -s
+- gradle clean build
