@@ -10,6 +10,6 @@ before_install:
 script:
 - chmod -x Backend/gradlew
 - cd Backend
-- sudo gradle build allTests
+- sudo gradle build 
 - ls
 
