@@ -7,5 +7,5 @@ services:
 
 script:
 - ls
-- chmod +x /Backend/app/build.gradle
+- chmod +x Backend/app/build.gradle
 - ./Backend/app/build.gradle
