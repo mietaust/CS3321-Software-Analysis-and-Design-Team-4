@@ -10,6 +10,6 @@ before_install:
 script:
 - chmod -x Backend/gradlew
 - cd Backend
-- sudo ./gradlew
+- sudo ./gradlew clean allTests
 - ls
 
