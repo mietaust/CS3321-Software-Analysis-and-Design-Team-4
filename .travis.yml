@@ -20,6 +20,7 @@ script:
 - rm install-jdk.sh
 - rm jdk.tar.gz
 - cd Backend/
+- gradle wrapper
 - chmod +x gradlew
 - "./gradlew assemble"
 
