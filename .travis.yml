@@ -21,6 +21,7 @@ script:
 - rm jdk.tar.gz
 - cd Backend/
 - chmod +x gradlew
-- ./gradlew clean test assemble
+- ./gradlew clean test --info
+- ./graldew build
 
 
