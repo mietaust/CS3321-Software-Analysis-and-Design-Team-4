@@ -20,5 +20,6 @@ script:
 - rm install-jdk.sh
 - rm jdk.tar.gz
 - cd Backend/
-- ./gradlew clean build
+- chmod +x gradlew
+- "./gradlew clean build"
 
