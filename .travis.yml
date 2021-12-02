@@ -20,5 +20,5 @@ script:
 - rm install-jdk.sh
 - rm jdk.tar.gz
 - cd Backend/
-- gradle build
+- ./gradlew clean build
 
