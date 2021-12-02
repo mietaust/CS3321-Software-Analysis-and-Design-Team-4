@@ -17,8 +17,6 @@ script:
 - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
 - chmod +x $TRAVIS_BUILD_DIR/install-jdk.sh
 - export JAVA_HOME=$HOME/openjdk17
-- rm install-jdk.sh
-- rm jdk.tar.gz
 - cd Backend/
 - chmod +x gradlew
 - ./gradlew clean test --info
