@@ -3,6 +3,9 @@ language: java
 install: skip
 os: linux
 dist: focal
+env:
+  global:
+    -
 jdk: 
 - openjdk17
 services:
@@ -14,7 +17,6 @@ script:
 - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
 - chmod +x $TRAVIS_BUILD_DIR/install-jdk.sh
 - export JAVA_HOME=$HOME/openjdk17
-- "$TRAVIS_BUILD_DIR/install-jdk.sh -F 17 --target $JAVA_HOME"
 - rm install-jdk.sh
 - rm jdk.tar.gz
 - chmod +x gradlew
