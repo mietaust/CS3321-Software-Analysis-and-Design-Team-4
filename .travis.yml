@@ -19,6 +19,7 @@ script:
 - export JAVA_HOME=$HOME/openjdk17
 - rm install-jdk.sh
 - rm jdk.tar.gz
+- gradle wrapper
 - cd Backend/
 - chmod +x gradlew
 - "./gradlew clean build"
