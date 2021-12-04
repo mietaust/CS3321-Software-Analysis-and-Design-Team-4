@@ -155,5 +155,4 @@ public class Player{
     }
     /// Moving checkposition method to game-logic
 
-
 }

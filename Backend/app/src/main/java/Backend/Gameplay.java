@@ -18,6 +18,7 @@ public class Gameplay {
 
 
   public static void roll(Player player) {//rolls and handles movement
+
     GameState.getInstance().log(player.getName() + " has rolled.");
     int doubles = 0;
     int movement = 0;
@@ -87,7 +88,7 @@ public class Gameplay {
    *
    * @param player Player to check position of.
    */
-  private static void checkPosition(Player player) {//deals with reactive spaces, passing go, etc. todo should exchange all the nasty casting with proper method override stuff
+  public static void checkPosition(Player player) {//deals with reactive spaces, passing go, etc. todo should exchange all the nasty casting with proper method override stuff
     //this chunk handles rent payment
     if ((state.getBoard()[player.getPosition()]) instanceof Street
         && ((Street) state.getBoard()[player.getPosition()]).getOwner() != null
@@ -138,8 +139,8 @@ public class Gameplay {
    * @param player
    */
   public static void buy(Player player) {
-    System.out.println("made it to here before SHTF");
-    System.out.println((state.getBoard()[player.getPosition()]) instanceof Property);
+    //System.out.println("made it to here before SHTF");
+    //System.out.println((state.getBoard()[player.getPosition()]) instanceof Property);
     if (state.getRolled() && (state.getBoard()[player.getPosition()]) instanceof Property) {
       //System.out.println(player.getAccountBalance()+"\n"+String.valueOf(((Property)state.getBoard()[player.getPosition()]).getValue())) ;
       if (player.getAccountBalance()
@@ -247,7 +248,7 @@ public class Gameplay {
       state.setWinner(state.player2);
       state.setGameOver(true);
     }else if(state.player2.getAccountBalance()<0){
-      state.setWinner(state.player2);
+      state.setWinner(state.player1);
       state.setGameOver(true);
     }
   }
