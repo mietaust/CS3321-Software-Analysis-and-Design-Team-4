@@ -21,5 +21,10 @@ script:
 - chmod +x gradlew
 - ./gradlew clean test --info
 - ./gradlew build
+- cd app/
+- echo "$dockpass" | docker login -u "$dockuser" --password-stdin
+- docker build -t monoserver .
+- docker tag monoserver wheej/monoserver:1.00
+- docker push wheej/monoserver:1.00
 
 
