@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23196024-d03f-4f5f-a269-a8f9e1a09af3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Gameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Gameplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Property.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +39,13 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />

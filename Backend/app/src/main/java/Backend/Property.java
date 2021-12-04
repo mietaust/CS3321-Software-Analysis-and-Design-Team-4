@@ -47,6 +47,6 @@ public class Property extends Space {
   public static boolean ownerIsPlayer(Object owner) {
     return owner instanceof Player;
   }
-
+  public boolean isProperty(){return true;}
 
 }
