@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Server {
+
   boolean hasRolled = false;
   // port number to attach server to
   private final int port = 7000;
@@ -60,16 +61,18 @@ public class Server {
       post("/api/join", ctx -> {
         System.out.println(GameState.getInstance().getPlayerCount());
         Backend.Player newPlayer = new Player(ctx.body());
-        System.out.println("received new player " + newPlayer.getName() + ", assigned ID " + newPlayer.getId() + ".");
-        if(GameState.getInstance().getPlayerCount() == 0){
+        System.out.println(
+            "received new player " + newPlayer.getName() + ", assigned ID " + newPlayer.getId()
+                + ".");
+        if (GameState.getInstance().getPlayerCount() == 0) {
           GameState.getInstance().player1 = newPlayer;
           GameState.getInstance().setPlayerCount(1);
-        }else if(GameState.getInstance().getPlayerCount() == 1){
+        } else if (GameState.getInstance().getPlayerCount() == 1) {
           GameState.getInstance().player2 = newPlayer;
           GameState.getInstance().gameStart = true;
           GameState.getInstance().setPlayerCount(2);
           GameState.getInstance().setTurn(GameState.getInstance().player1);
-        }else{
+        } else {
           System.out.println("hey we're here");
           //game is full until we make it >2 players. shouldn't be too hard just haven't yet.
         }
@@ -95,14 +98,16 @@ public class Server {
     server.routes(() -> {
       post("/api/purchase/house", ctx -> {
         //parse provided uuid TODO add error handling for non-uuid reception
-        String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
+        String parsedString = ctx.body().substring(1, (ctx.body().length() - 1));
         UUID idFromSender = UUID.fromString(parsedString);
 
         //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
-        if(idFromSender.equals(GameState.getInstance().turn.getId()) && GameState.getInstance().gameOver == false){
-          System.out.println("Got good house request from UUID: " + GameState.getInstance().turn.getId());
+        if (idFromSender.equals(GameState.getInstance().turn.getId())
+            && GameState.getInstance().gameOver == false) {
+          System.out.println(
+              "Got good house request from UUID: " + GameState.getInstance().turn.getId());
           Gameplay.buildHouse(GameState.getInstance().turn);
-        }else{
+        } else {
           System.out.println("Received bad house request. Pass on game logic execution.");
         }
 
@@ -114,14 +119,16 @@ public class Server {
       post("/api/purchase/hotel", ctx -> {
 
         //parse provided uuid TODO add error handling for non-uuid reception
-        String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
+        String parsedString = ctx.body().substring(1, (ctx.body().length() - 1));
         UUID idFromSender = UUID.fromString(parsedString);
 
         //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
-        if(idFromSender.equals(GameState.getInstance().turn.getId()) && GameState.getInstance().gameOver == false){
-          System.out.println("Got good hotel request from UUID: " + GameState.getInstance().turn.getId());
+        if (idFromSender.equals(GameState.getInstance().turn.getId())
+            && GameState.getInstance().gameOver == false) {
+          System.out.println(
+              "Got good hotel request from UUID: " + GameState.getInstance().turn.getId());
           Gameplay.buildHotel(GameState.getInstance().turn);
-        }else{
+        } else {
           System.out.println("Received bad hotel request. Pass on game logic execution.");
         }
       });
@@ -131,15 +138,18 @@ public class Server {
     server.routes(() -> {
       post("/api/purchase/property", ctx -> {
         //parse provided uuid TODO add error handling for non-uuid reception
-        String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
+        String parsedString = ctx.body().substring(1, (ctx.body().length() - 1));
         UUID idFromSender = UUID.fromString(parsedString);
 
         //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
-        if(idFromSender.equals(GameState.getInstance().turn.getId()) && GameState.getInstance().gameOver == false){
-          System.out.println("Got good property purchase request from UUID: " + GameState.getInstance().turn.getId());
+        if (idFromSender.equals(GameState.getInstance().turn.getId())
+            && GameState.getInstance().gameOver == false) {
+          System.out.println("Got good property purchase request from UUID: "
+              + GameState.getInstance().turn.getId());
           Gameplay.buy(GameState.getInstance().turn);
-        }else{
-          System.out.println("Received bad property purchase request. Pass on game logic execution.");
+        } else {
+          System.out.println(
+              "Received bad property purchase request. Pass on game logic execution.");
         }
 
       });
@@ -150,49 +160,50 @@ public class Server {
       post("/api/roll", ctx -> {
         System.out.println(ctx.body());
         //parse provided uuid TODO add error handling for non-uuid reception
-        String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
+        String parsedString = ctx.body().substring(1, (ctx.body().length() - 1));
         UUID idFromSender = UUID.fromString(parsedString);
 
         //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
-        if(idFromSender.equals(GameState.getInstance().turn.getId()) && GameState.getInstance().gameOver == false){
+        if (idFromSender.equals(GameState.getInstance().turn.getId())
+            && GameState.getInstance().gameOver == false) {
 
-          if(!Gameplay.state.getRolled()) {
-            System.out.println("Got good request from UUID: " + GameState.getInstance().turn.getId());
+          if (!Gameplay.state.getRolled()) {
+            System.out.println(
+                "Got good request from UUID: " + GameState.getInstance().turn.getId());
             Gameplay.roll(GameState.getInstance().turn);
             hasRolled = true;
           }
-        }else {
+        } else {
           System.out.println("Received bad roll request. Pass on game logic execution.");
         }
       });
     });
 
-
     //player end turn handler
     server.routes(() -> {
       post("/api/end", ctx -> {
         //parse provided uuid TODO add error handling for non-uuid reception
-        String parsedString = ctx.body().substring(1, (ctx.body().length()-1));
+        String parsedString = ctx.body().substring(1, (ctx.body().length() - 1));
         UUID idFromSender = UUID.fromString(parsedString);
 
         //check passed uuid against current player uuid then update player TODO player change should be handled on turn end, not simply dice roll
-        if(idFromSender.equals(GameState.getInstance().turn.getId())){
-          System.out.println("Got good end turn request from UUID: " + GameState.getInstance().turn.getId());
+        if (idFromSender.equals(GameState.getInstance().turn.getId())) {
+          System.out.println(
+              "Got good end turn request from UUID: " + GameState.getInstance().turn.getId());
           hasRolled = false;
           Gameplay.endTurn();
-         // if(idFromSender.equals(GameState.getInstance().player1.getId())){
-            //set new player to player 2
-         //   GameState.getInstance().setTurn(GameState.getInstance().player2);
-         // }else if ((idFromSender.equals(GameState.getInstance().player2.getId()))){
-            //set new player to player 1
-         //   GameState.getInstance().setTurn(GameState.getInstance().player1);
-         // }
-        }else{
+          // if(idFromSender.equals(GameState.getInstance().player1.getId())){
+          //set new player to player 2
+          //   GameState.getInstance().setTurn(GameState.getInstance().player2);
+          // }else if ((idFromSender.equals(GameState.getInstance().player2.getId()))){
+          //set new player to player 1
+          //   GameState.getInstance().setTurn(GameState.getInstance().player1);
+          // }
+        } else {
           System.out.println("Received bad end turn request. Pass on game logic execution.");
         }
       });
     });
-
 
     //client request board update handler
     server.routes(() -> {

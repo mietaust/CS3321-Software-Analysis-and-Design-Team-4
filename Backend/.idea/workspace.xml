@@ -6,9 +6,33 @@
   <component name="ChangeListManager">
     <list default="true" id="23196024-d03f-4f5f-a269-a8f9e1a09af3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Chance.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Chance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/CommunityChest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/CommunityChest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/GameState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Gameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Gameplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/NewPlayer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Property.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Railroad.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Railroad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Space.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Space.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Street.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Street.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Backend/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Backend/Utility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/Backend/ChanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/Backend/ChanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/Backend/CommunityChestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/Backend/CommunityChestTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/Backend/GameplayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/Backend/GameplayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/Backend/RailroadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/Backend/RailroadTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/Backend/ServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/Backend/ServerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/Backend/SpaceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/Backend/SpaceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/Backend/UtilityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/Backend/UtilityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/../CHANGELOG.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,19 +105,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Gradle.Backend [test]">
-    <configuration name="Gameplay" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Backend.Gameplay" />
-      <module name="Backend.app.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Backend.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Player" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Backend.Player" />
       <module name="Backend.app.main" />
@@ -149,6 +160,27 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="GameplayTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;Backend.GameplayTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="PlayerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -173,10 +205,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Backend [test]" />
+        <item itemvalue="Gradle.GameplayTest" />
         <item itemvalue="Application.Player" />
         <item itemvalue="Gradle.PlayerTest" />
         <item itemvalue="Gradle.Backend [app:build]" />
-        <item itemvalue="Application.Gameplay" />
       </list>
     </recent_temporary>
   </component>
@@ -202,5 +234,8 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Backend$Backend__test_.ic" NAME="Backend [test] Coverage Results" MODIFIED="1638733110985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
