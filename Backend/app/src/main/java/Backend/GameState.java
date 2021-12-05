@@ -51,7 +51,8 @@ public class GameState {
     player1 = new Player("p1");
     player2 = new Player("p2");
     turn = player1;
-    player1.addToAccount(1500);
+//    player1.addToAccount(1500);
+//    player2.addToAccount(1500);
     log = new ArrayList<>();
     log.add("The game is now starting!");
   }

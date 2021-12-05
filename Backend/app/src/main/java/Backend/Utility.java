@@ -39,7 +39,7 @@ public class Utility extends Property {
       }
 
       //if the player owns both utilities
-      if ((getOwner()).utilitiesOwned() ==2) {
+      if ((getOwner()).utilitiesOwned() == 2) {
         // the rent is 10 times the dice roll
         return 10 * Dice.getInstance().getTotal();
       }

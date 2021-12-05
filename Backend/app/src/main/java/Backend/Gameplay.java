@@ -88,7 +88,8 @@ public class Gameplay {
    *
    * @param player Player to check position of.
    */
-  public static void checkPosition(Player player) {//deals with reactive spaces, passing go, etc. todo should exchange all the nasty casting with proper method override stuff
+  public static void checkPosition(
+      Player player) {//deals with reactive spaces, passing go under normal circumstances, etc. todo should exchange all the nasty casting with proper method override stuff
     //this chunk handles rent payment
     if ((state.getBoard()[player.getPosition()]) instanceof Street
         && ((Street) state.getBoard()[player.getPosition()]).getOwner() != null
@@ -243,24 +244,25 @@ public class Gameplay {
     state.setRolled(false);
     GameState.getInstance().log("It is now " + GameState.getInstance().turn.getName() + "'s turn");
   }
-  public static void checkWinState(){
-    if(state.player1.getAccountBalance()<0){
+
+  public static void checkWinState() {
+    if (state.player1.getAccountBalance() < 0) {
       state.setWinner(state.player2);
       state.setGameOver(true);
-    }else if(state.player2.getAccountBalance()<0){
+    } else if (state.player2.getAccountBalance() < 0) {
       state.setWinner(state.player1);
       state.setGameOver(true);
     }
   }
 
 
-  public static void main(String[] args) {
-    GameState g = GameState.getInstance();
-    state.player1.move(1);
-    buy(state.player1);
-    state.player1.move(11);
-    buy(state.player1);
-
-  }
+//  public static void main(String[] args) {
+//    GameState g = GameState.getInstance();
+//    state.player1.move(1);
+//    buy(state.player1);
+//    state.player1.move(11);
+//    buy(state.player1);
+//
+//  }
 
 }
