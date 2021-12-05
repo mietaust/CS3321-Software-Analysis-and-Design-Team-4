@@ -1,0 +1,30 @@
+sudo: required
+language: java
+install: skip
+os: linux
+dist: focal
+env:
+  global:
+    -
+jdk: 
+- openjdk17
+services:
+- docker
+
+before_install:
+
+script:
+- wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
+- chmod +x $TRAVIS_BUILD_DIR/install-jdk.sh
+- export JAVA_HOME=$HOME/openjdk17
+- cd Backend/
+- chmod +x gradlew
+- ./gradlew clean test --info
+- ./gradlew build
+- cd app/
+- echo "$dockpass" | docker login -u "$dockuser" --password-stdin
+- docker build -t monoserver .
+- docker tag monoserver wheej/monoserver:1.00
+- docker push wheej/monoserver:1.00
+
+

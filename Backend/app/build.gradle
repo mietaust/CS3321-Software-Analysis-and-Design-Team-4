@@ -46,7 +46,7 @@ test {
 }
 application {
     // Define the main class for the application.
-    mainClass = 'Backend.App'
+    mainClassName = 'Backend.App'
 }
 
 tasks.named('test') {
