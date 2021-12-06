@@ -22,17 +22,17 @@ Our team will be implementing a lite version of Monopoloy. This game will use a 
 ### Minimum Technologies Used
 * Frontend 
      * Language: Python
-     * Testing Framework: unittest
+     * Testing Framework: unit test
      * https://google.github.io/styleguide/pyguide.html
      * IDE: Python: 3.9.5
-     * UI Libraries/Frameworks: PyGame, ThorPy, tkinter
+     * UI Libraries/Frameworks: PyGame, tkinter
 * Backend
      * Language: Java SE 17 
      * Testing Framework: JUnit 5.7.1
      * https://google.github.io/styleguide/javaguide.html
      * IDE: Intelli-J Idea
      * MS Framework: Javelin
-     * Server Hosting: AWS
+    
 
 ## Description of our MVP
 Basic Client and Server that are cabaple of communicating and playing a limited ruleset version of Monopoly, including:
